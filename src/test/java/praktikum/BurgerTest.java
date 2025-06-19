@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -87,12 +86,18 @@ public class BurgerTest {
         burger.addIngredient(ingredientMock1);
         burger.addIngredient(ingredientMock2);
 
-        String receipt = burger.getReceipt();
+        String expectedReceipt = String.format(
+                "(==== black bun ====)%n" +
+                        "= sauce hot sauce =%n" +
+                        "= filling cutlet =%n" +
+                        "(==== black bun ====)%n" +
+                        "%n" +
+                        "Price: 500.000000%n"
+        );
 
-        assertTrue(receipt.contains("(==== black bun ====)"));
-        assertTrue(receipt.contains("= sauce hot sauce ="));
-        assertTrue(receipt.contains("= filling cutlet ="));
-        assertTrue(receipt.contains("(==== black bun ====)"));
-        assertTrue(receipt.contains("Price: 500.000000"));
+        String actualReceipt = burger.getReceipt();
+
+        assertEquals("Чек не совпадает с ожидаемым", expectedReceipt, actualReceipt);
     }
+
 }
