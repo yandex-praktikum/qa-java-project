@@ -8,6 +8,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.junit.runner.RunWith;
 
 import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
@@ -15,7 +16,6 @@ import static org.mockito.Mockito.*;
 public class BurgerTest {
 
     private Burger burger;
-    @SuppressWarnings("resource")
     private AutoCloseable closeable;
 
     @Mock
@@ -56,9 +56,14 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredient() {
+    public void testAddIngredientIncreasesSize() {
         burger.addIngredient(sauce);
         assertEquals(1, burger.getIngredients().size());
+    }
+
+    @Test
+    public void testAddIngredientAddsCorrectIngredient() {
+        burger.addIngredient(sauce);
         assertEquals(sauce, burger.getIngredients().get(0));
     }
 
