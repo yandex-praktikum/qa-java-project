@@ -15,7 +15,7 @@ import static org.junit.Assert.assertThrows;
 //Тестирование метода getReceipt класса Burger
 @RunWith(Parameterized.class)
 public class BurgerGetReceiptTest {
-    private static final BurgerContent burgerContent = new BurgerContent();
+
     private final Bun bun;
     private final List<Ingredient> ingredients;
     private final String expectedReceipt;
@@ -32,21 +32,21 @@ public class BurgerGetReceiptTest {
     @Parameterized.Parameters(name = "Булка:{0}, Список ингредиентов:{1}, ожидаемый чек:{2}")
     public static Object[][] burgerContents() {
         return new Object[][]{
-                {burgerContent.whiteBun,
-                        List.of(burgerContent.sauce, burgerContent.salad, burgerContent.meat),
-                        "(==== белая булка ====)" + "\r\n" +
-                                "= sauce соус =" + "\r\n" +
-                                "= filling салат =" + "\r\n" +
-                                "= filling мясо =" + "\r\n" +
-                                "(==== белая булка ====)" + "\r\n" +
-                                "\r\n" + "Price: 480,000000" + "\r\n"},
-                {burgerContent.blackBun,
-                        List.of(burgerContent.sauce, burgerContent.meat),
-                        "(==== черная булка ====)" + "\r\n" +
-                                "= sauce соус =" + "\r\n" +
-                                "= filling мясо =" + "\r\n" +
-                                "(==== черная булка ====)" + "\r\n" +
-                                "\r\n" + "Price: 390,000000" + "\r\n"},
+                {Mocks.getMockBun(),
+                        List.of(Mocks.getMockSauce(), Mocks.getMockSalad(), Mocks.getMockMeat()),
+                        "(==== Булочка ====)" + "\r\n" +
+                                "= sauce Соус =" + "\r\n" +
+                                "= filling Салат =" + "\r\n" +
+                                "= filling Мясо =" + "\r\n" +
+                                "(==== Булочка ====)" + "\r\n" +
+                                "\r\n" + "Price: 500,000000" + "\r\n"},
+                {Mocks.getMockBun(),
+                        List.of(Mocks.getMockSauce(), Mocks.getMockMeat()),
+                        "(==== Булочка ====)" + "\r\n" +
+                                "= sauce Соус =" + "\r\n" +
+                                "= filling Мясо =" + "\r\n" +
+                                "(==== Булочка ====)" + "\r\n" +
+                                "\r\n" + "Price: 430,000000" + "\r\n"},
         };
     }
 

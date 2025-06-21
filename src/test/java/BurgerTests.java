@@ -1,92 +1,75 @@
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 
+import static org.junit.Assert.assertEquals;
+
+
 //Группа тестов для класса Burger
 //Тестирование класса Burger
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class BurgerTests {
 
-    @Mock
-    Ingredient ingredientForAddition;
-    @Mock
-    Ingredient ingredientForAdditionAndDeletion;
-    @Mock
-    Ingredient ingredientZeroToTwo;
-    @Mock
-    Ingredient ingredientOneToZero;
-    @Mock
-    Ingredient ingredientTwoToOne;
+
     private Burger burger;
-    @Mock
-    private Bun bun;
+    private Bun mockBun;
+    private Ingredient mockMeat;
+    private Ingredient mockSalad;
+    private Ingredient mockSauce;
 
     @Before
     //Создаем Бургер перед каждым тестом
     public void prepareBurger() {
         burger = new Burger();
+        mockBun = Mocks.getMockBun();
+        mockMeat = Mocks.getMockMeat();
+        mockSalad = Mocks.getMockSalad();
+        mockSauce = Mocks.getMockSauce();
     }
 
     @Test
     //Тестирование метода setBuns
     //Тест проверяет установку булочки для burger с использованием метода setBuns
     public void setBunsTest() {
-        burger.setBuns(bun);
-        Assert.assertSame("Булочка не та", bun, burger.bun);
+        burger.setBuns(mockBun);
+        Assert.assertSame("Булочка не та", mockBun, burger.bun);
     }
 
     @Test
     //Тестирование метода addIngredient
     //Тест проверяет, добавляется ли ингредиент в список
     public void addIngredientTest() {
-        Assert.assertEquals(0, burger.ingredients.size());
-        Assert.assertFalse(burger.ingredients.contains(ingredientForAddition));
-        burger.addIngredient(ingredientForAddition);
-        Assert.assertEquals(1, burger.ingredients.size());
-        Assert.assertTrue(burger.ingredients.contains(ingredientForAddition));
+        burger.addIngredient(mockMeat);
+        assertEquals("Ингридиент не добавлен", mockMeat, burger.ingredients.get(0));
     }
 
-    @Test
+    @Test(expected = IndexOutOfBoundsException.class)
     //Тестирование метода removeIngredient
-    //Тест проверяет, удаляется ли ингредиент из список
+    //Тест проверяет, удаляется ли ингредиент из списка
     public void removeIngredientTest() {
-        Assert.assertEquals(0, burger.ingredients.size());
-        Assert.assertFalse(burger.ingredients.contains(ingredientForAddition));
-        Assert.assertFalse(burger.ingredients.contains(ingredientForAdditionAndDeletion));
-        burger.addIngredient(ingredientForAddition);
-        burger.addIngredient(ingredientForAdditionAndDeletion);
-        Assert.assertEquals(2, burger.ingredients.size());
-        Assert.assertTrue(burger.ingredients.contains(ingredientForAddition));
-        Assert.assertTrue(burger.ingredients.contains(ingredientForAdditionAndDeletion));
-        burger.removeIngredient(burger.ingredients.indexOf(ingredientForAdditionAndDeletion));
-        Assert.assertEquals(1, burger.ingredients.size());
-        Assert.assertFalse(burger.ingredients.contains(ingredientForAdditionAndDeletion));
-        Assert.assertTrue(burger.ingredients.contains(ingredientForAddition));
+        burger.addIngredient(mockSalad);
+        burger.removeIngredient(0);
+        assertEquals("Ингредиент не удален", mockSalad, burger.ingredients.get(0));
     }
 
     @Test
     //Тестирование метода moveIngredient
     //Тест проверяет, перемещается ли ингредиент по списку
     public void moveIngredientTest() {
-        Assert.assertEquals(0, burger.ingredients.size());
-        Assert.assertFalse(burger.ingredients.contains(ingredientZeroToTwo));
-        Assert.assertFalse(burger.ingredients.contains(ingredientOneToZero));
-        Assert.assertFalse(burger.ingredients.contains(ingredientTwoToOne));
-        burger.addIngredient(ingredientZeroToTwo);
-        burger.addIngredient(ingredientOneToZero);
-        burger.addIngredient(ingredientTwoToOne);
-        Assert.assertEquals(3, burger.ingredients.size());
-        burger.moveIngredient(burger.ingredients.indexOf(ingredientZeroToTwo)
-                , burger.ingredients.indexOf(ingredientTwoToOne));
-        Assert.assertEquals(ingredientZeroToTwo, burger.ingredients.get(2));
-        Assert.assertEquals(ingredientOneToZero, burger.ingredients.get(0));
-        Assert.assertEquals(ingredientTwoToOne, burger.ingredients.get(1));
+        burger.addIngredient(mockSalad);
+        burger.addIngredient(mockMeat);
+        burger.addIngredient(mockSauce);
+        burger.moveIngredient(2, 0);
+        SoftAssertions soft = new SoftAssertions();
+        soft.assertThat(burger.ingredients.get(0)).as("Не тот ингредиент").isEqualTo(mockSauce);
+        soft.assertThat(burger.ingredients.get(1)).as("Не тот ингредиент").isEqualTo(mockSalad);
+        soft.assertThat(burger.ingredients.get(2)).as("Не тот ингредиент").isEqualTo(mockMeat);
+        soft.assertAll();
+
     }
 
 
