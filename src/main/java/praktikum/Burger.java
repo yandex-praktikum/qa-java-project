@@ -49,9 +49,16 @@ public class Burger {
         }
 
         receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        receipt.append(String.format(java.util.Locale.ENGLISH, "%nPrice: %.1f%n", getPrice()));
 
         return receipt.toString();
     }
+    // Добавлены геттеры
+    public Bun getBun() {
+        return this.bun;
+    }
 
+    public List<Ingredient> getIngredients() {
+        return this.ingredients;
+    }
 }
