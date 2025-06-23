@@ -29,12 +29,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>4.11.0</version> <!-- или последняя версия -->
-        </dependency>
-
     </dependencies>
     <build>
         <plugins>
