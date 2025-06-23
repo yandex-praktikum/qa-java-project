@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerTest" time="1.055" tests="10" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1\target\test-classes;C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1\target\classes;C:\Users\Kalken.M\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Kalken.M\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Kalken.M\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\Kalken.M\.m2\repository\net\bytebuddy\byte-buddy\1.11.19\byte-buddy-1.11.19.jar;C:\Users\Kalken.M\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.19\byte-buddy-agent-1.11.19.jar;C:\Users\Kalken.M\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://openjdk.java.net/"/>
+    <property name="user.timezone" value="Asia/Qyzylorda"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-11\bin"/>
+    <property name="sun.java.command" value="C:\Users\Kalken.M\AppData\Local\Temp\surefire13113185035515887680\surefirebooter-20250623133114716_3.jar C:\Users\Kalken.M\AppData\Local\Temp\surefire13113185035515887680 2025-06-23T13-31-13_824-jvmRun1 surefire-20250623133114716_1tmp surefire_0-20250623133114716_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1\target\test-classes;C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1\target\classes;C:\Users\Kalken.M\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\Kalken.M\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\Kalken.M\.m2\repository\org\mockito\mockito-core\4.0.0\mockito-core-4.0.0.jar;C:\Users\Kalken.M\.m2\repository\net\bytebuddy\byte-buddy\1.11.19\byte-buddy-1.11.19.jar;C:\Users\Kalken.M\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.19\byte-buddy-agent-1.11.19.jar;C:\Users\Kalken.M\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Kalken.M"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2024-10-15"/>
+    <property name="java.home" value="C:\Program Files\Java\jdk-11"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\Kalken.M\AppData\Local\Temp\surefire13113185035515887680\surefirebooter-20250623133114716_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.25+9-LTS-256"/>
+    <property name="user.name" value="Kalken.M"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="Cp1251"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="18.9"/>
+    <property name="localRepository" value="C:\Users\Kalken.M\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Kalken.M\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.25"/>
+    <property name="user.dir" value="C:\Users\Kalken.M\Desktop\Temp\3\QA-java-diplom-1-develop1\QA-java-diplom-1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-11\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Embarcadero\Studio\23.0\bin;C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl;C:\Program Files (x86)\Embarcadero\Studio\23.0\bin64;C:\Users\Public\Documents\Embarcadero\Studio\23.0\Bpl\Win64;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\CheckPoint\Endpoint Security\Endpoint Common\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\maven\mvn\bin;C:\Program Files\dotnet\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\Kalken.M\.cargo\bin;C:\Users\Kalken.M\AppData\Local\anaconda3;C:\Users\Kalken.M\AppData\Local\anaconda3\Library\mingw-w64\bin;C:\Users\Kalken.M\AppData\Local\anaconda3\Library\usr\bin;C:\Users\Kalken.M\AppData\Local\anaconda3\Library\bin;C:\Users\Kalken.M\AppData\Local\anaconda3\Scripts;C:\Users\Kalken.M\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\Kalken.M\AppData\Local\Programs\Python\Python312\;C:\Users\Kalken.M\AppData\Local\Programs\Python\Python313\Scripts\;C:\Users\Kalken.M\AppData\Local\Programs\Python\Python313\;C:\Users\Kalken.M\AppData\Local\Programs\Python\Launcher\;C:\Users\Kalken.M\AppData\Local\Microsoft\WindowsApps;C:\Users\Kalken.M\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Kalken.M\AppData\Roaming\npm;C:\Program Files\JetBrains\IntelliJ IDEA 2024.3.5\bin;;C:\Users\Kalken.M\.dotnet\tools;;c:\Users\Kalken.M\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;."/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.25+9-LTS-256"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testGetPriceWithoutIngredients" classname="praktikum.BurgerTest" time="0.996"/>
+  <testcase name="testCalculateCorrectPrice" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testAddedIngredientIsContainedInList" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testGetReceiptWithBunAndIngredients" classname="praktikum.BurgerTest" time="0.008"/>
+  <testcase name="testGetReceiptContainsPrice" classname="praktikum.BurgerTest" time="0.003"/>
+  <testcase name="testMoveIngredientChangesOrder" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testAddMultipleIngredientsIncreasesSize" classname="praktikum.BurgerTest" time="0.003"/>
+  <testcase name="testRemoveIngredientReducesSize" classname="praktikum.BurgerTest" time="0.003"/>
+  <testcase name="testAddIngredient" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testSetBun" classname="praktikum.BurgerTest" time="0.002"/>
+</testsuite>
