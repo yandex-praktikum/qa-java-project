@@ -74,5 +74,25 @@ public class BurgerTest {
         float expectedPrice = bunMock.getPrice() * 2 + ingredientMock1.getPrice() + ingredientMock2.getPrice();
         assertEquals(expectedPrice, burger.getPrice(), 0.0001);
     }
+
+    @Test
+    public void testGetReceipt() {
+
+        Bun bun = new Bun("Sesame Bun", 1.5f);
+        Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "Lettuce", 0.5f);
+        Ingredient ingredient2 = new Ingredient(IngredientType.FILLING, "Cheese", 1.0f);
+
+        Burger burger = new Burger();
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredient2);
+        String receipt = burger.getReceipt();
+        assertTrue(receipt.contains(bun.getName()));
+        assertTrue(receipt.contains(ingredient1.getName()));
+        assertTrue(receipt.contains(ingredient2.getName()));
+        float expectedPrice = bun.getPrice() * 2 + ingredient1.getPrice() + ingredient2.getPrice();
+        assertTrue(receipt.contains(String.format("Price: %.2f", expectedPrice)));
+    }
 }
+
 //
