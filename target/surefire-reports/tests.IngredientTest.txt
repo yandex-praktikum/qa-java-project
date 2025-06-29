@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: tests.IngredientTest
+-------------------------------------------------------------------------------
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.110 s -- in tests.IngredientTest
