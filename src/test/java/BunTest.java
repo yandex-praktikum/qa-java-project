@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import praktikum.Bun;
 
@@ -6,6 +7,7 @@ public class BunTest {
     public static String name = "С корицей";
     public static float price = 10;
 
+    @DisplayName("Проверка геттера модели булочки getName")
     @Test
     public void getName() {
         Bun bun = new Bun(name, price);
@@ -14,6 +16,7 @@ public class BunTest {
         Assertions.assertEquals(expectedResult, actualResult, "Модель булочки должна совпадать");
     }
 
+    @DisplayName("Проверка геттера цены булочки getPrice")
     @Test
     public void getPrice() {
         Bun bun = new Bun(name, price);
