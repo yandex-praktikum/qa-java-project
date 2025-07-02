@@ -8,7 +8,7 @@ import praktikum.IngredientType;
 import java.util.stream.Stream;
 
 public class IngredientTest {
-    
+
     @ParameterizedTest
     @MethodSource("ingredientData")
     public void getPrice(IngredientType type, String name, float price){
