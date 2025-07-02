@@ -7,7 +7,7 @@ import java.util.List;
  * Модель бургера.
  * Бургер состоит из булочек и ингредиентов (начинка или соус).
  * Ингредиенты можно перемещать и удалять.
- * Можно распечать чек с информацией о бургере.
+ * Можно распечатать чек с информацией о бургере.
  */
 public class Burger {
 
@@ -18,18 +18,22 @@ public class Burger {
         this.bun = bun;
     }
 
+    // Добавить ингредиент
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
 
+    // Удалить ингредиент
     public void removeIngredient(int index) {
         ingredients.remove(index);
     }
 
+    // Переместить ингредиент
     public void moveIngredient(int index, int newIndex) {
         ingredients.add(newIndex, ingredients.remove(index));
     }
 
+    // Получить цену бургера
     public float getPrice() {
         float price = bun.getPrice() * 2;
 
@@ -40,6 +44,7 @@ public class Burger {
         return price;
     }
 
+    // Получить чек с информацией о бургере
     public String getReceipt() {
         StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
