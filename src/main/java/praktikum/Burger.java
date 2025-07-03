@@ -2,7 +2,6 @@ package praktikum;
 
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * Модель бургера.
  * Бургер состоит из булочек и ингредиентов (начинка или соус).
@@ -53,5 +52,4 @@ public class Burger {
 
         return receipt.toString();
     }
-
 }
