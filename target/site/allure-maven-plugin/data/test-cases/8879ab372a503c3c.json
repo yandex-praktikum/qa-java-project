@@ -1,0 +1,56 @@
+{
+  "uid" : "8879ab372a503c3c",
+  "name" : "testRemoveIngredient",
+  "fullName" : "com.example.BurgerTest.testRemoveIngredient",
+  "historyId" : "953a534b051cfe4df5c1dc1419b65027",
+  "time" : {
+    "start" : 1750673236672,
+    "stop" : 1750673236673,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "com.example"
+  }, {
+    "name" : "testClass",
+    "value" : "com.example.BurgerTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testRemoveIngredient"
+  }, {
+    "name" : "suite",
+    "value" : "com.example.BurgerTest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-UU78CBJV"
+  }, {
+    "name" : "thread",
+    "value" : "7840@LAPTOP-UU78CBJV.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "8879ab372a503c3c.json",
+  "parameterValues" : [ ]
+}

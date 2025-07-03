@@ -1,0 +1,131 @@
+[ {
+  "uid" : "cd3b21457b7a259",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='chili sauce', price=300.0}]",
+  "time" : {
+    "start" : 1750673235515,
+    "stop" : 1750673235515,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "aef899b30d44eafd",
+  "name" : "testGetReceipt",
+  "time" : {
+    "start" : 1750673236678,
+    "stop" : 1750673236680,
+    "duration" : 2
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "ede58e42cd4db6ba",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='hot sauce', price=100.0}]",
+  "time" : {
+    "start" : 1750673235394,
+    "stop" : 1750673235404,
+    "duration" : 10
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "85bd540bd49325c4",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='cutlet', price=100.0}]",
+  "time" : {
+    "start" : 1750673235518,
+    "stop" : 1750673235518,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "b6c37d893047fa46",
+  "name" : "testSetBuns[Тестовые данные:Bun{name='black bun', price=100.0}]",
+  "time" : {
+    "start" : 1750673236699,
+    "stop" : 1750673236699,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "dc2f67d0d3ae852e",
+  "name" : "testGetPrice",
+  "time" : {
+    "start" : 1750673235605,
+    "stop" : 1750673236669,
+    "duration" : 1064
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "8879ab372a503c3c",
+  "name" : "testRemoveIngredient",
+  "time" : {
+    "start" : 1750673236672,
+    "stop" : 1750673236673,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "6a778a1b70721687",
+  "name" : "testSetBuns[Тестовые данные:Bun{name='red bun', price=300.0}]",
+  "time" : {
+    "start" : 1750673236706,
+    "stop" : 1750673236706,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "7aa38d944fb5c6ff",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='sausage', price=300.0}]",
+  "time" : {
+    "start" : 1750673235524,
+    "stop" : 1750673235524,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "e5005321b23b01e",
+  "name" : "testSetBuns[Тестовые данные:Bun{name='white bun', price=200.0}]",
+  "time" : {
+    "start" : 1750673236703,
+    "stop" : 1750673236703,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "22111992d3f7c60d",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='dinosaur', price=200.0}]",
+  "time" : {
+    "start" : 1750673235521,
+    "stop" : 1750673235521,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "a52b487f01acffc8",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='sour cream', price=200.0}]",
+  "time" : {
+    "start" : 1750673235510,
+    "stop" : 1750673235510,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "severity" : "normal"
+}, {
+  "uid" : "52343a1254eeacd9",
+  "name" : "testMoveIngredient",
+  "time" : {
+    "start" : 1750673236675,
+    "stop" : 1750673236676,
+    "duration" : 1
+  },
+  "status" : "passed",
+  "severity" : "normal"
+} ]

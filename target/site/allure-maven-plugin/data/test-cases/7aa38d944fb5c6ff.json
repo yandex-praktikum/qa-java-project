@@ -1,0 +1,56 @@
+{
+  "uid" : "7aa38d944fb5c6ff",
+  "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='sausage', price=300.0}]",
+  "fullName" : "com.example.AddIngredientBurgerTest.testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='sausage', price=300.0}]",
+  "historyId" : "c1648fe7e6925671ee755efb6ef7f320",
+  "time" : {
+    "start" : 1750673235524,
+    "stop" : 1750673235524,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "com.example"
+  }, {
+    "name" : "testClass",
+    "value" : "com.example.AddIngredientBurgerTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='sausage', price=300.0}]"
+  }, {
+    "name" : "suite",
+    "value" : "com.example.AddIngredientBurgerTest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-UU78CBJV"
+  }, {
+    "name" : "thread",
+    "value" : "7840@LAPTOP-UU78CBJV.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "7aa38d944fb5c6ff.json",
+  "parameterValues" : [ ]
+}

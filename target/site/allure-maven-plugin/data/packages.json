@@ -1,0 +1,178 @@
+{
+  "uid" : "83edc06c07f9ae9e47eb6dd1b683e4e2",
+  "name" : "packages",
+  "children" : [ {
+    "name" : "com.example",
+    "children" : [ {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='hot sauce', price=100.0}]",
+      "uid" : "ede58e42cd4db6ba",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235394,
+        "stop" : 1750673235404,
+        "duration" : 10
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='sour cream', price=200.0}]",
+      "uid" : "a52b487f01acffc8",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235510,
+        "stop" : 1750673235510,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=SAUCE, name='chili sauce', price=300.0}]",
+      "uid" : "cd3b21457b7a259",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235515,
+        "stop" : 1750673235515,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='cutlet', price=100.0}]",
+      "uid" : "85bd540bd49325c4",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235518,
+        "stop" : 1750673235518,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='dinosaur', price=200.0}]",
+      "uid" : "22111992d3f7c60d",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235521,
+        "stop" : 1750673235521,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testAddIngredient[Тестовые данные:Ingredient{type=FILLING, name='sausage', price=300.0}]",
+      "uid" : "7aa38d944fb5c6ff",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235524,
+        "stop" : 1750673235524,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testGetPrice",
+      "uid" : "dc2f67d0d3ae852e",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673235605,
+        "stop" : 1750673236669,
+        "duration" : 1064
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testRemoveIngredient",
+      "uid" : "8879ab372a503c3c",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236672,
+        "stop" : 1750673236673,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testMoveIngredient",
+      "uid" : "52343a1254eeacd9",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236675,
+        "stop" : 1750673236676,
+        "duration" : 1
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testGetReceipt",
+      "uid" : "aef899b30d44eafd",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236678,
+        "stop" : 1750673236680,
+        "duration" : 2
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testSetBuns[Тестовые данные:Bun{name='black bun', price=100.0}]",
+      "uid" : "b6c37d893047fa46",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236699,
+        "stop" : 1750673236699,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testSetBuns[Тестовые данные:Bun{name='white bun', price=200.0}]",
+      "uid" : "e5005321b23b01e",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236703,
+        "stop" : 1750673236703,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    }, {
+      "name" : "testSetBuns[Тестовые данные:Bun{name='red bun', price=300.0}]",
+      "uid" : "6a778a1b70721687",
+      "parentUid" : "05b37778b3cbda93d2c6f07f84c8c56b",
+      "status" : "passed",
+      "time" : {
+        "start" : 1750673236706,
+        "stop" : 1750673236706,
+        "duration" : 0
+      },
+      "flaky" : false,
+      "newFailed" : false,
+      "parameters" : [ ]
+    } ],
+    "uid" : "com.example"
+  } ]
+}

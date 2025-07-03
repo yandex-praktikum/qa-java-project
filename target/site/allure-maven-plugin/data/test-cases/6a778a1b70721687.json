@@ -1,0 +1,56 @@
+{
+  "uid" : "6a778a1b70721687",
+  "name" : "testSetBuns[Тестовые данные:Bun{name='red bun', price=300.0}]",
+  "fullName" : "com.example.SetBunsBurgerTest.testSetBuns[Тестовые данные:Bun{name='red bun', price=300.0}]",
+  "historyId" : "847b96eff769dd578da585e76fd0402f",
+  "time" : {
+    "start" : 1750673236706,
+    "stop" : 1750673236706,
+    "duration" : 0
+  },
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "package",
+    "value" : "com.example"
+  }, {
+    "name" : "testClass",
+    "value" : "com.example.SetBunsBurgerTest"
+  }, {
+    "name" : "testMethod",
+    "value" : "testSetBuns[Тестовые данные:Bun{name='red bun', price=300.0}]"
+  }, {
+    "name" : "suite",
+    "value" : "com.example.SetBunsBurgerTest"
+  }, {
+    "name" : "host",
+    "value" : "LAPTOP-UU78CBJV"
+  }, {
+    "name" : "thread",
+    "value" : "7840@LAPTOP-UU78CBJV.main(1)"
+  }, {
+    "name" : "framework",
+    "value" : "junit4"
+  }, {
+    "name" : "language",
+    "value" : "java"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "6a778a1b70721687.json",
+  "parameterValues" : [ ]
+}
