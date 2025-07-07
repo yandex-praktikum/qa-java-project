@@ -29,7 +29,6 @@ public class BurgerTest {
 
     @Test
     public void testGetPrice() {
-        // Задали значение используя стабы
         when(bunMock.getPrice()).thenReturn(100.0f);
         when(ingredient1Mock.getPrice()).thenReturn(50.0f);
         when(ingredient2Mock.getPrice()).thenReturn(30.0f);
@@ -39,25 +38,23 @@ public class BurgerTest {
         burger.addIngredient(ingredient1Mock);
         burger.addIngredient(ingredient2Mock);
 
-        // Цена за бургер
         float expectedPrice = 100.0f * 2 + 50.0f + 30.0f;
 
-        System.out.println("\nОжидаемая цена: " + expectedPrice);
+        // String.format для вывода
+        System.out.println(String.format("%nОжидаемая цена: %.2f", expectedPrice));
 
         assertEquals(expectedPrice, burger.getPrice(), 0.001f);
 
-        // Проверка вызова для мок
         verify(bunMock, times(1)).getPrice();
         verify(ingredient1Mock).getPrice();
         verify(ingredient2Mock).getPrice();
 
         float actualPrice = burger.getPrice();
-        System.out.println("\nФактическая цена: " + actualPrice);
+        System.out.println(String.format("%nФактическая цена: %.2f", actualPrice));
     }
 
     @Test
     public void testGetReceipt() {
-
         when(bunMock.getName()).thenReturn("Краторная булочка");
         when(sauceMock.getType()).thenReturn(IngredientType.SAUCE);
         when(sauceMock.getName()).thenReturn("Сырный соус");
@@ -71,15 +68,21 @@ public class BurgerTest {
 
         String receipt = burger.getReceipt();
 
-        // Проверка чека
-        String expectedReceipt =
-                "(==== Краторная булочка ====)\r\n" +
-                        "= sauce Сырный соус =\r\n" +
-                        "= filling Говяжий метеорит =\r\n" +
-                        "(==== Краторная булочка ====)\r\n\r\n" +
-                        "Price: 0,000000\r\n";
+        // Ожидаемый чек через String.format
+        String expectedReceipt = String.format(
+                "(==== %s ====)%n" +
+                        "= %s %s =%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n%n" +
+                        "Price: %f%n",
+                "Краторная булочка",
+                "sauce", "Сырный соус",
+                "filling", "Говяжий метеорит",
+                "Краторная булочка",
+                0.0f
+        );
 
-        System.out.println("Проверяем структуру чека:");
+        System.out.println("Проверка структуры чека:");
         System.out.println(expectedReceipt);
 
         assertEquals(expectedReceipt, receipt);
