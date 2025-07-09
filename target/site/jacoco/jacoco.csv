@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Sprint_7,praktikum,Bun,0,15,0,0,0,6,0,3,0,3
+Sprint_7,praktikum,IngredientType,0,15,0,0,0,3,0,1,0,1
+Sprint_7,praktikum,Burger,0,133,0,4,0,23,0,9,0,7
+Sprint_7,praktikum,Database,106,0,0,0,15,0,3,0,3,0
+Sprint_7,praktikum,Ingredient,0,21,0,0,0,8,0,4,0,4
+Sprint_7,praktikum,Praktikum,59,0,0,0,14,0,2,0,2,0
