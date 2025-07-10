@@ -1,0 +1,18 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+
+# Maven
+target/
+*.log
+
+# Allure
+allure-results/
+allure-report/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# JaCoCo coverage
+jacoco.exec
