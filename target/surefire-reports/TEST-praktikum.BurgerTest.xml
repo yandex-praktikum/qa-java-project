@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerTest" time="1.384" tests="9" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="C:\Diplom\QA-java-diplom-1\target\test-classes;C:\Diplom\QA-java-diplom-1\target\classes;C:\Users\boro4\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\boro4\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\boro4\.m2\repository\org\mockito\mockito-core\3.12.4\mockito-core-3.12.4.jar;C:\Users\boro4\.m2\repository\net\bytebuddy\byte-buddy\1.11.13\byte-buddy-1.11.13.jar;C:\Users\boro4\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.13\byte-buddy-agent-1.11.13.jar;C:\Users\boro4\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\boro4\.m2\repository\org\assertj\assertj-core\3.21.0\assertj-core-3.21.0.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Moscow"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.26_4\bin"/>
+    <property name="sun.java.command" value="C:\Users\boro4\AppData\Local\Temp\surefire350431312450735468\surefirebooter-20250713105930267_3.jar C:\Users\boro4\AppData\Local\Temp\surefire350431312450735468 2025-07-13T10-59-30_109-jvmRun1 surefire-20250713105930267_1tmp surefire_0-20250713105930267_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Diplom\QA-java-diplom-1\target\test-classes;C:\Diplom\QA-java-diplom-1\target\classes;C:\Users\boro4\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\boro4\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\boro4\.m2\repository\org\mockito\mockito-core\3.12.4\mockito-core-3.12.4.jar;C:\Users\boro4\.m2\repository\net\bytebuddy\byte-buddy\1.11.13\byte-buddy-1.11.13.jar;C:\Users\boro4\.m2\repository\net\bytebuddy\byte-buddy-agent\1.11.13\byte-buddy-agent-1.11.13.jar;C:\Users\boro4\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;C:\Users\boro4\.m2\repository\org\assertj\assertj-core\3.21.0\assertj-core-3.21.0.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\boro4"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-01-21"/>
+    <property name="java.home" value="C:\Program Files\Amazon Corretto\jdk11.0.26_4"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Diplom\QA-java-diplom-1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\boro4\AppData\Local\Temp\surefire350431312450735468\surefirebooter-20250713105930267_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.26+4-LTS"/>
+    <property name="user.name" value="boro4"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1251"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.26.4.1"/>
+    <property name="localRepository" value="C:\Users\boro4\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\boro4\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.26"/>
+    <property name="user.dir" value="C:\Diplom\QA-java-diplom-1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.26_4\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\boro4\Downloads\apache-maven-3.9.9-bin\apache-maven-3.9.9\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA app\NvDLISR;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\allure-commandline-2.34.0\allure-2.34.0\bin;C:\Users\boro4\AppData\Local\Programs\Eclipse Adoptium\jdk-11.0.27.6-hotspot\bin;C:\WebDriver\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2024.3.5\bin;;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.26+4-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testSetBunsSetsCorrectBun" classname="praktikum.BurgerTest" time="0.608"/>
+  <testcase name="testGetPrice" classname="praktikum.BurgerTest" time="0.005"/>
+  <testcase name="testRemoveIngredientRemovesCorrectIngredient" classname="praktikum.BurgerTest" time="0.001"/>
+  <testcase name="testMoveIngredientChangesOrder" classname="praktikum.BurgerTest" time="0.679"/>
+  <testcase name="testSetBunsSetsBun" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testAddIngredientAddsCorrectIngredient" classname="praktikum.BurgerTest" time="0.001"/>
+  <testcase name="testGetReceipt" classname="praktikum.BurgerTest" time="0.027"/>
+  <testcase name="testAddIngredientIncreasesSize" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="testRemoveIngredientDecreasesSize" classname="praktikum.BurgerTest" time="0.001"/>
+</testsuite>
