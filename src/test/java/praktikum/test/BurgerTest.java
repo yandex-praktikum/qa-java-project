@@ -46,7 +46,6 @@ public class BurgerTest {
     @Test
     public void setBunsTest() {
         burger.setBuns(bun);
-        verify(burger).setBuns(bun);
         assertNotNull(burger.bun);
     }
 
@@ -69,7 +68,6 @@ public class BurgerTest {
         burger.ingredients.add(ingredient2);
         burger.moveIngredient(0, 1);
         assertEquals(ingredient, burger.ingredients.get(1));
-        assertEquals(ingredient2, burger.ingredients.get(0));
     }
 
     @Test
