@@ -1,0 +1,8 @@
+/target
+
+!target/site/
+!target/site/jacoco/
+!target/site/jacoco/index.html
+!target/site/jacoco/*.js
+!target/site/jacoco/*.css
+!target/site/jacoco/*.png
