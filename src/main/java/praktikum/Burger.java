@@ -44,12 +44,14 @@ public class Burger {
         StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
         for (Ingredient ingredient : ingredients) {
-            receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
+            receipt.append(String.format("= %s %s =%n",
+                    ingredient.getType().toString().toLowerCase(),
                     ingredient.getName()));
         }
 
         receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        // Исправленный формат вывода цены с 2 знаками после запятой
+        receipt.append(String.format("%nPrice: %.2f%n", getPrice()));
 
         return receipt.toString();
     }
