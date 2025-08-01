@@ -98,13 +98,22 @@ public class BurgerTest extends BaseTest {
         burger.addIngredient(ingredientMock);
         burger.addIngredient(ingredientMock1);
 
-        String receipt = burger.getReceipt();
+        String expected = "(==== Флюоресцентная булка R2-D3 ====)%n" +
+                "= filling сыр с астероидной плесенью =%n" +
+                "= sauce соус с шипами антарианского плоскоходца =%n" +
+                "(==== Флюоресцентная булка R2-D3 ====)%n" +
+                "%n" +
+                "Price: %.6f%n";
 
-        softAssertions.assertThat(receipt)
-                .contains("Флюоресцентная булка R2-D3")
-                .contains("сыр с астероидной плесенью")
-                .contains("соус с шипами антарианского плоскоходца")
-                .contains("Price: ");
+        float price = burger.getPrice();
+        String expectedFormatted = String.format(expected, price);
+
+        String actual = burger.getReceipt();
+
+        softAssertions.assertThat(actual)
+                .as("Чек должен полностью совпадать с ожидаемым форматом")
+                .isEqualTo(expectedFormatted);
+
         softAssertions.assertAll();
     }
 }
