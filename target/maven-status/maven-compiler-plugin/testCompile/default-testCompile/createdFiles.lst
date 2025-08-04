@@ -1,0 +1,6 @@
+helper\GenerateRandom.class
+praktikum\BunParameterizedTest.class
+praktikum\IngredientTest.class
+praktikum\IngredientTypeParameterizedTest.class
+praktikum\BurgerTest.class
+helper\Constants.class
