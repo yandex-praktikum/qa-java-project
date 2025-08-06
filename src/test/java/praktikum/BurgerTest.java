@@ -46,4 +46,12 @@ public class BurgerTest {
         assertTrue(burger.ingredients.isEmpty());
     }
 
+    @Test
+    public void testMoveIngredient() {
+        burger.addIngredient(ingredient1Mock);
+        burger.addIngredient(ingredient2Mock);
+        burger.moveIngredient(0, 1);
+        assertEquals(ingredient1Mock, burger.ingredients.get(1));
+    }
+
 }
