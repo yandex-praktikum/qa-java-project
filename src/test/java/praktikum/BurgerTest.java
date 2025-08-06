@@ -33,4 +33,10 @@ public class BurgerTest {
         assertEquals(bunMock, burger.bun);
     }
 
+    @Test
+    public void testAddIngredient() {
+        burger.addIngredient(ingredient1Mock);
+        assertEquals(1, burger.ingredients.size());
+    }
+
 }
