@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -52,6 +53,20 @@ public class BurgerTest {
         burger.addIngredient(ingredient2Mock);
         burger.moveIngredient(0, 1);
         assertEquals(ingredient1Mock, burger.ingredients.get(1));
+    }
+
+    @Test
+    public void testGetPrice() {
+        when(bunMock.getPrice()).thenReturn(100f);
+        when(ingredient1Mock.getPrice()).thenReturn(50f);
+        when(ingredient2Mock.getPrice()).thenReturn(30f);
+
+        burger.setBuns(bunMock);
+        burger.addIngredient(ingredient1Mock);
+        burger.addIngredient(ingredient2Mock);
+
+        float expectedPrice = 100f * 2 + 50f + 30f;
+        assertEquals(expectedPrice, burger.getPrice(), 0.0f);
     }
 
 }
