@@ -6,7 +6,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -15,9 +14,9 @@ import static org.junit.Assert.assertEquals;
 public class BurgerReceiptTest {
 
     private Burger burger;
-    private Bun bun;
-    private List<Ingredient> ingredients;
-    private String expectedReceipt;
+    private final Bun bun;
+    private final List<Ingredient> ingredients;
+    private final String expectedReceipt;
 
     public BurgerReceiptTest(Bun bun, List<Ingredient> ingredients, String expectedReceipt){
         this.bun = bun;
@@ -26,16 +25,26 @@ public class BurgerReceiptTest {
     }
 
     @Parameterized.Parameters
-    public static Object [][] getTestData() {
-        Bun bun = new Bun("black bun", 100);
-        Ingredient sauce = new Ingredient(IngredientType.SAUCE, "hot souce", 50);
-        Ingredient filling = new Ingredient(IngredientType.FILLING, "cutlet", 70);
-
+    public static Object[][] getTestData() {
         return new Object[][]{
-                {bun, Arrays.asList(sauce),
-                        "(==== black bun ====)\n= sauce hot sauce =\n(==== black bun ====)\n\nPrice: 250.000000\n"},
-                {bun, Arrays.asList(filling),
-                        "(==== black bun ====)\n= filling cutlet =\n(==== black bun ====)\n\nPrice: 270.000000\n"}
+                {
+                        new Bun("black bun", 100),
+                        List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 50)),
+                        String.format("(==== black bun ====)%n" +
+                                "= sauce hot sauce =%n" +
+                                "(==== black bun ====)%n" +
+                                "%n" +
+                                "Price: 250,000000%n")
+                },
+                {
+                        new Bun("white bun", 200),
+                        List.of(new Ingredient(IngredientType.FILLING, "cutlet", 80)),
+                        String.format("(==== white bun ====)%n" +
+                                "= filling cutlet =%n" +
+                                "(==== white bun ====)%n" +
+                                "%n" +
+                                "Price: 480,000000%n")
+                }
         };
     }
 
@@ -50,5 +59,4 @@ public class BurgerReceiptTest {
         ingredients.forEach(burger::addIngredient);
         assertEquals(expectedReceipt, burger.getReceipt());
     }
-
 }
