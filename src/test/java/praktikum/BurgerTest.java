@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -37,6 +37,13 @@ public class BurgerTest {
     public void testAddIngredient() {
         burger.addIngredient(ingredient1Mock);
         assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void testRemoveIngredient() {
+        burger.addIngredient(ingredient1Mock);
+        burger.removeIngredient(0);
+        assertTrue(burger.ingredients.isEmpty());
     }
 
 }
