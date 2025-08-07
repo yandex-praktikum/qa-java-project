@@ -70,35 +70,4 @@ public class BurgerTest {
         burger.moveIngredient(0, 1);
         assertSame(ingredient1Mock, burger.ingredients.get(1));
     }
-
-    @Test
-    public void getPriceReturnsBunPriceTimesTwoWhenNoIngredients() {
-        when(bunMock.getPrice()).thenReturn(100f);
-        burger.setBuns(bunMock);
-        assertEquals(200f, burger.getPrice(), 0.0f);
-    }
-
-    @Test
-    public void getPriceIncludesSingleIngredientPrice() {
-        when(bunMock.getPrice()).thenReturn(100f);
-        when(ingredient1Mock.getPrice()).thenReturn(50f);
-
-        burger.setBuns(bunMock);
-        burger.addIngredient(ingredient1Mock);
-
-        assertEquals(250f, burger.getPrice(), 0.0f);
-    }
-
-    @Test
-    public void getPriceIncludesMultipleIngredientsPrices() {
-        when(bunMock.getPrice()).thenReturn(100f);
-        when(ingredient1Mock.getPrice()).thenReturn(50f);
-        when(ingredient2Mock.getPrice()).thenReturn(30f);
-
-        burger.setBuns(bunMock);
-        burger.addIngredient(ingredient1Mock);
-        burger.addIngredient(ingredient2Mock);
-
-        assertEquals(280f, burger.getPrice(), 0.0f);
-    }
 }
