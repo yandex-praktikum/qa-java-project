@@ -27,20 +27,23 @@ public class BurgerReceiptTest {
         this.expectedReceipt = expectedReceipt;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{0}")
     public static Object[][] getTestData() {
         return new Object[][]{
                 {
+                        "Только булочка (black bun)",
                         new Bun("black bun", 100),
                         List.of(),
                         String.format("(==== black bun ====)%n(==== black bun ====)%n%nPrice: 200,000000%n")
                 },
                 {
+                        "Булочка (white bun) + соус (hot sauce)",
                         new Bun("white bun", 200),
                         List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 50)),
                         String.format("(==== white bun ====)%n= sauce hot sauce =%n(==== white bun ====)%n%nPrice: 450,000000%n")
                 },
                 {
+                        "Булочка (red bun) + соус (sour cream) + начинка (cutlet)",
                         new Bun("red bun", 300),
                         Arrays.asList(
                                 new Ingredient(IngredientType.SAUCE, "sour cream", 20),
