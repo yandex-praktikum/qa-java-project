@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -29,21 +30,21 @@ public class BurgerReceiptTest {
         return new Object[][]{
                 {
                         new Bun("black bun", 100),
-                        List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 50)),
-                        String.format("(==== black bun ====)%n" +
-                                "= sauce hot sauce =%n" +
-                                "(==== black bun ====)%n" +
-                                "%n" +
-                                "Price: 250,000000%n")
+                        List.of(),
+                        String.format("(==== black bun ====)%n(==== black bun ====)%n%nPrice: 200,000000%n")
                 },
                 {
                         new Bun("white bun", 200),
-                        List.of(new Ingredient(IngredientType.FILLING, "cutlet", 80)),
-                        String.format("(==== white bun ====)%n" +
-                                "= filling cutlet =%n" +
-                                "(==== white bun ====)%n" +
-                                "%n" +
-                                "Price: 480,000000%n")
+                        List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 50)),
+                        String.format("(==== white bun ====)%n= sauce hot sauce =%n(==== white bun ====)%n%nPrice: 450,000000%n")
+                },
+                {
+                        new Bun("red bun", 300),
+                        Arrays.asList(
+                                new Ingredient(IngredientType.SAUCE, "sour cream", 20),
+                                new Ingredient(IngredientType.FILLING, "cutlet", 100)
+                        ),
+                        String.format("(==== red bun ====)%n= sauce sour cream =%n= filling cutlet =%n(==== red bun ====)%n%nPrice: 720,000000%n")
                 }
         };
     }
@@ -54,7 +55,7 @@ public class BurgerReceiptTest {
     }
 
     @Test
-    public void testGetReceipt() {
+    public void getReceiptReturnsCorrectFormat() {
         burger.setBuns(bun);
         ingredients.forEach(burger::addIngredient);
         assertEquals(expectedReceipt, burger.getReceipt());
