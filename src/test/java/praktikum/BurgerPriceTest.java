@@ -18,13 +18,13 @@ public class BurgerPriceTest {
     private final List<Ingredient> ingredients;
     private final float expectedPrice;
 
-    public BurgerPriceTest(Bun bun, List<Ingredient> ingredients, float expectedPrice) {
+    public BurgerPriceTest(String description, Bun bun, List<Ingredient> ingredients, float expectedPrice) {
         this.bun = bun;
         this.ingredients = ingredients;
         this.expectedPrice = expectedPrice;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "{0}")
     public static Object[][] getTestData() {
 
         Bun cheapBun = mock(Bun.class);
@@ -40,10 +40,10 @@ public class BurgerPriceTest {
         when(filling.getPrice()).thenReturn(80f);
 
         return new Object[][]{
-                {cheapBun, List.of(), 200f},
-                {cheapBun, List.of(sauce), 250f},
-                {expensiveBun, List.of(filling), 480f},
-                {cheapBun, Arrays.asList(sauce, filling), 330f}
+                {"Только булочка", cheapBun, List.of(), 200f},
+                {"Булочка + соус", cheapBun, List.of(sauce), 250f},
+                {"Дорогая булочка + начинка", expensiveBun, List.of(filling), 480f},
+                {"Булочка + соус + начинка", cheapBun, Arrays.asList(sauce, filling), 330f}
         };
     }
 
@@ -53,7 +53,7 @@ public class BurgerPriceTest {
     }
 
     @Test
-    public void getPrice_ShouldReturnCorrectSum() {
+    public void getPriceShouldReturnCorrectSum() {
         burger.setBuns(bun);
         ingredients.forEach(burger::addIngredient);
         assertEquals(expectedPrice, burger.getPrice(), 0.001f);
