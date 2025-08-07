@@ -31,19 +31,19 @@ public class BurgerReceiptTest {
     public static Object[][] getTestData() {
         return new Object[][]{
                 {
-                        "Только булочка (black bun)",
+                        "black bun",
                         new Bun("black bun", 100),
                         List.of(),
                         String.format("(==== black bun ====)%n(==== black bun ====)%n%nPrice: 200,000000%n")
                 },
                 {
-                        "Булочка (white bun) + соус (hot sauce)",
+                        "white bun + hot sauce",
                         new Bun("white bun", 200),
                         List.of(new Ingredient(IngredientType.SAUCE, "hot sauce", 50)),
                         String.format("(==== white bun ====)%n= sauce hot sauce =%n(==== white bun ====)%n%nPrice: 450,000000%n")
                 },
                 {
-                        "Булочка (red bun) + соус (sour cream) + начинка (cutlet)",
+                        "red bun + sour cream + cutlet",
                         new Bun("red bun", 300),
                         Arrays.asList(
                                 new Ingredient(IngredientType.SAUCE, "sour cream", 20),
