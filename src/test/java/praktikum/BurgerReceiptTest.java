@@ -15,11 +15,13 @@ import static org.junit.Assert.assertEquals;
 public class BurgerReceiptTest {
 
     private Burger burger;
+    private final String description;
     private final Bun bun;
     private final List<Ingredient> ingredients;
     private final String expectedReceipt;
 
-    public BurgerReceiptTest(Bun bun, List<Ingredient> ingredients, String expectedReceipt){
+    public BurgerReceiptTest(String description, Bun bun, List<Ingredient> ingredients, String expectedReceipt){
+        this.description = description;
         this.bun = bun;
         this.ingredients = ingredients;
         this.expectedReceipt = expectedReceipt;

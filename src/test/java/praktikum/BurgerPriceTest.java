@@ -14,11 +14,13 @@ import static org.mockito.Mockito.when;
 public class BurgerPriceTest {
 
     private Burger burger;
+    private final String description;
     private final Bun bun;
     private final List<Ingredient> ingredients;
     private final float expectedPrice;
 
     public BurgerPriceTest(String description, Bun bun, List<Ingredient> ingredients, float expectedPrice) {
+        this.description = description;
         this.bun = bun;
         this.ingredients = ingredients;
         this.expectedPrice = expectedPrice;
