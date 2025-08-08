@@ -10,6 +10,8 @@ import static org.mockito.Mockito.*;
 
 public class BurgerTest {
 
+    private static final float DELTA = 0.001f;
+
     private Burger burger;
 
     @Mock
@@ -35,38 +37,31 @@ public class BurgerTest {
 
     @Test
     public void addIngredientShouldAddIngredientToList() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "Соус фирменный", 80f);
-        burger.addIngredient(ingredient);
-        assertEquals("Список ингредиентов должен содержать 1 элемент", 1, burger.ingredients.size());
-        assertEquals("Ингредиент должен быть добавлен", ingredient, burger.ingredients.get(0));
+        burger.addIngredient(ingredient1);
+        assertEquals(1, burger.ingredients.size());
+        assertEquals(ingredient1, burger.ingredients.get(0));
     }
 
     @Test
     public void removeIngredientShouldRemoveCorrectItem() {
-        Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "Соус фирменный", 80f);
-        Ingredient ingredient2 = new Ingredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 300f);
-
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
 
         burger.removeIngredient(0);
 
-        assertEquals("Список ингредиентов должен содержать 1 элемент", 1, burger.ingredients.size());
-        assertEquals("Оставшийся ингредиент должен быть ingredient2", ingredient2, burger.ingredients.get(0));
+        assertEquals(1, burger.ingredients.size());
+        assertEquals(ingredient2, burger.ingredients.get(0));
     }
 
     @Test
     public void moveIngredientShouldChangeOrderOfIngredients() {
-        Ingredient ingredient1 = new Ingredient(IngredientType.SAUCE, "Соус фирменный", 80f);
-        Ingredient ingredient2 = new Ingredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 300f);
-
         burger.addIngredient(ingredient1);
         burger.addIngredient(ingredient2);
 
         burger.moveIngredient(1, 0);
 
-        assertEquals("Первый элемент теперь должен быть ingredient2", ingredient2, burger.ingredients.get(0));
-        assertEquals("Второй элемент теперь должен быть ingredient1", ingredient1, burger.ingredients.get(1));
+        assertEquals(ingredient2, burger.ingredients.get(0));
+        assertEquals(ingredient1, burger.ingredients.get(1));
     }
 
     @Test
@@ -80,7 +75,7 @@ public class BurgerTest {
         burger.addIngredient(ingredient2);
 
         float expectedPrice = 125f * 2 + 80f + 300f;
-        assertEquals("Цена должна считаться правильно", expectedPrice, burger.getPrice(), 0.001f);
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
     }
 
     @Test
@@ -112,9 +107,9 @@ public class BurgerTest {
                 ingredient2.getType().toString().toLowerCase(),
                 ingredient2.getName(),
                 bun.getName(),
-                125f*2 + 80f + 300f
+                125f * 2 + 80f + 300f
         );
 
-        assertEquals("Чек должен совпадать с ожидаемым", expectedReceipt, burger.getReceipt());
+        assertEquals(expectedReceipt, burger.getReceipt());
     }
 }
