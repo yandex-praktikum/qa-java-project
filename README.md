@@ -37,8 +37,9 @@ QA-java-diplom-1/
 │               ├── BurgerPriceTest.java    # Параметризированные тесты для getPrice
 │               ├── BurgerReceiptTest.java  # Параметризированные тесты для getReceipt
 │               └── BurgerTest.java         # Основные unit-тесты с Mockito
-├── pom.xml
-└── README.md
+└── target/
+    └── site/
+        └── jacoco/                         # Отчёт Jacoco
 </pre>
 
 ## Список тестов
