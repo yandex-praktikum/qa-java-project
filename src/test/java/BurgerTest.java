@@ -1,4 +1,3 @@
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -9,8 +8,7 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static praktikum.IngredientType.FILLING;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(MockitoExtension.class)
 
@@ -31,7 +29,7 @@ public class BurgerTest {
 
         String actualReceipt = burger.getReceipt();
 
-        assertEquals(actualReceipt.contains(expectedName), true, "Булка не соотвествует заданной!");
+        assertTrue(actualReceipt.contains(expectedName), "Булка не соотвествует заданной!");
     }
 
     @Test
@@ -47,8 +45,8 @@ public class BurgerTest {
 
         String actualReceipt = burger.getReceipt();
 
-        assertEquals(actualReceipt.contains(expectedName), true, "Имя ингредиента не соотвествует заданному!");
-        assertEquals(actualReceipt.contains(expectedType), true, "Тип ингредиента не соотвествует заданному!");
+        assertTrue(actualReceipt.contains(expectedName), "Имя ингредиента не соотвествует заданному!");
+        assertTrue(actualReceipt.contains(expectedType), "Тип ингредиента не соотвествует заданному!");
     }
 
     @Test
@@ -63,8 +61,8 @@ public class BurgerTest {
 
         String actualReceipt = burger.getReceipt();
 
-        assertEquals(actualReceipt.contains(expectedName), false, "Имя ингредиента не соотвествует заданному!");
-        assertEquals(actualReceipt.contains(expectedType), false, "Тип ингредиента не соотвествует заданному!");
+        assertFalse(actualReceipt.contains(expectedName), "Имя ингредиента не соотвествует заданному!");
+        assertFalse(actualReceipt.contains(expectedType), "Тип ингредиента не соотвествует заданному!");
     }
 
     @Test
@@ -80,8 +78,6 @@ public class BurgerTest {
 
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
-
-
 
         float actualBurgerPrice = burger.getPrice();
 
