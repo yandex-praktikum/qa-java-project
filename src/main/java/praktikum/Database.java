@@ -12,17 +12,16 @@ public class Database {
     private final List<Ingredient> ingredients = new ArrayList<>();
 
     public Database() {
-        buns.add(new Bun("black bun", 100));
-        buns.add(new Bun("white bun", 200));
-        buns.add(new Bun("red bun", 300));
+        buns.add(new Bun("Флюоресцентная булка R2-D3", 988));
+        buns.add(new Bun("Краторная булка N-200i", 1255));
 
-        ingredients.add(new Ingredient(IngredientType.SAUCE, "hot sauce", 100));
-        ingredients.add(new Ingredient(IngredientType.SAUCE, "sour cream", 200));
-        ingredients.add(new Ingredient(IngredientType.SAUCE, "chili sauce", 300));
+        ingredients.add(new Ingredient(IngredientType.SAUCE, "Соус фирменный Space Sauce", 80));
+        ingredients.add(new Ingredient(IngredientType.SAUCE, "Соус Spicy-X", 90));
+        ingredients.add(new Ingredient(IngredientType.SAUCE, "Соус традиционный галактический", 15));
 
-        ingredients.add(new Ingredient(IngredientType.FILLING, "cutlet", 100));
-        ingredients.add(new Ingredient(IngredientType.FILLING, "dinosaur", 200));
-        ingredients.add(new Ingredient(IngredientType.FILLING, "sausage", 300));
+        ingredients.add(new Ingredient(IngredientType.FILLING, "Мясо бессмертных моллюсков Protostomia", 1337));
+        ingredients.add(new Ingredient(IngredientType.FILLING, "Плоды Фалленианского дерева", 874));
+        ingredients.add(new Ingredient(IngredientType.FILLING, "Хрустящие минеральные кольца", 300));
     }
 
     public List<Bun> availableBuns() {
