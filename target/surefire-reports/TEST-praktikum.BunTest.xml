@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BunTest" time="0.206" tests="2" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1\target\test-classes;C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1\target\classes;C:\Users\Samsung\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.1\junit-jupiter-params-5.12.1.jar;C:\Users\Samsung\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.1\junit-jupiter-api-5.12.1.jar;C:\Users\Samsung\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Samsung\.m2\repository\org\junit\platform\junit-platform-commons\1.12.1\junit-platform-commons-1.12.1.jar;C:\Users\Samsung\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Samsung\.m2\repository\org\mockito\mockito-junit-jupiter\5.18.0\mockito-junit-jupiter-5.18.0.jar;C:\Users\Samsung\.m2\repository\org\mockito\mockito-core\5.18.0\mockito-core-5.18.0.jar;C:\Users\Samsung\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\Samsung\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\Samsung\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Samara"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin"/>
+    <property name="sun.java.command" value="C:\Users\Samsung\AppData\Local\Temp\surefire1611579431486580532\surefirebooter-20250910152416205_3.jar C:\Users\Samsung\AppData\Local\Temp\surefire1611579431486580532 2025-09-10T15-24-14_897-jvmRun1 surefire-20250910152416205_1tmp surefire_0-20250910152416205_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1\target\test-classes;C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1\target\classes;C:\Users\Samsung\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.12.1\junit-jupiter-params-5.12.1.jar;C:\Users\Samsung\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.12.1\junit-jupiter-api-5.12.1.jar;C:\Users\Samsung\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Samsung\.m2\repository\org\junit\platform\junit-platform-commons\1.12.1\junit-platform-commons-1.12.1.jar;C:\Users\Samsung\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Samsung\.m2\repository\org\mockito\mockito-junit-jupiter\5.18.0\mockito-junit-jupiter-5.18.0.jar;C:\Users\Samsung\.m2\repository\org\mockito\mockito-core\5.18.0\mockito-core-5.18.0.jar;C:\Users\Samsung\.m2\repository\net\bytebuddy\byte-buddy\1.17.5\byte-buddy-1.17.5.jar;C:\Users\Samsung\.m2\repository\net\bytebuddy\byte-buddy-agent\1.17.5\byte-buddy-agent-1.17.5.jar;C:\Users\Samsung\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\Samsung"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\Samsung\AppData\Local\Temp\surefire1611579431486580532\surefirebooter-20250910152416205_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.28+6-LTS"/>
+    <property name="user.name" value="Samsung"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1251"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.28.6.1"/>
+    <property name="localRepository" value="C:\Users\Samsung\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\Samsung\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.28"/>
+    <property name="user.dir" value="C:\Users\Samsung\IdeaProjects\Diplom_ Kolevatov_QA48\QA-java-diplom-1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin;C:\Program Files\ImageMagick-7.1.1-Q16-HDRI;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\apache-maven-3.9.11\bin;C:\Users\Samsung\Downloads\allure-commandline-2.15.0\allure-2.15.0\bin;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.28+6-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="getName" classname="praktikum.BunTest" time="0.098"/>
+  <testcase name="getPrice" classname="praktikum.BunTest" time="0.006"/>
+</testsuite>

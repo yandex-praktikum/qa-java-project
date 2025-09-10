@@ -1,0 +1,28 @@
+-------------------------------------------------------------------------------
+Test set: praktikum.BurgerMockTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.774 s <<< FAILURE! -- in praktikum.BurgerMockTest
+praktikum.BurgerMockTest.getReceipt -- Time elapsed: 0.053 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <(==== white bun ====)
+= sauce sour cream =
+(==== white bun ====)
+
+Price: 44,000000
+> but was: <(==== white bun ====)
+= sauce sour cream =
+(==== white bun ====)
+
+Price: 44,000000
+>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at praktikum.BurgerMockTest.getReceipt(BurgerMockTest.java:63)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
+
