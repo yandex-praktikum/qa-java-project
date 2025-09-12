@@ -1,3 +1,4 @@
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,9 +17,9 @@ public class TestBurger {
     Bun bun;
 
     @Mock
-    Ingredient ingredient1;
+    Ingredient ingredientFirst;
     @Mock
-    Ingredient ingredient2;
+    Ingredient ingredientSecond;
 
 
     private Burger burger;
@@ -37,28 +38,38 @@ public class TestBurger {
 
    @Test
     public void testAddIngredient () {
-        burger.addIngredient(ingredient1);
-        assertEquals(1,burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+        burger.addIngredient(ingredientFirst);
+
+       SoftAssertions soft = new SoftAssertions();
+       soft.assertThat(burger.ingredients.size()).isEqualTo(1);
+       soft.assertThat(burger.ingredients.get(0)).isEqualTo(ingredientFirst);
+       soft.assertAll();
+
    }
 
    @Test
     public void testRemoveIngredient () {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientFirst);
+        burger.addIngredient(ingredientSecond);
         burger.removeIngredient(0);
-        assertEquals(1,burger.ingredients.size());
-        assertEquals(ingredient2, burger.ingredients.get(0));
 
+       SoftAssertions soft = new SoftAssertions();
+       soft.assertThat(burger.ingredients.size()).isEqualTo(1);
+       soft.assertThat(burger.ingredients.get(0)).isEqualTo(ingredientSecond);
+       soft.assertAll();
    }
 
    @Test
     public void testMoveIngredient () {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientFirst);
+        burger.addIngredient(ingredientSecond);
         burger.moveIngredient(0,1);
-        assertEquals(ingredient1, burger.ingredients.get(1));
-        assertEquals(ingredient2, burger.ingredients.get(0));
+
+       SoftAssertions soft = new SoftAssertions();
+       soft.assertThat(burger.ingredients.get(1)).isEqualTo(ingredientFirst);
+       soft.assertThat(burger.ingredients.get(0)).isEqualTo(ingredientSecond);
+       soft.assertAll();
+       
    }
 
 

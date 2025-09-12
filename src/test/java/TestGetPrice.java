@@ -28,17 +28,17 @@ public class TestGetPrice {
     @Parameterized.Parameters (name = "Булочка {0}, Ингридиенты {1}, Цена {2}")
     public static Collection<Object[]> data(){
         Bun bun = Mockito.mock(Bun.class);
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+        Ingredient ingredientFirst = Mockito.mock(Ingredient.class);
+        Ingredient ingredientSecond = Mockito.mock(Ingredient.class);
 
         when(bun.getPrice()).thenReturn(1f);
-        when(ingredient1.getPrice()).thenReturn(1f);
-        when(ingredient2.getPrice()).thenReturn(0.5f);
+        when(ingredientFirst.getPrice()).thenReturn(1f);
+        when(ingredientSecond.getPrice()).thenReturn(0.5f);
 
         return Arrays.asList(new Object[][] {
                 {bun, new Ingredient[]{},2f},
-                {bun, new Ingredient[]{ingredient1},3f},
-                {bun, new Ingredient[]{ingredient1, ingredient2},3.5f},
+                {bun, new Ingredient[]{ingredientFirst},3f},
+                {bun, new Ingredient[]{ingredientFirst, ingredientSecond},3.5f},
         });
     }
 
