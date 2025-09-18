@@ -41,13 +41,26 @@ public class BurgerTest {
     }
 
     @Test
-    public void moveIngredientTest() {
-        Ingredient expectedIngredient = Mockito.mock(Ingredient.class);
-        Ingredient expectedIngredient1 = Mockito.mock(Ingredient.class);
-        burger.addIngredient(expectedIngredient);
-        burger.addIngredient(expectedIngredient1);
+    public void moveIngredientTest_shouldPlaceFirstIngredientAtSecondPosition() {
+        Ingredient ingredientA = Mockito.mock(Ingredient.class);
+        Ingredient ingredientB = Mockito.mock(Ingredient.class);
+        burger.addIngredient(ingredientA);
+        burger.addIngredient(ingredientB);
+
         burger.moveIngredient(0, 1);
-        assertEquals(expectedIngredient, burger.ingredients.get(1));
-        assertEquals(expectedIngredient1, burger.ingredients.get(0));
+
+        assertEquals(ingredientA, burger.ingredients.get(1));
+    }
+
+    @Test
+    public void moveIngredientTest_shouldPlaceSecondIngredientAtFirstPosition() {
+        Ingredient ingredientA = Mockito.mock(Ingredient.class);
+        Ingredient ingredientB = Mockito.mock(Ingredient.class);
+        burger.addIngredient(ingredientA);
+        burger.addIngredient(ingredientB);
+
+        burger.moveIngredient(0, 1);
+
+        assertEquals(ingredientB, burger.ingredients.get(0));
     }
 }
