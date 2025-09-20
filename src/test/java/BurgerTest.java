@@ -9,7 +9,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.verify;
 import static praktikum.IngredientType.FILLING;
 import static praktikum.IngredientType.SAUCE;
 
