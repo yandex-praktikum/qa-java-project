@@ -1,0 +1,8 @@
+# Игнорируем все файлы и папки
+*
+# Но не игнорируем:
+!src/
+!README.md
+!pom.xml
+!target/site
+!.gitignore
