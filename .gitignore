@@ -1,0 +1,15 @@
+# Maven target
+/target/
+/out/
+
+# IntelliJ IDEA
+*.iml
+.idea/
+*.ipr
+*.iws
+
+# Logs
+*.log
+
+# Jacoco report (делаем исключение для отчёта)
+!/target/site/jacoco/
