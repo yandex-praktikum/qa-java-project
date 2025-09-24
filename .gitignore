@@ -1,0 +1,12 @@
+# Игнорируем все файлы и папки по умолчанию
+/*
+
+# Не игнорируем следующие файлы и папки
+!/src/
+!pom.xml
+!.gitignore
+!README.md
+
+# Не игнорируем папку с отчетами Allure
+!/target/site/
+!/target/site/allure-report/
