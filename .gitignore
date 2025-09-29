@@ -1,0 +1,19 @@
+# Intellij IDEA
+.idea/
+*.iml
+out/
+build/
+
+# Maven
+target/
+pom.xml.old
+
+# Logs
+*.log
+*.tmp
+
+# Test reports
+test-output/
+allure-results/
+reports/
+jacoco/
