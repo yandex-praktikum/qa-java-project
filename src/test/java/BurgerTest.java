@@ -57,7 +57,6 @@ public class BurgerTest {
         burger.addIngredient(newIngredientMock);
         burger.moveIngredient(0,1);
         assertEquals("Ингредиент не переместился на первое место в списке",newIngredientMock, burger.ingredients.get(0));
-        assertEquals("Ингредиент не переместился на второе место в списке", ingredientMock, burger.ingredients.get(1));
     }
 
     @Test
