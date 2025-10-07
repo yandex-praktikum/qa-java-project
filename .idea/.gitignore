@@ -1,0 +1,24 @@
+# IntelliJ IDEA config
+.idea/
+*.iml
+*.iws
+/out/
+workspace.xml
+shelf/
+mavenHomeManager.xml
+
+# Maven build directory
+/target/
+
+# Logs
+*.log
+
+# Compiled class files
+*.class
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
