@@ -6,6 +6,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
@@ -76,22 +79,30 @@ public class BurgerTest {
 
     @Test
     public void getReceiptTest() {
+        Burger burger = new Burger();
+        Bun bun = new Bun("Test Bun", 100.0f);
+        Ingredient sauce = new Ingredient(IngredientType.SAUCE, "Test Sauce", 50.0f);
+        Ingredient filling = new Ingredient(IngredientType.FILLING, "Test Filling", 0.0f);
+
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-
-        when(bun.getName()).thenReturn("Test Bun");
-        when(bun.getPrice()).thenReturn(100.0f);
-
-        when(ingredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(ingredient1.getName()).thenReturn("Test Sauce");
-        when(ingredient1.getPrice()).thenReturn(50.0f);
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
 
         String receipt = burger.getReceipt();
+        String[] lines = receipt.split("\r?\n");
 
-        assertTrue(receipt.contains("(==== Test Bun ====)"));
-        assertTrue(receipt.contains("= sauce Test Sauce ="));
+        assertEquals("(==== Test Bun ====)", lines[0]);
+        assertEquals("(==== Test Bun ====)", lines[lines.length - 3]);
+        assertEquals("", lines[lines.length - 2]);
+        assertTrue(lines[lines.length - 1].startsWith("Price: "));
+
+        List<String> middleLines = Arrays.asList(lines).subList(1, lines.length - 3);
+        assertTrue(middleLines.contains("= sauce Test Sauce ="));
+        assertTrue(middleLines.contains("= filling Test Filling ="));
+        assertEquals(2, middleLines.size());
+
         float expectedPrice = 250.0f;
-        String expectedPriceString = String.format("%f", expectedPrice);
-        assertTrue(receipt.contains("Price: " + expectedPriceString));
+        assertTrue(lines[lines.length - 1].contains(String.format("%.6f", expectedPrice)));
+
     }
 }
