@@ -8,7 +8,6 @@ import praktikum.Ingredient;
 import praktikum.IngredientType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
 public class BurgerTests {
@@ -84,16 +83,29 @@ public class BurgerTests {
     }
 
     @Test
-    @DisplayName("Генерация чека возвращает корректную строку")
-    public void getReceiptReturnsFormattedString() {
+    @DisplayName("Формирование чека отображается корректно")
+    public void getReceiptReturnsCorrectReceipt() {
         burger.setBuns(bunMock);
         burger.addIngredient(ingredientMock1);
         burger.addIngredient(ingredientMock2);
 
-        String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("test bun"));
-        assertTrue(receipt.contains("ingredient1"));
-        assertTrue(receipt.contains("ingredient2"));
-        assertTrue(receipt.contains("Price:"));
+        String lineSeparator = System.lineSeparator();
+        String expected = String.format(
+                "(==== %s ====)%s" +
+                        "= %s %s =%s" +
+                        "= %s %s =%s" +
+                        "(==== %s ====)%s%s" +
+                        "Price: %.6f%s",
+                bunMock.getName(), lineSeparator,
+                ingredientMock1.getType().toString().toLowerCase(), ingredientMock1.getName(), lineSeparator,
+                ingredientMock2.getType().toString().toLowerCase(), ingredientMock2.getName(), lineSeparator,
+                bunMock.getName(), lineSeparator, lineSeparator,
+                burger.getPrice(), lineSeparator
+        );
+
+        assertEquals(expected.trim(), burger.getReceipt().trim(), "Формирование чека отображается не корректно");
+
+        System.out.println("EXPECTED:\n" + expected);
+        System.out.println("ACTUAL:\n" + burger.getReceipt());
     }
 }
