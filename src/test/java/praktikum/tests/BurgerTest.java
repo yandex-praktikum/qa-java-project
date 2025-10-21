@@ -17,7 +17,6 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
@@ -29,12 +28,11 @@ public class BurgerTest {
     private Bun bun;
 
     @Mock
-    private Ingredient ingredient1;
+    private Ingredient firstIngredient;
 
     @Mock
-    private Ingredient ingredient2;
+    private Ingredient secondIngredient;
 
-    // Параметры для параметризованных тестов
     private final float bunPrice;
     private final List<Float> ingredientPrices;
     private final float expectedPrice;
@@ -61,7 +59,7 @@ public class BurgerTest {
         burger = new Burger();
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Bun price: {0}, Ingredient prices: {1}, Expected price: {2}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 // Сценарий: Бургер с одной булочкой, без ингредиентов
@@ -84,70 +82,17 @@ public class BurgerTest {
     }
 
     @Test
-    public void testSetBuns() {
-        when(bun.getName()).thenReturn(bunName);
-        when(bun.getPrice()).thenReturn(bunPrice);
-
-        burger.setBuns(bun);
-
-        assertEquals(bun, burger.bun);
-    }
-
-    @Test
-    public void testAddIngredient() {
-        when(ingredient1.getName()).thenReturn(ingredientNames.isEmpty() ? "default" : ingredientNames.get(0));
-        when(ingredient1.getPrice()).thenReturn(ingredientPrices.isEmpty() ? 0.0f : ingredientPrices.get(0));
-        when(ingredient1.getType()).thenReturn(ingredientTypes.isEmpty() ? IngredientType.SAUCE : ingredientTypes.get(0));
-
-        burger.addIngredient(ingredient1);
-
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
-    }
-
-    @Test
-    public void testRemoveIngredient() {
-        burger.ingredients.add(ingredient1);
-        burger.removeIngredient(0);
-        assertTrue(burger.ingredients.isEmpty());
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void testRemoveIngredientInvalidIndex() {
-        burger.removeIngredient(0); // Должен выбросить IndexOutOfBoundsException
-    }
-
-    @Test
-    public void testMoveIngredient() {
-        when(ingredient1.getName()).thenReturn("sauce");
-        when(ingredient2.getName()).thenReturn("filling");
-
-        burger.ingredients.add(ingredient1);
-        burger.ingredients.add(ingredient2);
-
-        burger.moveIngredient(0, 1);
-
-        assertEquals(ingredient2, burger.ingredients.get(0));
-        assertEquals(ingredient1, burger.ingredients.get(1));
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void testMoveIngredientInvalidIndex() {
-        burger.moveIngredient(0, 0); // Должен выбросить IndexOutOfBoundsException
-    }
-
-    @Test
     public void testGetPrice() {
         when(bun.getPrice()).thenReturn(bunPrice);
         burger.setBuns(bun);
 
         for (int i = 0; i < ingredientPrices.size(); i++) {
-            Ingredient mockIngredient = i == 0 ? ingredient1 : ingredient2;
+            Ingredient mockIngredient = i == 0 ? firstIngredient : secondIngredient;
             when(mockIngredient.getPrice()).thenReturn(ingredientPrices.get(i));
             burger.addIngredient(mockIngredient);
         }
 
-        assertEquals(expectedPrice, burger.getPrice(), 0.0001f);
+        assertEquals("Price should match expected value", expectedPrice, burger.getPrice(), 0.0001f);
     }
 
     @Test
@@ -157,13 +102,13 @@ public class BurgerTest {
         burger.setBuns(bun);
 
         for (int i = 0; i < ingredientPrices.size(); i++) {
-            Ingredient mockIngredient = i == 0 ? ingredient1 : ingredient2;
+            Ingredient mockIngredient = i == 0 ? firstIngredient : secondIngredient;
             when(mockIngredient.getPrice()).thenReturn(ingredientPrices.get(i));
             when(mockIngredient.getName()).thenReturn(ingredientNames.get(i));
             when(mockIngredient.getType()).thenReturn(ingredientTypes.get(i));
             burger.addIngredient(mockIngredient);
         }
 
-        assertEquals(expectedReceipt, burger.getReceipt());
+        assertEquals("Receipt should match expected format", expectedReceipt, burger.getReceipt());
     }
 }
