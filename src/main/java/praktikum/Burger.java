@@ -2,13 +2,8 @@ package praktikum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-/**
- * Модель бургера.
- * Бургер состоит из булочек и ингредиентов (начинка или соус).
- * Ингредиенты можно перемещать и удалять.
- * Можно распечать чек с информацией о бургере.
- */
 public class Burger {
 
     public Bun bun;
@@ -23,35 +18,67 @@ public class Burger {
     }
 
     public void removeIngredient(int index) {
-        ingredients.remove(index);
+        if (index >= 0 && index < ingredients.size()) {
+            ingredients.remove(index);
+        }
     }
 
     public void moveIngredient(int index, int newIndex) {
-        ingredients.add(newIndex, ingredients.remove(index));
+        if (index < 0 || index >= ingredients.size()) {
+            return;
+        }
+
+        // если newIndex больше допустимого — помещаем в конец
+        if (newIndex < 0) {
+            newIndex = 0;
+        } else if (newIndex > ingredients.size()) {
+            newIndex = ingredients.size();
+        }
+
+        Ingredient ingredient = ingredients.remove(index);
+
+        // при добавлении в конец size уже уменьшился на 1 — нужно пересчитать
+        if (newIndex > ingredients.size()) {
+            ingredients.add(ingredient);
+        } else {
+            ingredients.add(newIndex, ingredient);
+        }
     }
 
     public float getPrice() {
-        float price = bun.getPrice() * 2;
-
-        for (Ingredient ingredient : ingredients) {
-            price += ingredient.getPrice();
+        float total = 0f;
+        if (bun != null) {
+            total += bun.getPrice() * 2;
         }
-
-        return price;
+        for (Ingredient ingredient : ingredients) {
+            if (ingredient != null) {
+                total += ingredient.getPrice();
+            }
+        }
+        return total;
     }
 
     public String getReceipt() {
-        StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
+        StringBuilder sb = new StringBuilder();
+
+        String bunName = (bun != null && bun.getName() != null) ? bun.getName().trim() : "";
+
+        sb.append("(==== ").append(bunName).append(" ====)").append("\n");
 
         for (Ingredient ingredient : ingredients) {
-            receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
-                    ingredient.getName()));
+            if (ingredient != null) {
+                String type = ingredient.getType() == null ? "" : ingredient.getType().toString().toLowerCase();
+                String name = ingredient.getName() == null ? "" : ingredient.getName().trim();
+                sb.append("= ").append(type).append(" ").append(name).append(" =").append("\n");
+            } else {
+                sb.append("=  =").append("\n");
+            }
         }
 
-        receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        sb.append("(==== ").append(bunName).append(" ====)").append("\n");
+        sb.append("\n");
+        sb.append(String.format(Locale.US, "Price: %.1f", getPrice())).append("\n");
 
-        return receipt.toString();
+        return sb.toString();
     }
-
 }

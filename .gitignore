@@ -1,0 +1,15 @@
+﻿.idea/
+*.iml
+*.ipr
+*.iws
+
+/target/*
+!/target/site/
+!/target/site/**
+
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+*.swp
+*.swo
