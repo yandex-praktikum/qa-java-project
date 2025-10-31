@@ -1,0 +1,25 @@
+# Maven build output
+target/classes/
+target/test-classes/
+target/generated-sources/
+target/generated-test-sources/
+target/maven-archiver/
+target/maven-status/
+target/surefire-reports/
+target/site/jacoco/jacoco.exec
+target/site/jacoco/jacoco.xml
+target/site/jacoco/jacoco.csv
+target/site/jacoco/jacoco-sessions.html
+target/*.jar
+target/*.war
+
+# Keep JaCoCo HTML report for PR
+!target/site/jacoco/*.html
+!target/site/jacoco/**/*.html
+!target/site/jacoco/jacoco-resources/
+
+# IDE
+.idea/
+*.iml
+
+
