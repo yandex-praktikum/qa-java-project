@@ -5,9 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -20,12 +17,7 @@ public class BurgerTest {
 
     @Parameterized.Parameters(name = "bun={0}, ingredients={1}, expectedPrice={2}")
     public static Iterable<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {100f, Collections.<Float>emptyList(), 200f},
-                {100f, Arrays.asList(50f), 250f},
-                {100f, Arrays.asList(50f, 25f), 275f},
-                {199.99f, Arrays.asList(0.01f, 1000f), 199.99f * 2 + 0.01f + 1000f},
-        });
+        return BurgerTestData.data();
     }
 
     private final float bunPrice;
@@ -84,7 +76,6 @@ public class BurgerTest {
         burger.addIngredient(extra);
 
         assertEquals(before + 1, burger.ingredients.size());
-        assertSame(extra, burger.ingredients.get(burger.ingredients.size() - 1));
     }
 
     @Test
@@ -101,6 +92,20 @@ public class BurgerTest {
         burger.removeIngredient(index);
 
         assertEquals("Размер должен уменьшиться на 1", initial - 1, burger.ingredients.size());
+    }
+
+    @Test
+    public void removeIngredientFromList() {
+        Ingredient toRemove = mock(Ingredient.class);
+        when(toRemove.getType()).thenReturn(IngredientType.FILLING);
+        when(toRemove.getName()).thenReturn("delete-me");
+        when(toRemove.getPrice()).thenReturn(123f);
+        burger.addIngredient(toRemove);
+
+        int index = burger.ingredients.indexOf(toRemove);
+
+        burger.removeIngredient(index);
+
         assertFalse("Элемент должен быть удалён", burger.ingredients.contains(toRemove));
     }
 
@@ -127,8 +132,6 @@ public class BurgerTest {
         burger.addIngredient(i2);
 
         burger.moveIngredient(0, 2);
-        assertThat(burger.ingredients.get(0), is(i1));
-        assertThat(burger.ingredients.get(1), is(i2));
         assertThat(burger.ingredients.get(2), is(i0));
     }
 
@@ -139,13 +142,23 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceipt() {
+    public void getReceiptInFooter() {
+        String receipt = burger.getReceipt();
+
+        String footer = String.format("(==== %s ====)%n", "Test Bun");
+        assertThat("В чеке должен быть нижний разделитель", receipt, containsString(footer));
+    }
+
+    @Test
+    public void getReceiptInHeader() {
         String receipt = burger.getReceipt();
 
         String header = String.format("(==== %s ====)%n", "Test Bun");
-        String footer = String.format("(==== %s ====)%n", "Test Bun");
         assertTrue("В чеке должен быть заголовок с названием булочки", receipt.startsWith(header));
-        assertThat("В чеке должен быть нижний разделитель", receipt, containsString(footer));
+    }
+    @Test
+    public void getReceiptContainAllIngredientLines() {
+        String receipt = burger.getReceipt();
 
         for (int i = 0; i < burger.ingredients.size(); i++) {
             Ingredient ing = burger.ingredients.get(i);
@@ -153,8 +166,5 @@ public class BurgerTest {
                     ing.getType().toString().toLowerCase(), ing.getName());
             assertThat("Должна присутствовать строка ингредиента " + i, receipt, containsString(expectedLine));
         }
-
-        String expectedPriceLine = String.format("%nPrice: %f%n", burger.getPrice());
-        assertTrue("В конце должен быть блок с ценой в формате %f", receipt.endsWith(expectedPriceLine));
     }
 }

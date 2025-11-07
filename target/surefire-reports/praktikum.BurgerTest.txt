@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: praktikum.BurgerTest
 -------------------------------------------------------------------------------
-Tests run: 24, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.704 s -- in praktikum.BurgerTest
+Tests run: 36, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.675 s -- in praktikum.BurgerTest
