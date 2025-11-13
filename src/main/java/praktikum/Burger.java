@@ -2,13 +2,8 @@ package praktikum;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
-/**
- * Модель бургера.
- * Бургер состоит из булочек и ингредиентов (начинка или соус).
- * Ингредиенты можно перемещать и удалять.
- * Можно распечать чек с информацией о бургере.
- */
 public class Burger {
 
     public Bun bun;
@@ -26,32 +21,38 @@ public class Burger {
         ingredients.remove(index);
     }
 
-    public void moveIngredient(int index, int newIndex) {
-        ingredients.add(newIndex, ingredients.remove(index));
+    public void moveIngredient(int fromIndex, int toIndex) {
+        Ingredient ingredient = ingredients.remove(fromIndex);
+        ingredients.add(toIndex, ingredient);
     }
 
     public float getPrice() {
-        float price = bun.getPrice() * 2;
-
-        for (Ingredient ingredient : ingredients) {
-            price += ingredient.getPrice();
+        float total = 0;
+        if (bun != null) {
+            total += bun.getPrice() * 2; // верхняя и нижняя булка
         }
-
-        return price;
+        for (Ingredient ingredient : ingredients) {
+            total += ingredient.getPrice();
+        }
+        return total;
     }
 
     public String getReceipt() {
-        StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
+        StringBuilder receipt = new StringBuilder();
+
+        receipt.append(String.format("(==== %s ====)%n", bun.getName()));
 
         for (Ingredient ingredient : ingredients) {
-            receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
+            receipt.append(String.format("= %s %s =%n",
+                    ingredient.getType().toString().toLowerCase(),
                     ingredient.getName()));
         }
 
-        receipt.append(String.format("(==== %s ====)%n", bun.getName()));
-        receipt.append(String.format("%nPrice: %f%n", getPrice()));
+        receipt.append(String.format("(==== %s ====)%n%n", bun.getName()));
+
+        // Старательно форматируем цену: 2 знака после точки, локаль US
+        receipt.append(String.format(Locale.US, "Price: %.2f%n", getPrice()));
 
         return receipt.toString();
     }
-
 }
