@@ -1,0 +1,4 @@
+tests\IngredientTypeTest.class
+tests\IngredientTest.class
+tests\BurgerTest.class
+tests\BunTest.class
