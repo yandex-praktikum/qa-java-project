@@ -1,0 +1,23 @@
+# System files
+.DS_Store
+
+# IDE
+.idea/
+*.iml
+*.iws
+
+# Build outputs
+target/
+build/
+out/
+
+# Logs
+*.log
+logs/
+
+# Archives
+*.zip
+*.tar.gz
+
+# Maven
+pom.xml.versionsBackup
