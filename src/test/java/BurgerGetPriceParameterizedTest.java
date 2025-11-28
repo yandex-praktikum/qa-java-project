@@ -24,7 +24,6 @@ public class BurgerGetPriceParameterizedTest {
     private final float expectedPrice;
     private final Ingredient[] testIngredients;
 
-    private Bun mockBan;
     private Burger burger;
 
     public BurgerGetPriceParameterizedTest(String testName, float expectedPrice, Ingredient[] testIngredients) {
@@ -72,10 +71,10 @@ public class BurgerGetPriceParameterizedTest {
 
     @Before
     public void setUp() {
-        mockBan = mock(Bun.class);
-        when(mockBan.getPrice()).thenReturn(50.0f);
+        Bun mockBun = mock(Bun.class);
+        when(mockBun.getPrice()).thenReturn(50.0f);
         burger = new Burger();
-        burger.setBuns(mockBan);
+        burger.setBuns(mockBun);
 
         for (Ingredient ingredient : testIngredients) {
             burger.addIngredient(ingredient);
