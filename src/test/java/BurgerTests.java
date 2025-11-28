@@ -26,35 +26,43 @@ public class BurgerTests {
     private Burger burger;
 
     @Before //Создаю новый экземпляр бургера пред каждым тестом
-    public void setUp(){
-        burger=new Burger();
+    public void setUp() {
+        burger = new Burger();
     }
 
-@Test //проверяю что метод setBuns() устанавливает булочку
-    public void ShouldSetBunTest(){
+    @Test //проверяю что метод setBuns() устанавливает булочку
+    public void ShouldSetBunTest() {
         burger.setBuns(mockBun);
-        assertEquals(mockBun,burger.bun);
-}
+        assertEquals(mockBun, burger.bun);
+    }
 
-@Test  //проверяю что метод addIngredient()добавляет ингридиент
-    public void ShouldAddIngredientTest(){
+    @Test  //проверяю что метод addIngredient()добавляет ингридиент
+    public void ShouldAddIngredientTest() {
         burger.addIngredient(mockIngredient1);
-    List<Ingredient> ingredients=burger.ingredients;
-    assertEquals(1,ingredients.size());
-    assertEquals(mockIngredient1,ingredients.get(0));
-}
+        List<Ingredient> ingredients = burger.ingredients;
+        assertEquals(1, ingredients.size());
+        assertEquals(mockIngredient1, ingredients.get(0));
+    }
 
-@Test // проверяю что метод removeIngredient()удаляет ингридиент по индексу
-public void ShouldRemoveIngredientByIndexTest(){
+    @Test // проверяю что метод removeIngredient()удаляет ингридиент по индексу
+    public void ShouldRemoveIngredientByIndexTest() {
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
         burger.removeIngredient(0);
-        List<Ingredient> ingredients=burger.ingredients;
-        assertEquals(1,ingredients.size());
-        assertEquals(mockIngredient2,ingredients.get(0));
-}
+        List<Ingredient> ingredients = burger.ingredients;
+        assertEquals(1, ingredients.size());
+        assertEquals(mockIngredient2, ingredients.get(0));
+    }
 
-
+    @Test // проверяю что метод moveIngredient() перемещает ингридиент по индексу
+    public void ShouldMoveToNewIndexTest() {
+        burger.addIngredient(mockIngredient1);
+        burger.addIngredient(mockIngredient2);
+        burger.moveIngredient(0, 1);
+        List<Ingredient> ingredients = burger.ingredients;
+        assertEquals(mockIngredient2, ingredients.get(0));
+        assertEquals(mockIngredient1, ingredients.get(1));
+    }
 
 
 }
