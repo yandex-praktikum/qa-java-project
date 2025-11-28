@@ -30,13 +30,13 @@ public class BurgerTests {
         burger=new Burger();
     }
 
-@Test //проверяю что метод устанавливает булочку
+@Test //проверяю что метод setBuns() устанавливает булочку
     public void ShouldSetBunTest(){
         burger.setBuns(mockBun);
         assertEquals(mockBun,burger.bun);
 }
 
-@Test  //проверяю что метод добавляет ингридиент
+@Test  //проверяю что метод addIngredient()добавляет ингридиент
     public void ShouldAddIngredientTest(){
         burger.addIngredient(mockIngredient1);
     List<Ingredient> ingredients=burger.ingredients;
@@ -44,8 +44,15 @@ public class BurgerTests {
     assertEquals(mockIngredient1,ingredients.get(0));
 }
 
-
-
+@Test // проверяю что метод removeIngredient()удаляет ингридиент по индексу
+public void ShouldRemoveIngredientByIndexTest(){
+        burger.addIngredient(mockIngredient1);
+        burger.addIngredient(mockIngredient2);
+        burger.removeIngredient(0);
+        List<Ingredient> ingredients=burger.ingredients;
+        assertEquals(1,ingredients.size());
+        assertEquals(mockIngredient2,ingredients.get(0));
+}
 
 
 
