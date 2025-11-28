@@ -9,7 +9,6 @@ import praktikum.Ingredient;
 
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Objects;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
@@ -21,7 +20,7 @@ public class BurgerGetPriceParameterizedTest {
     private static final float DELTA = 0.001f;
 
 
-    private final String testName;
+    private final String testName; // название теста (для читаемости в отчётах)
     private final float expectedPrice;
     private final Ingredient[] testIngredients;
 
@@ -37,16 +36,16 @@ public class BurgerGetPriceParameterizedTest {
     @Parameterized.Parameters(name = "{0}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {"2 Булки(по 50 руб.) + соус(SAUCE, 50 руб.)",
+                {"2 Булки(по 50 руб.) + соус(50 руб.)",
                         150.0f,
-                        new Ingredient[]{createMockIngredient("SAUCE", 50.0f)
+                        new Ingredient[]{createMockIngredient( 50.0f)
                         }
                 },
                 {"2 Булки(по 50 руб.) + начинка(70 руб.)+ соус(50 руб.)",
                         220.0f,
                         new Ingredient[]{
-                                createMockIngredient("FILLING", 70.0f),
-                                createMockIngredient("SAUCE", 50.0f)
+                                createMockIngredient( 70.0f),
+                                createMockIngredient( 50.0f)
                         }
                 },
                 {"Только булки(по 50 руб.) без ингредиентов",
@@ -57,15 +56,15 @@ public class BurgerGetPriceParameterizedTest {
                 {"2 Булки(по 50 руб.) + две начинки (80 + 10 руб.) + соус (10 руб.)",
                         200.0f,
                         new Ingredient[]{
-                                createMockIngredient("FILLING", 80.0f),
-                                createMockIngredient("FILLING", 10.0f),
-                                createMockIngredient("SAUCE", 10.0f)
+                                createMockIngredient( 80.0f),
+                                createMockIngredient(10.0f),
+                                createMockIngredient( 10.0f)
                         }
                 }
         });
     }
 
-    private static Ingredient createMockIngredient(String type, float price) {
+    private static Ingredient createMockIngredient(float price) {
         Ingredient ingredient = Mockito.mock(Ingredient.class);
         when(ingredient.getPrice()).thenReturn(price);
         return ingredient;
@@ -87,7 +86,7 @@ public class BurgerGetPriceParameterizedTest {
     @Test
     public void getPriceTest() {
         float actualPrice = burger.getPrice();
-        assertEquals(expectedPrice, actualPrice, DELTA);
+        assertEquals("Test case: " + testName, expectedPrice, actualPrice, DELTA);
     }
 }
 
