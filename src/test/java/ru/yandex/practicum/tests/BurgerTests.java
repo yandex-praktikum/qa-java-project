@@ -7,7 +7,9 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
+import praktikum.Ingredient;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 
 
@@ -17,6 +19,9 @@ public class BurgerTests {
     @Mock
     private Bun bun;
 
+    @Mock
+    private Ingredient sauce;
+
     private Burger burger;
 
     @Before
@@ -25,9 +30,23 @@ public class BurgerTests {
     }
 
     @Test
-    public void setBun_shouldSetValidBunBurgerTest() {
+    public void setBun_shouldSetValidBunTest() {
 
         burger.setBuns(bun);
-        assertSame("Булочка должна быть установлена корректно", bun, burger.bun);
+        assertEquals("Булочка должна быть установлена корректно", bun, burger.bun);
+    }
+
+    @Test // увеличиваем на один
+    public void addIngredient_ShouldIncreaseByOneTest() {
+
+        burger.addIngredient(sauce);
+        assertEquals("Размер списка ингредиентов должен увеличиться на 1", 1, burger.ingredients.size());
+    }
+
+    @Test // проверяем, что элемент попал в конец
+    public void addIngredient_ShouldAddToEndTest() {
+
+        burger.addIngredient(sauce);
+        assertEquals("Добавленный ингредиент должен быть последним элементом списка", sauce, burger.ingredients.get(burger.ingredients.size() - 1));
     }
 }
