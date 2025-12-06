@@ -10,8 +10,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTests {
@@ -21,6 +19,9 @@ public class BurgerTests {
 
     @Mock
     private Ingredient sauce;
+
+    @Mock
+    private Ingredient filling;
 
     private Burger burger;
 
@@ -34,6 +35,7 @@ public class BurgerTests {
 
         burger.setBuns(bun);
         assertEquals("Булочка должна быть установлена корректно", bun, burger.bun);
+
     }
 
     @Test // увеличиваем на один
@@ -41,6 +43,7 @@ public class BurgerTests {
 
         burger.addIngredient(sauce);
         assertEquals("Размер списка ингредиентов должен увеличиться на 1", 1, burger.ingredients.size());
+
     }
 
     @Test // проверяем, что элемент попал в конец
@@ -48,5 +51,27 @@ public class BurgerTests {
 
         burger.addIngredient(sauce);
         assertEquals("Добавленный ингредиент должен быть последним элементом списка", sauce, burger.ingredients.get(burger.ingredients.size() - 1));
+
     }
+
+    @Test // проверяем, что размер списка уменьшается на 1
+    public void removeIngredient_ShouldDecreaseByOneTest() {
+
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+        burger.removeIngredient(0);
+        assertEquals("Размер списка ингредиентов должен уменьшиться на 1", 1, burger.ingredients.size());
+
+    }
+
+    @Test // проверяем, что удалён именно тот ингредиент, который ожидалось удалить
+    public void removeIngredient_ShouldRemoveCorrectTest() {
+
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+        burger.removeIngredient(0);
+        assertEquals("После удаления первого ингредиента в списке должен остаться второй", filling, burger.ingredients.get(0));
+
+    }
+
 }
