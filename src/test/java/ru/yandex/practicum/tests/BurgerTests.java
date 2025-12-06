@@ -34,44 +34,81 @@ public class BurgerTests {
     public void setBun_shouldSetValidBunTest() {
 
         burger.setBuns(bun);
+
         assertEquals("Булочка должна быть установлена корректно", bun, burger.bun);
 
     }
 
-    @Test // увеличиваем на один
+    // проверяем, что элемент увеличивается на один
+    @Test
     public void addIngredient_ShouldIncreaseByOneTest() {
 
         burger.addIngredient(sauce);
+
         assertEquals("Размер списка ингредиентов должен увеличиться на 1", 1, burger.ingredients.size());
 
     }
 
-    @Test // проверяем, что элемент попал в конец
+    // проверяем, что элемент попал в конец
+    @Test
     public void addIngredient_ShouldAddToEndTest() {
 
         burger.addIngredient(sauce);
+
         assertEquals("Добавленный ингредиент должен быть последним элементом списка", sauce, burger.ingredients.get(burger.ingredients.size() - 1));
 
     }
 
-    @Test // проверяем, что размер списка уменьшается на 1
+    // проверяем, что размер списка уменьшается на 1
+    @Test
     public void removeIngredient_ShouldDecreaseByOneTest() {
 
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
+
         burger.removeIngredient(0);
+
         assertEquals("Размер списка ингредиентов должен уменьшиться на 1", 1, burger.ingredients.size());
 
     }
 
-    @Test // проверяем, что удалён именно тот ингредиент, который ожидалось удалить
+    // проверяем, что удалён именно тот ингредиент, который ожидалось удалить
+    @Test
     public void removeIngredient_ShouldRemoveCorrectTest() {
 
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
+
         burger.removeIngredient(0);
+
         assertEquals("После удаления первого ингредиента в списке должен остаться второй", filling, burger.ingredients.get(0));
 
+    }
+
+    // проверяем, что элемент с исходного индекса перемещается на указанный новый индекс
+    @Test
+    public void moveIngredient_ShouldMoveToNewIndexTest() {
+
+        burger.addIngredient(sauce);   // index 0
+        burger.addIngredient(filling); // index 1
+
+        burger.moveIngredient(0, 1);
+
+        assertEquals("После перемещения ингредиента его позиция должна измениться", sauce, burger.ingredients.get(1));
+    }
+
+    // проверяем, что количество ингредиентов сохраняется после перемещения
+    @Test
+    public void moveIngredient_ShouldPreserveCountTest() {
+
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+
+        int initialSize = burger.ingredients.size();
+
+        burger.moveIngredient(0, 1);
+
+        assertEquals("Количество ингредиентов не должно измениться после перемещения", initialSize, burger.ingredients.size());
     }
 
 }
