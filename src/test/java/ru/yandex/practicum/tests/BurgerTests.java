@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 import praktikum.Bun;
 import praktikum.Burger;
@@ -111,4 +112,21 @@ public class BurgerTests {
         assertEquals("Количество ингредиентов не должно измениться после перемещения", initialSize, burger.ingredients.size());
     }
 
+    @Test
+    public void getPrice_ShouldReturnCorrectTotalPriceTest() {
+
+        Mockito.when(bun.getPrice()).thenReturn(50.0f);
+
+        Mockito.when(sauce.getPrice()).thenReturn(10.0f);
+        Mockito.when(filling.getPrice()).thenReturn(30.0f);
+
+        burger.setBuns(bun);
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+
+        float expectedPrice = 140.0f;
+        float actualPrice = burger.getPrice();
+
+        assertEquals("Цена бургер должна рассчитываться корректно", expectedPrice, actualPrice, 0.0001f);
+    }
 }
