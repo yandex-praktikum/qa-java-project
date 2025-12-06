@@ -17,7 +17,6 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-
 public class BurgerGetReceiptParameterizedTest {
 
     private Burger burger;
@@ -47,6 +46,7 @@ public class BurgerGetReceiptParameterizedTest {
         float total1 = bun1Price * 2;
         String expected1 = String.format("(==== %s ====)%n" +
                         "(==== %s ====)%n" +
+                        "%n" +
                         "Price: %f%n",
                 bun1, bun1, total1);
 
