@@ -8,6 +8,7 @@ import java.util.List;
  */
 public class Database {
 
+    public static IngredientType available;
     private final List<Bun> buns = new ArrayList<>();
     private final List<Ingredient> ingredients = new ArrayList<>();
 
