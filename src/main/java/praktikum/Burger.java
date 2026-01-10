@@ -30,7 +30,7 @@ public class Burger {
     //добавлю геттер = double check later
     public List<Ingredient> getIngredients() {
         return new ArrayList<>(ingredients);
-    }
+    }//проверить писать ли на это отдельный юнит тест
 
     public void removeIngredient(int index) {
         ingredients.remove(index);
