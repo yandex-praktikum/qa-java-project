@@ -19,9 +19,9 @@ public class BurgerGetPriceTest {
         @Mock
         Ingredient ingredient2;
 
-        @DisplayName("getPrice вызывает методы bun.getPrice и ingredient.getPrice")
+        @DisplayName("getPrice возвращает сумму цен булки и ингредиентов")
         @Test
-        public void getPriceForBurgerRevokesGetPriceForBunAndIngredients() {
+        public void getPriceReturnsCorrectSumOfBunAndIngredients() {
             Burger burger = new Burger();
             //назначили булочку для бургера
             burger.setBuns(bunMock);
