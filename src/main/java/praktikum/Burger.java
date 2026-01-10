@@ -18,6 +18,11 @@ public class Burger {
         this.bun = bun;
     }
 
+    //добавила геттер для бана
+    public Bun getBun() {
+        return bun;
+    }
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
