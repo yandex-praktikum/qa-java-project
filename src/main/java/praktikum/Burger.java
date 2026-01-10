@@ -21,10 +21,15 @@ public class Burger {
     //добавила геттер для бана
     public Bun getBun() {
         return bun;
-    }
+    }//продумать почему не нужно писать отдельный юнит тест на это
 
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
+    }
+
+    //добавлю геттер = double check later
+    public List<Ingredient> getIngredients() {
+        return new ArrayList<>(ingredients);
     }
 
     public void removeIngredient(int index) {
