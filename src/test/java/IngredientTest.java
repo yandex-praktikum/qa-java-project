@@ -1,11 +1,12 @@
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
-import org.testng.asserts.SoftAssert;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class IngredientTest {
-    SoftAssert softAssert = new SoftAssert();
     @ParameterizedTest
     @CsvSource({
             "FILLING, cutlet, 100.0",
@@ -19,9 +20,10 @@ public class IngredientTest {
 
         Ingredient ingredient = new Ingredient(type, name, price);
 
-        softAssert.assertEquals(type, ingredient.getType());
-        softAssert.assertEquals(name, ingredient.getName());
-        softAssert.assertEquals(price, ingredient.getPrice());
-        softAssert.assertAll();
+        assertAll("Проверка ингредиентов",
+                () -> assertEquals(type, ingredient.getType(), "Тип ингредиента не совпадает"),
+                () -> assertEquals(name, ingredient.getName(), "Название ингредиента не совпадает"),
+                () -> assertEquals(price, ingredient.getPrice(), "Цена ингредиента не совпадает")
+        );
     }
 }

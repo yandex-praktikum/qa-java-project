@@ -11,11 +11,9 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-import org.testng.asserts.SoftAssert;
 
 @ExtendWith(MockitoExtension.class)
 class BurgerTest {
-    SoftAssert softAssert = new SoftAssert();
 
     @Mock
     Burger burger;
@@ -39,10 +37,11 @@ class BurgerTest {
         Mockito.when(ingredient.getName()).thenReturn(name);
         Mockito.when(ingredient.getPrice()).thenReturn(price);
         burger.addIngredient(ingredient);
-        softAssert.assertEquals(type, ingredient.getType());
-        softAssert.assertEquals(name, ingredient.getName());
-        softAssert.assertEquals(price, ingredient.getPrice());
-        softAssert.assertAll();
+        assertAll("Проверка добавленного ингредиента",
+                () -> assertEquals(type, ingredient.getType(), "Тип ингредиента не совпадает"),
+                () -> assertEquals(name, ingredient.getName(), "Название ингредиента не совпадает"),
+                () -> assertEquals(price, ingredient.getPrice(), "Цена ингредиента не совпадает")
+        );
     }
 
     @Test
@@ -106,6 +105,7 @@ class BurgerTest {
                 1000.0F
         );
         String actualReceipt = burger.getReceipt();
-        assertEquals(expectedReceipt, actualReceipt, String.format("Некорректный чек.Ожидалось: " + expectedReceipt + "Пришло: " + actualReceipt));
+        assertEquals(expectedReceipt, actualReceipt,
+                String.format("Некорректный чек. Ожидалось: %s, Пришло: %s", expectedReceipt, actualReceipt));
     }
 }
