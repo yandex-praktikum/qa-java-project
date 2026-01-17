@@ -77,7 +77,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
                 <configuration>
-                    <argLine>${argLine} -Dfile.encoding=UTF-8</argLine>
+                    <!-- Специальное свойство для JaCoCo -->
+                    <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine>
                 </configuration>
             </plugin>
 
@@ -93,6 +94,10 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <configuration>
+                            <!-- Используем отдельное свойство для argLine -->
+                            <propertyName>surefireArgLine</propertyName>
+                        </configuration>
                     </execution>
 
                     <!-- Генерация отчета -->
@@ -103,7 +108,17 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+
+                    <!-- Проверка покрытия кода при выполнении verify -->
+                    <execution>
+                        <id>verify-coverage</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
                 </executions>
+                <!-- Конфигурация правил проверки покрытия -->
                 <configuration>
                     <rules>
                         <rule>
