@@ -18,9 +18,19 @@ public class Burger {
         this.bun = bun;
     }
 
+    //добавила геттер для бана
+    public Bun getBun() {
+        return bun;
+    }//решила не писать отдельный юнит тест на этот метод потому что он вызывается в других
+
     public void addIngredient(Ingredient ingredient) {
         ingredients.add(ingredient);
     }
+
+    //добавлю геттер
+    public List<Ingredient> getIngredients() {
+        return new ArrayList<>(ingredients);
+    }//решила не писать отдельный юнит тест на этот метод потому что он вызывается в других
 
     public void removeIngredient(int index) {
         ingredients.remove(index);
