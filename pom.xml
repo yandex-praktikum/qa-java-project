@@ -76,10 +76,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.1.2</version>
-                <configuration>
-                    <!-- Специальное свойство для JaCoCo -->
-                    <argLine>${surefireArgLine} -Dfile.encoding=UTF-8</argLine>
-                </configuration>
+                <!-- Конфигурация удалена, будет использоваться аргумент от JaCoCo -->
             </plugin>
 
             <!-- Плагин JaCoCo для измерения покрытия кода -->
@@ -94,10 +91,6 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
-                        <configuration>
-                            <!-- Используем отдельное свойство для argLine -->
-                            <propertyName>surefireArgLine</propertyName>
-                        </configuration>
                     </execution>
 
                     <!-- Генерация отчета -->
@@ -109,43 +102,42 @@
                         </goals>
                     </execution>
 
-                    <!-- Проверка покрытия кода при выполнении verify -->
+                    <!-- Проверка покрытия кода -->
                     <execution>
                         <id>verify-coverage</id>
                         <phase>verify</phase>
                         <goals>
                             <goal>check</goal>
                         </goals>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>CLASS</element>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.0</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.0</minimum>
+                                        </limit>
+                                        <limit>
+                                            <counter>METHOD</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>1.0</minimum>
+                                        </limit>
+                                    </limits>
+                                    <includes>
+                                        <include>praktikum.Burger</include>
+                                    </includes>
+                                </rule>
+                            </rules>
+                        </configuration>
                     </execution>
                 </executions>
-                <!-- Конфигурация правил проверки покрытия -->
-                <configuration>
-                    <rules>
-                        <rule>
-                            <element>CLASS</element>
-                            <limits>
-                                <limit>
-                                    <counter>LINE</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>1.0</minimum>
-                                </limit>
-                                <limit>
-                                    <counter>BRANCH</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>1.0</minimum>
-                                </limit>
-                                <limit>
-                                    <counter>METHOD</counter>
-                                    <value>COVEREDRATIO</value>
-                                    <minimum>1.0</minimum>
-                                </limit>
-                            </limits>
-                            <includes>
-                                <include>praktikum.Burger</include>
-                            </includes>
-                        </rule>
-                    </rules>
-                </configuration>
             </plugin>
         </plugins>
     </build>
