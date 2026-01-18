@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerCoreTest" time="4.219" tests="11" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="sun.desktop" value="windows"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1251"/>
+    <property name="java.class.path" value="D:\Diplom\Diplom_1\target\test-classes;D:\Diplom\Diplom_1\target\classes;C:\Users\ilyat\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\ilyat\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\ilyat\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\ilyat\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\ilyat\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\ilyat\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\ilyat\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\ilyat\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value="Europe/Moscow"/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Windows 10"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin"/>
+    <property name="sun.java.command" value="C:\Users\ilyat\AppData\Local\Temp\surefire10374497072681861805\surefirebooter-20260118045544991_3.jar C:\Users\ilyat\AppData\Local\Temp\surefire10374497072681861805 2026-01-18T04-55-43_329-jvmRun1 surefire-20260118045544991_1tmp surefire_0-20260118045544991_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="D:\Diplom\Diplom_1\target\test-classes;D:\Diplom\Diplom_1\target\classes;C:\Users\ilyat\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\ilyat\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\ilyat\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\ilyat\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\ilyat\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\ilyat\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;C:\Users\ilyat\.m2\repository\org\assertj\assertj-core\3.24.2\assertj-core-3.24.2.jar;C:\Users\ilyat\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\ilyat"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="D:\Diplom\Diplom_1"/>
+    <property name="java.vm.compressedOopsMode" value="32-bit"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="C:\Users\ilyat\AppData\Local\Temp\surefire10374497072681861805\surefirebooter-20260118045544991_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.28+6-LTS"/>
+    <property name="user.name" value="ilyat"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="Cp1251"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.28.6.1"/>
+    <property name="localRepository" value="C:\Users\ilyat\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="C:\Users\ilyat\AppData\Local\Temp\"/>
+    <property name="java.version" value="11.0.28"/>
+    <property name="user.dir" value="D:\Diplom\Diplom_1"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="java.library.path" value="C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Amazon Corretto\jdk11.0.28_6\bin;C:\Program Files\PostgreSQL\17\bin;C:\Python313\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\dotnet\;C:\adb\platform-tools;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\PostgreSQL\17\bin;C:\Program Files\apache-maven-3.9.10\bin;C:\Program Files\Git\cmd;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Users\ilyat\AppData\Local\Microsoft\WindowsApps;C:\Users\ilyat\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ilyat\AppData\Roaming\npm;D:\allure-2.35.1\bin;;."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.28+6-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testMoveIngredientChangesPositionsCorrectly" classname="praktikum.BurgerCoreTest" time="3.181"/>
+  <testcase name="testGetReceiptFormatsCorrectly" classname="praktikum.BurgerCoreTest" time="0.038"/>
+  <testcase name="testGetReceiptWithoutBunThrowsException" classname="praktikum.BurgerCoreTest" time="0.016"/>
+  <testcase name="testRemoveIngredientWithInvalidIndexThrowsException" classname="praktikum.BurgerCoreTest" time="0.017"/>
+  <testcase name="testReceiptStructureWithTopBun" classname="praktikum.BurgerCoreTest" time="0.028"/>
+  <testcase name="testGetPriceWithoutBunThrowsException" classname="praktikum.BurgerCoreTest" time="0.022"/>
+  <testcase name="testGetPriceWithMultipleIngredients" classname="praktikum.BurgerCoreTest" time="0.019"/>
+  <testcase name="testAddIngredientIncreasesListSize" classname="praktikum.BurgerCoreTest" time="0.019"/>
+  <testcase name="testRemoveIngredientDecreasesListSize" classname="praktikum.BurgerCoreTest" time="0.03"/>
+  <testcase name="testReceiptContainsIngredientTypeLowerCase" classname="praktikum.BurgerCoreTest" time="0.022"/>
+  <testcase name="testSetBunsCorrectlyAssignsBun" classname="praktikum.BurgerCoreTest" time="0.012"/>
+</testsuite>
