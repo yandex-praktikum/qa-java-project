@@ -1,1 +1,1 @@
-Diplo_1
+Diplom_1
