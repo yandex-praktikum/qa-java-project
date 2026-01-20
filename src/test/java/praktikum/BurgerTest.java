@@ -6,7 +6,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,7 +31,7 @@ class BurgerTest {
     @Test
     void addIngredient() {
         Burger b = new Burger();
-        assertEquals(b.ingredients.size(), 0);
+        assertEquals( 0, b.ingredients.size());
         b.addIngredient(ig1);
         assertAll(
                 () -> assertEquals(1, b.ingredients.size()),
@@ -114,7 +113,7 @@ class BurgerTest {
         assertAll(
                 () -> Mockito.when(bun.getName()).thenReturn("My bun"),
                 () -> Mockito.when(bun.getPrice()).thenReturn(666.f),
-                () -> assertEquals(b.getReceipt(), "(==== My bun ====)\n(==== My bun ====)\n\nPrice: 1332,000000\n")
+                () -> assertEquals( "(==== My bun ====)\n(==== My bun ====)\n\nPrice: 1332,000000\n", b.getReceipt())
         );
         b.addIngredient(ig1);
         assertAll(
@@ -123,7 +122,7 @@ class BurgerTest {
                 () -> Mockito.when(ig1.getPrice()).thenReturn(100.f),
                 () -> Mockito.when(ig1.getType()).thenReturn(IngredientType.SAUCE),
                 () -> Mockito.when(ig1.getName()).thenReturn("Red"),
-                () -> assertEquals(b.getReceipt(), "(==== My bun ====)\n= sauce Red =\n(==== My bun ====)\n\nPrice: 1432,000000\n")
+                () -> assertEquals( "(==== My bun ====)\n= sauce Red =\n(==== My bun ====)\n\nPrice: 1432,000000\n", b.getReceipt())
         );
         b.addIngredient(ig2);
         assertAll(
@@ -135,7 +134,7 @@ class BurgerTest {
                 () -> Mockito.when(ig2.getPrice()).thenReturn(1000.f),
                 () -> Mockito.when(ig2.getType()).thenReturn(IngredientType.FILLING),
                 () -> Mockito.when(ig2.getName()).thenReturn("Chicken"),
-                () -> assertEquals(b.getReceipt(), "(==== My bun ====)\n= sauce Red =\n= filling Chicken =\n(==== My bun ====)\n\nPrice: 2432,000000\n")
+                () -> assertEquals("(==== My bun ====)\n= sauce Red =\n= filling Chicken =\n(==== My bun ====)\n\nPrice: 2432,000000\n", b.getReceipt())
         );
     }
 }
