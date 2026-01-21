@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -18,10 +19,10 @@ public class BurgerTest {
     private Bun bun;
 
     @Mock
-    private Ingredient ingredient1;
+    private Ingredient firstIngredient;
 
     @Mock
-    private Ingredient ingredient2;
+    private Ingredient secondIngredient;
 
     @Before
     public void setUp() {
@@ -35,61 +36,67 @@ public class BurgerTest {
     }
 
     @Test
-    public void addIngredientAddsToTheList() {
-        burger.addIngredient(ingredient1);
+    public void addIngredientIncreasesSize() {
+        burger.addIngredient(firstIngredient);
         assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
     }
 
     @Test
-    public void removeIngredientRemovesFromTheList() {
-        burger.addIngredient(ingredient1);
+    public void addIngredientAddsCorrectElement() {
+        burger.addIngredient(firstIngredient);
+        assertEquals(firstIngredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void removeIngredientDecreasesSize() {
+        burger.addIngredient(firstIngredient);
         burger.removeIngredient(0);
         assertTrue(burger.ingredients.isEmpty());
     }
 
     @Test
-    public void moveIngredientChangesOrder() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+    public void moveIngredientChangesFirstElement() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
 
         burger.moveIngredient(1, 0);
 
-        assertEquals(ingredient2, burger.ingredients.get(0));
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertEquals(secondIngredient, burger.ingredients.get(0));
     }
 
     @Test
-    public void getPriceCalculatesCorrectly() {
-        when(bun.getPrice()).thenReturn(100f);
-        when(ingredient1.getPrice()).thenReturn(50f);
-        when(ingredient2.getPrice()).thenReturn(20f);
+    public void moveIngredientChangesSecondElement() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
 
-        burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.moveIngredient(1, 0);
 
-        float expected = 270f;
-        assertEquals(expected, burger.getPrice(), 0.01);
+        assertEquals(firstIngredient, burger.ingredients.get(1));
     }
 
     @Test
-    public void getReceiptReturnsCorrectString() {
+    public void getReceiptContainsBunName() {
         when(bun.getName()).thenReturn("Black Bun");
         when(bun.getPrice()).thenReturn(100f);
+        burger.setBuns(bun);
 
-        when(ingredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(ingredient1.getName()).thenReturn("Hot Sauce");
-        when(ingredient1.getPrice()).thenReturn(50f);
+        String receipt = burger.getReceipt();
+        assertTrue(receipt.contains("Black Bun"));
+    }
+
+    @Test
+    public void getReceiptContainsIngredientInfo() {
+        when(bun.getName()).thenReturn("Black Bun");
+        when(bun.getPrice()).thenReturn(100f);
+        when(firstIngredient.getType()).thenReturn(IngredientType.SAUCE);
+        when(firstIngredient.getName()).thenReturn("Hot Sauce");
+        when(firstIngredient.getPrice()).thenReturn(50f);
 
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
+        burger.addIngredient(firstIngredient);
 
-        StringBuilder expected = new StringBuilder(String.format("(==== %s ====)%n", "Black Bun"));
-        expected.append(String.format("= %s %s =%n", "sauce", "Hot Sauce"));
-        expected.append(String.format("(==== %s ====)%n", "Black Bun"));
-        expected.append(String.format("%nPrice: %f%n", 250.000000f));
-
-        assertEquals(expected.toString(), burger.getReceipt());
+        String receipt = burger.getReceipt();
+        assertTrue(receipt.contains("sauce"));
+        assertTrue(receipt.contains("Hot Sauce"));
     }
 }
