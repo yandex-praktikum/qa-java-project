@@ -85,7 +85,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceiptContainsIngredientInfo() {
+    public void getReceiptContainsIngredientType() {
         when(bun.getName()).thenReturn("Black Bun");
         when(bun.getPrice()).thenReturn(100f);
         when(firstIngredient.getType()).thenReturn(IngredientType.SAUCE);
@@ -95,8 +95,20 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(firstIngredient);
 
-        String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("sauce"));
-        assertTrue(receipt.contains("Hot Sauce"));
+        assertTrue(burger.getReceipt().contains("sauce"));
+    }
+
+    @Test
+    public void getReceiptContainsIngredientName() {
+        when(bun.getName()).thenReturn("Black Bun");
+        when(bun.getPrice()).thenReturn(100f);
+        when(firstIngredient.getType()).thenReturn(IngredientType.SAUCE);
+        when(firstIngredient.getName()).thenReturn("Hot Sauce");
+        when(firstIngredient.getPrice()).thenReturn(50f);
+
+        burger.setBuns(bun);
+        burger.addIngredient(firstIngredient);
+
+        assertTrue(burger.getReceipt().contains("Hot Sauce"));
     }
 }
