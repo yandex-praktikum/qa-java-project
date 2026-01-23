@@ -1,5 +1,4 @@
 package praktikum;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -8,54 +7,40 @@ import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import java.util.List;
 import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static utils.Utils.getRandomBun;
 import static utils.Utils.getRandomIngredient;
-
 @ExtendWith(MockitoExtension.class)
 public class BurgerTests {
-
     @Mock
     private Bun bunMock;
-
     @Test
     void testCanSetBunsOfBurger() {
-
         Burger burger = new Burger();
         Bun bun = getRandomBun();
         burger.setBuns(bun);
-
         assertEquals(bun.getName(), burger.bun.getName());
     }
-
     @Test
     void testCanAddIngredientToBurger() {
-
         Burger burger = new Burger();
         Ingredient ingredient = getRandomIngredient();
         burger.addIngredient(ingredient);
 
         assertEquals(1, burger.ingredients.size());
     }
-
     @Test
     void testCanRemoveIngredientFromBurger() {
-
         Burger burger = new Burger();
         burger.ingredients.add(getRandomIngredient());
         burger.ingredients.add(getRandomIngredient());
         burger.removeIngredient(0);
-
         assertEquals(1, burger.ingredients.size());
     }
-
-
     @ParameterizedTest
     @CsvSource({
             "0, 1",
@@ -64,36 +49,28 @@ public class BurgerTests {
             "1, 1"
     })
     void testCanMoveIngredientInBurger(int index, int newIndex) {
-
         Burger burger = new Burger();
         burger.ingredients.add(getRandomIngredient());
         burger.ingredients.add(getRandomIngredient());
         burger.ingredients.add(getRandomIngredient());
         Ingredient moved = burger.ingredients.get(index);
         burger.moveIngredient(index, newIndex);
-
         assertEquals(moved, burger.ingredients.get(newIndex));
     }
-
     @ParameterizedTest
     @MethodSource("priceData")
     void testGetPriceReturnsTotalBurgerPrice(float bunPrice, float[] ingredientPrices, float expectedTotalPrice) {
-
         Burger burger = new Burger();
         burger.bun = bunMock;
         when(bunMock.getPrice()).thenReturn(bunPrice);
-
         for (float price : ingredientPrices) {
             Ingredient ingredientMock = mock(Ingredient.class);
             when(ingredientMock.getPrice()).thenReturn(price);
             burger.addIngredient(ingredientMock);
         }
-
         float actualPrice = burger.getPrice();
-
         assertEquals(expectedTotalPrice, actualPrice, 0.05);
     }
-
     static Stream<Arguments> priceData() {
         return Stream.of(
                 // bunPrice, ingredientPrices, expectedTotalPrice
@@ -103,7 +80,6 @@ public class BurgerTests {
                 Arguments.of(0, new float[]{0}, 0)
         );
     }
-
     @ParameterizedTest
     @MethodSource("receiptData")
     void testGetReceiptReturnsStringBuiltBurgerReceipt(
@@ -112,15 +88,12 @@ public class BurgerTests {
             List<Ingredient> ingredientList,
             String expectedReceipt
     ) {
-
         Burger burger = new Burger();
         burger.bun = bunMock;
-
-        // Замокать bun
+        // мок bun
         when(bunMock.getName()).thenReturn(bunName);
         when(bunMock.getPrice()).thenReturn(bunPrice);
-
-        // Замокать ingredient
+        // мок ingredient
         for (Ingredient i : ingredientList) {
             Ingredient ingredientMock = mock(Ingredient.class);
             when(ingredientMock.getType()).thenReturn(i.type);
@@ -128,12 +101,9 @@ public class BurgerTests {
             when(ingredientMock.getPrice()).thenReturn(i.price);
             burger.addIngredient(ingredientMock);
         }
-
         String actualReceipt = burger.getReceipt();
-
         assertEquals(expectedReceipt, actualReceipt);
     }
-
     static Stream<Arguments> receiptData() {
         return Stream.of(
                 // bunName, bunPrice, List<Ingredient>, expectedReceipt
