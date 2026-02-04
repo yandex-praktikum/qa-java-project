@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="praktikum.IngredientTest" time="0.137" tests="63" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/a.boroukhin/Project/Task_1/target/test-classes:/Users/a.boroukhin/Project/Task_1/target/classes:/Users/a.boroukhin/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/a.boroukhin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/a.boroukhin/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/Users/a.boroukhin/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/Users/a.boroukhin/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/Users/a.boroukhin/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/a.boroukhin/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/rest-assured/5.3.2/rest-assured-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy/4.0.11/groovy-4.0.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy-xml/4.0.11/groovy-xml-4.0.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/a.boroukhin/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/a.boroukhin/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/a.boroukhin/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/json-path/5.3.2/json-path-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy-json/4.0.11/groovy-json-4.0.11.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/rest-assured-common/5.3.2/rest-assured-common-5.3.2.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/xml-path/5.3.2/xml-path-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-junit4/2.21.0/allure-junit4-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-java-commons/2.21.0/allure-java-commons-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-model/2.21.0/allure-model-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-rest-assured/2.21.0/allure-rest-assured-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-attachments/2.21.0/allure-attachments-2.21.0.jar:/Users/a.boroukhin/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/a.boroukhin/.m2/repository/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar:/Users/a.boroukhin/.m2/repository/org/aspectj/aspectjrt/1.9.19/aspectjrt-1.9.19.jar:/Users/a.boroukhin/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/a.boroukhin/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar:/Users/a.boroukhin/.m2/repository/ch/qos/logback/logback-classic/1.4.11/logback-classic-1.4.11.jar:/Users/a.boroukhin/.m2/repository/ch/qos/logback/logback-core/1.4.11/logback-core-1.4.11.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/a.boroukhin/Project/Task_1/target/surefire/surefirebooter14263398382153326831.jar /Users/a.boroukhin/Project/Task_1/target/surefire 2026-01-26T23-31-31_604-jvmRun1 surefire11605571559186158114tmp surefire_09983414522700688755tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/a.boroukhin/Project/Task_1/target/test-classes:/Users/a.boroukhin/Project/Task_1/target/classes:/Users/a.boroukhin/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/a.boroukhin/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/a.boroukhin/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/Users/a.boroukhin/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/Users/a.boroukhin/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/Users/a.boroukhin/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/Users/a.boroukhin/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/rest-assured/5.3.2/rest-assured-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy/4.0.11/groovy-4.0.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy-xml/4.0.11/groovy-xml-4.0.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpclient/4.5.13/httpclient-4.5.13.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpcore/4.4.13/httpcore-4.4.13.jar:/Users/a.boroukhin/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar:/Users/a.boroukhin/.m2/repository/commons-codec/commons-codec/1.11/commons-codec-1.11.jar:/Users/a.boroukhin/.m2/repository/org/apache/httpcomponents/httpmime/4.5.13/httpmime-4.5.13.jar:/Users/a.boroukhin/.m2/repository/org/ccil/cowan/tagsoup/tagsoup/1.2.1/tagsoup-1.2.1.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/json-path/5.3.2/json-path-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/groovy/groovy-json/4.0.11/groovy-json-4.0.11.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/rest-assured-common/5.3.2/rest-assured-common-5.3.2.jar:/Users/a.boroukhin/.m2/repository/io/rest-assured/xml-path/5.3.2/xml-path-5.3.2.jar:/Users/a.boroukhin/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-junit4/2.21.0/allure-junit4-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-java-commons/2.21.0/allure-java-commons-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-model/2.21.0/allure-model-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-rest-assured/2.21.0/allure-rest-assured-2.21.0.jar:/Users/a.boroukhin/.m2/repository/io/qameta/allure/allure-attachments/2.21.0/allure-attachments-2.21.0.jar:/Users/a.boroukhin/.m2/repository/org/freemarker/freemarker/2.3.31/freemarker-2.3.31.jar:/Users/a.boroukhin/.m2/repository/org/aspectj/aspectjweaver/1.9.19/aspectjweaver-1.9.19.jar:/Users/a.boroukhin/.m2/repository/org/aspectj/aspectjrt/1.9.19/aspectjrt-1.9.19.jar:/Users/a.boroukhin/.m2/repository/com/google/code/gson/gson/2.10.1/gson-2.10.1.jar:/Users/a.boroukhin/.m2/repository/org/slf4j/slf4j-api/2.0.7/slf4j-api-2.0.7.jar:/Users/a.boroukhin/.m2/repository/ch/qos/logback/logback-classic/1.4.11/logback-classic-1.4.11.jar:/Users/a.boroukhin/.m2/repository/ch/qos/logback/logback-core/1.4.11/logback-core-1.4.11.jar:"/>
+    <property name="allure.results.directory" value="/Users/a.boroukhin/Project/Task_1/target/allure-results"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/a.boroukhin"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/a.boroukhin/Project/Task_1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/a.boroukhin/Project/Task_1/target/surefire/surefirebooter14263398382153326831.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="11.0.27+6-LTS"/>
+    <property name="user.name" value="a.boroukhin"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.7.3"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.27.6.1"/>
+    <property name="localRepository" value="/Users/a.boroukhin/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/n9/7gnxmhhj6_df6fqm4c23rfdm0000gq/T/"/>
+    <property name="java.version" value="11.0.27"/>
+    <property name="user.dir" value="/Users/a.boroukhin/Project/Task_1"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/a.boroukhin/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.27+6-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+  </properties>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testFillingIngredient[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.003"/>
+  <testcase name="testCheapIngredient[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testSauceIngredient[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Биокотлета, Type: FILLING, Price: 24]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testFillingIngredient[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0"/>
+  <testcase name="testCheapIngredient[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testSauceIngredient[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Соус Spicy-X, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testFillingIngredient[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testCheapIngredient[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testSauceIngredient[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Сыр с астероидов, Type: FILLING, Price: 4 200]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testFillingIngredient[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testCheapIngredient[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testSauceIngredient[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Флюоресцентная булка, Type: FILLING, Price: 26]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testFillingIngredient[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testCheapIngredient[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testSauceIngredient[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Минеральное масло, Type: SAUCE, Price: 867]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testFillingIngredient[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testCheapIngredient[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testSauceIngredient[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Солод, Type: SAUCE, Price: 90]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testIngredientWithZeroPrice[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientPriceIsSet[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.002"/>
+  <testcase name="testExpensiveIngredient[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testFillingIngredient[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testCheapIngredient[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0"/>
+  <testcase name="testSauceIngredient[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testDifferentIngredientsSameType[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientTypeIsSet[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+  <testcase name="testIngredientNameIsSet[Ingredient: Нутрий-рpolonium, Type: FILLING, Price: 100]" classname="praktikum.IngredientTest" time="0.001"/>
+</testsuite>
