@@ -2,6 +2,7 @@ package praktikum;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.Story;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -17,7 +18,20 @@ import static org.mockito.Mockito.*;
 @Story("Burger Tests")
 public class BurgerTest {
 
+    private static final String BUN_NAME = "Булка";
+    private static final float BUN_PRICE = 26.0f;
+
+    private static final String FILLING_NAME = "Котлета";
+    private static final IngredientType FILLING_TYPE = IngredientType.FILLING;
+    private static final float FILLING_PRICE = 24.0f;
+
+    private static final String SAUCE_NAME = "Соус";
+    private static final IngredientType SAUCE_TYPE = IngredientType.SAUCE;
+    private static final float SAUCE_PRICE = 90.0f;
+
     private Burger burger;
+
+    private AutoCloseable mocks;
 
     @Mock
     private Bun mockBun;
@@ -32,18 +46,25 @@ public class BurgerTest {
     public void setUp() {
         MockitoAnnotations.openMocks(this);
 
-        when(mockBun.getName()).thenReturn("Булка");
-        when(mockBun.getPrice()).thenReturn(26.0f);
+        when(mockBun.getName()).thenReturn(BUN_NAME );
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
 
-        when(mockIngredient1.getName()).thenReturn("Котлета");
-        when(mockIngredient1.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIngredient1.getPrice()).thenReturn(24.0f);
+        when(mockIngredient1.getName()).thenReturn(FILLING_NAME);
+        when(mockIngredient1.getType()).thenReturn(FILLING_TYPE);
+        when(mockIngredient1.getPrice()).thenReturn(FILLING_PRICE);
 
-        when(mockIngredient2.getName()).thenReturn("Соус");
-        when(mockIngredient2.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient2.getPrice()).thenReturn(90.0f);
+        when(mockIngredient2.getName()).thenReturn(SAUCE_NAME);
+        when(mockIngredient2.getType()).thenReturn(SAUCE_TYPE);
+        when(mockIngredient2.getPrice()).thenReturn(SAUCE_PRICE);
 
         burger = new Burger();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        if (mocks != null) {
+            mocks.close();
+        }
     }
 
     @Test
@@ -105,8 +126,19 @@ public class BurgerTest {
         burger.addIngredient(mockIngredient2);
 
         String receipt = burger.getReceipt();
+
         assertThat(receipt, notNullValue());
-        assertThat(receipt, containsString("Булка"));
+
+        float expectedPrice = 26.0f * 2 + 24.0f + 90.0f;
+
+        String expectedReceipt = ""
+                + String.format("(==== %s ====)%n", "Булка")
+                + String.format("= %s %s =%n", "filling", "Котлета")
+                + String.format("= %s %s =%n", "sauce", "Соус")
+                + String.format("(==== %s ====)%n", "Булка")
+                + String.format("%nPrice: %f%n", expectedPrice);
+
+        assertThat(receipt, equalTo(expectedReceipt));
     }
 
     @Test
@@ -179,8 +211,8 @@ public class BurgerTest {
         burger.addIngredient(mockIngredient1);
         burger.addIngredient(mockIngredient2);
 
-        burger.removeIngredient(0);  // ✅ Удаляем первый (mockIngredient1)
-        burger.removeIngredient(0);  // ✅ Удаляем второй (mockIngredient2 теперь на индексе 0)
+        burger.removeIngredient(0);
+        burger.removeIngredient(0);
 
         assertThat(burger.ingredients, empty());
     }
