@@ -1,0 +1,32 @@
+# Идея
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Maven (кроме нужных нам отчетов)
+target/*
+!target/site/
+!target/site/jacoco/
+!target/site/jacoco/**
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+logs/
+
+# Файлы сборки
+build/
+out/
+*.class
+
+# Пользовательские настройки
+*.suo
+*.user
+*.userprefs
