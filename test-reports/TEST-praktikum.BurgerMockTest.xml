@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerMockTest" time="1.872" tests="25" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/monika/Desktop/Diplom/Diplom_1/target/test-classes:/Users/monika/Desktop/Diplom/Diplom_1/target/classes:/Users/monika/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/monika/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/monika/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/Users/monika/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/Users/monika/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/Users/monika/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="RU"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/monika/Desktop/Diplom/Diplom_1/target/surefire/surefirebooter-20260211203534421_3.jar /Users/monika/Desktop/Diplom/Diplom_1/target/surefire 2026-02-11T20-35-33_914-jvmRun1 surefire-20260211203534421_1tmp surefire_0-20260211203534421_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/monika/Desktop/Diplom/Diplom_1/target/test-classes:/Users/monika/Desktop/Diplom/Diplom_1/target/classes:/Users/monika/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/monika/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/monika/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/Users/monika/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/Users/monika/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/Users/monika/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/monika"/>
+    <property name="user.language" value="ru"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-07-15"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/amazon-corretto-11.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/monika/Desktop/Diplom/Diplom_1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/monika/Desktop/Diplom/Diplom_1/target/surefire/surefirebooter-20260211203534421_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="11.0.28+6-LTS"/>
+    <property name="user.name" value="monika"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="12.7.6"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Corretto-11.0.28.6.1"/>
+    <property name="localRepository" value="/Users/monika/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-11/issues/"/>
+    <property name="java.io.tmpdir" value="/var/folders/ml/dgsfmk510bsbyvtbl2gd6g7r0000gn/T/"/>
+    <property name="java.version" value="11.0.28"/>
+    <property name="user.dir" value="/Users/monika/Desktop/Diplom/Diplom_1"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/monika/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="11.0.28+6-LTS"/>
+    <property name="java.specification.maintenance.version" value="3"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase name="testAddIngredientShouldAddCorrectIngredient" classname="praktikum.BurgerMockTest" time="0.32"/>
+  <testcase name="testGetReceiptShouldNotBeNull" classname="praktikum.BurgerMockTest" time="0.131"/>
+  <testcase name="testGetPriceShouldCallIngredientGetPrice" classname="praktikum.BurgerMockTest" time="0.032"/>
+  <testcase name="testGetPriceWithEmptyBurgerShouldCalculateOnlyBunPrice" classname="praktikum.BurgerMockTest" time="0.005"/>
+  <testcase name="testGetReceiptShouldContainFillingInfo" classname="praktikum.BurgerMockTest" time="0.009"/>
+  <testcase name="testRemoveIngredientShouldRemoveCorrectElement" classname="praktikum.BurgerMockTest" time="0.001"/>
+  <testcase name="testGetReceiptShouldContainPrice" classname="praktikum.BurgerMockTest" time="0.005"/>
+  <testcase name="testAddMultipleIngredientsShouldIncreaseSizeCorrespondingly" classname="praktikum.BurgerMockTest" time="0.003"/>
+  <testcase name="testMoveIngredientToSamePositionShouldNotChangeOrder" classname="praktikum.BurgerMockTest" time="0.001"/>
+  <testcase name="testAddIngredientShouldIncreaseListSize" classname="praktikum.BurgerMockTest" time="0.001"/>
+  <testcase name="testGetPriceWithOnlyBunShouldCalculateCorrectPrice" classname="praktikum.BurgerMockTest" time="0.002"/>
+  <testcase name="testGetPriceShouldCallBunGetPrice" classname="praktikum.BurgerMockTest" time="0.006"/>
+  <testcase name="testSetBunsShouldSetBunReference" classname="praktikum.BurgerMockTest" time="0.002"/>
+  <testcase name="testGetReceiptShouldContainBunInfo" classname="praktikum.BurgerMockTest" time="0.004"/>
+  <testcase name="testRemoveIngredientShouldDecreaseListSize" classname="praktikum.BurgerMockTest" time="0.002"/>
+  <testcase name="testGetReceiptShouldCallBunGetNameTwice" classname="praktikum.BurgerMockTest" time="0.004"/>
+  <testcase name="testMoveIngredientShouldMaintainListSize" classname="praktikum.BurgerMockTest" time="0.005"/>
+  <testcase name="testGetReceiptShouldContainSauceInfo" classname="praktikum.BurgerMockTest" time="0.008"/>
+  <testcase name="testMoveIngredientShouldReorderOtherIngredients" classname="praktikum.BurgerMockTest" time="0"/>
+  <testcase name="testGetReceiptShouldCallBunGetPriceOnce" classname="praktikum.BurgerMockTest" time="0.003"/>
+  <testcase name="testGetPriceShouldCalculateCorrectPriceWithBunAndIngredients" classname="praktikum.BurgerMockTest" time="0.004"/>
+  <testcase name="testGetPriceWithFreeBunShouldCalculateCorrectPrice" classname="praktikum.BurgerMockTest" time="0.006"/>
+  <testcase name="testMoveIngredientShouldChangePosition" classname="praktikum.BurgerMockTest" time="0.001"/>
+  <testcase name="testGetPriceWithNoBunShouldThrowNullPointerException" classname="praktikum.BurgerMockTest" time="0.002"/>
+  <testcase name="testRemoveIngredientWithInvalidIndexShouldThrowException" classname="praktikum.BurgerMockTest" time="0.002"/>
+</testsuite>
