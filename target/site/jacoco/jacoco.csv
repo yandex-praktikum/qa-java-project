@@ -1,0 +1,7 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+qa-java-diplom-1,praktikum,Bun,0,15,0,0,0,6,0,3,0,3
+qa-java-diplom-1,praktikum,IngredientType,0,24,0,0,0,3,0,1,0,1
+qa-java-diplom-1,praktikum,Burger,0,133,0,4,0,23,0,9,0,7
+qa-java-diplom-1,praktikum,Database,106,0,0,0,15,0,3,0,3,0
+qa-java-diplom-1,praktikum,Ingredient,0,21,0,0,0,8,0,4,0,4
+qa-java-diplom-1,praktikum,Praktikum,59,0,0,0,14,0,2,0,2,0
