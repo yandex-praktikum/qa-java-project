@@ -1,10 +1,5 @@
 package praktikum;
 
-/**
- * Модель ингредиента.
- * Ингредиент: начинка или соус.
- * У ингредиента есть тип (начинка или соус), название и цена.
- */
 public class Ingredient {
 
     public IngredientType type;
@@ -12,9 +7,15 @@ public class Ingredient {
     public float price;
 
     public Ingredient(IngredientType type, String name, float price) {
-        this.type = type;
-        this.name = name;
-        this.price = price;
+        this.type = type != null ? type : IngredientType.FILLING;
+
+        if (name == null || name.isEmpty()) {
+            this.name = "Без названия";
+        } else {
+            this.name = name;
+        }
+
+        this.price = Math.max(0, price);
     }
 
     public float getPrice() {
