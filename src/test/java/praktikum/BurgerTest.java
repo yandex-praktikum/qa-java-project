@@ -3,11 +3,7 @@ package praktikum;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.junit.MockitoJUnitRunner;
-import praktikum.*;
-import java.util.Arrays;
-import java.util.Collection;
 import static org.junit.Assert.*;
 
 @RunWith(MockitoJUnitRunner.class)

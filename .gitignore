@@ -37,3 +37,7 @@ build/
 ### Mac OS ###
 .DS_Store
 .idea/
+
+### Allure local installation ###
+.allure/
+/allure-results/
