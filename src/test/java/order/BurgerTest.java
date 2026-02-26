@@ -9,7 +9,6 @@ import praktikum.Burger;
 import praktikum.Ingredient;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
 
 public class BurgerTest {
 
@@ -26,12 +25,13 @@ public class BurgerTest {
     public void setUp() {
         burger = new Burger();
 
-        // Используем фабрику с понятными названиями методов
         bun = MockFactory.createDefaultBun();
         hotSauce = MockFactory.createHotSauce();
         cutlet = MockFactory.createCutlet();
         chiliSauce = MockFactory.createChiliSauce();
     }
+
+    //ТЕСТЫ УСТАНОВКИ БУЛОЧКИ
 
     @Test
     public void shouldSetBun() {
@@ -56,6 +56,8 @@ public class BurgerTest {
         float actualPrice = burger.bun.getPrice();
         assertEquals("Цена булочки должна совпадать", 100.0f, actualPrice, 0.001f);
     }
+
+    // ТЕСТЫ ДОБАВЛЕНИЯ ИНГРЕДИЕНТОВ
 
     @Test
     public void shouldAddIngredient() {
@@ -83,16 +85,24 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldKeepOrderWhenAddingMultipleIngredients() {
+    public void shouldKeepFirstIngredientOrder() {
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
 
         Ingredient firstIngredient = burger.ingredients.get(0);
-        Ingredient secondIngredient = burger.ingredients.get(1);
-
         assertEquals("Первый ингредиент должен быть hotSauce", hotSauce, firstIngredient);
+    }
+
+    @Test
+    public void shouldKeepSecondIngredientOrder() {
+        burger.addIngredient(hotSauce);
+        burger.addIngredient(cutlet);
+
+        Ingredient secondIngredient = burger.ingredients.get(1);
         assertEquals("Второй ингредиент должен быть cutlet", cutlet, secondIngredient);
     }
+
+    //ТЕСТЫ УДАЛЕНИЯ ИНГРЕДИЕНТОВ
 
     @Test
     public void shouldRemoveIngredientByIndex() {
@@ -107,7 +117,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldKeepCorrectOrderAfterRemoval() {
+    public void shouldKeepFirstIngredientAfterRemoval() {
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
         burger.addIngredient(chiliSauce);
@@ -115,9 +125,18 @@ public class BurgerTest {
         burger.removeIngredient(1);
 
         Ingredient firstIngredient = burger.ingredients.get(0);
-        Ingredient secondIngredient = burger.ingredients.get(1);
-
         assertEquals("Первый ингредиент должен остаться hotSauce", hotSauce, firstIngredient);
+    }
+
+    @Test
+    public void shouldKeepSecondIngredientAfterRemoval() {
+        burger.addIngredient(hotSauce);
+        burger.addIngredient(cutlet);
+        burger.addIngredient(chiliSauce);
+
+        burger.removeIngredient(1);
+
+        Ingredient secondIngredient = burger.ingredients.get(1);
         assertEquals("Второй ингредиент должен стать chiliSauce", chiliSauce, secondIngredient);
     }
 
@@ -128,8 +147,22 @@ public class BurgerTest {
         burger.removeIngredient(5);
     }
 
+    //ТЕСТЫ ПЕРЕМЕЩЕНИЯ ИНГРЕДИЕНТОВ
+
     @Test
-    public void shouldMoveIngredientToNewPosition() {
+    public void shouldMoveIngredient() {
+        burger.addIngredient(hotSauce);
+        burger.addIngredient(cutlet);
+        burger.addIngredient(chiliSauce);
+
+        burger.moveIngredient(0, 2);
+
+        int ingredientsCount = burger.ingredients.size();
+        assertEquals("Количество ингредиентов не должно измениться", 3, ingredientsCount);
+    }
+
+    @Test
+    public void shouldMoveIngredientToCorrectFirstPosition() {
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
         burger.addIngredient(chiliSauce);
@@ -141,7 +174,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldMoveIngredientToCorrectPosition() {
+    public void shouldMoveIngredientToCorrectSecondPosition() {
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
         burger.addIngredient(chiliSauce);
@@ -149,11 +182,47 @@ public class BurgerTest {
         burger.moveIngredient(0, 2);
 
         Ingredient ingredientAtSecondPosition = burger.ingredients.get(1);
-        Ingredient ingredientAtThirdPosition = burger.ingredients.get(2);
-
         assertEquals("Второй элемент должен быть chiliSauce", chiliSauce, ingredientAtSecondPosition);
+    }
+
+    @Test
+    public void shouldMoveIngredientToCorrectThirdPosition() {
+        burger.addIngredient(hotSauce);
+        burger.addIngredient(cutlet);
+        burger.addIngredient(chiliSauce);
+
+        burger.moveIngredient(0, 2);
+
+        Ingredient ingredientAtThirdPosition = burger.ingredients.get(2);
         assertEquals("Третий элемент должен быть hotSauce", hotSauce, ingredientAtThirdPosition);
     }
+
+    @Test
+    public void shouldKeepOrderWhenMovingToSamePosition() {
+        burger.addIngredient(hotSauce);
+        burger.addIngredient(cutlet);
+
+        burger.moveIngredient(0, 0);
+
+        Ingredient firstIngredient = burger.ingredients.get(0);
+        assertEquals("Первый элемент должен остаться hotSauce", hotSauce, firstIngredient);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void shouldThrowExceptionWhenMovingWithInvalidSourceIndex() {
+        burger.addIngredient(hotSauce);
+
+        burger.moveIngredient(5, 0);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void shouldThrowExceptionWhenMovingWithInvalidTargetIndex() {
+        burger.addIngredient(hotSauce);
+
+        burger.moveIngredient(0, 5);
+    }
+
+    //ТЕСТЫ РАСЧЕТА ЦЕНЫ
 
     @Test
     public void shouldCalculatePriceWithOnlyBun() {
@@ -177,7 +246,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldCalculatePriceWithBunAndMultipleIngredients() {
+    public void shouldCalculatePriceWithBunAndTwoIngredients() {
         burger.setBuns(bun);
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
@@ -187,6 +256,8 @@ public class BurgerTest {
 
         assertEquals("Цена должна включать стоимость булочки и всех ингредиентов", expectedPrice, actualPrice, 0.001f);
     }
+
+    //ТЕСТЫ ФОРМИРОВАНИЯ ЧЕКА
 
     @Test
     public void shouldGenerateReceiptWithOnlyBun() {
@@ -205,9 +276,8 @@ public class BurgerTest {
         burger.addIngredient(hotSauce);
 
         String receipt = burger.getReceipt();
-        String ingredientLine = String.format("= %s %s =%n", "sauce", "hot sauce");
-        String expected = String.format("(==== %s ====)%n%s(==== %s ====)%n%nPrice: %f%n",
-                "black bun", ingredientLine, "black bun", 250.0f);
+        String expected = String.format("(==== %s ====)%n= sauce hot sauce =%n(==== %s ====)%n%nPrice: %f%n",
+                "black bun", "black bun", 250.0f);
 
         assertEquals("Чек должен содержать ингредиент", expected, receipt);
     }
@@ -219,30 +289,27 @@ public class BurgerTest {
         burger.addIngredient(cutlet);
 
         String receipt = burger.getReceipt();
-        String firstIngredientLine = String.format("= %s %s =%n", "sauce", "hot sauce");
-        String secondIngredientLine = String.format("= filling cutlet =%n");
-        String expected = String.format("(==== %s ====)%n%s%s(==== %s ====)%n%nPrice: %f%n",
-                "black bun", firstIngredientLine, secondIngredientLine, "black bun", 400.0f);
+        String expected = String.format("(==== %s ====)%n= sauce hot sauce =%n= filling cutlet =%n(==== %s ====)%n%nPrice: %f%n",
+                "black bun", "black bun", 400.0f);
 
         assertEquals("Чек должен содержать все ингредиенты", expected, receipt);
     }
 
     @Test
-    public void shouldGenerateReceiptAfterMovingIngredients() {
+    public void shouldGenerateReceiptWithCorrectIngredientOrder() {
         burger.setBuns(bun);
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
-        burger.addIngredient(chiliSauce);
-
-        burger.moveIngredient(0, 2);
 
         String receipt = burger.getReceipt();
+        int sauceIndex = receipt.indexOf("sauce hot sauce");
+        int fillingIndex = receipt.indexOf("filling cutlet");
 
-        assertNotNull("Чек не должен быть null", receipt);
+        assertTrue("Соус должен быть раньше начинки в чеке", sauceIndex < fillingIndex);
     }
 
     @Test
-    public void shouldHaveBunInReceipt() {
+    public void shouldGenerateReceiptWithBunName() {
         burger.setBuns(bun);
 
         String receipt = burger.getReceipt();
@@ -251,13 +318,15 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldHavePriceInReceipt() {
+    public void shouldGenerateReceiptWithPriceLabel() {
         burger.setBuns(bun);
 
         String receipt = burger.getReceipt();
 
         assertTrue("Чек должен содержать Price:", receipt.contains("Price:"));
     }
+
+    //ТЕСТЫ НАЧАЛЬНОГО СОСТОЯНИЯ
 
     @Test
     public void shouldHaveEmptyIngredientListInitially() {
@@ -273,6 +342,8 @@ public class BurgerTest {
         assertNull("Булочка должна быть null при создании", actualBun);
     }
 
+    //ТЕСТЫ ГРАНИЧНЫХ СЛУЧАЕВ
+
     @Test
     public void shouldAddIngredientToEmptyBurger() {
         burger.setBuns(bun);
@@ -283,30 +354,16 @@ public class BurgerTest {
     }
 
     @Test
-    public void shouldKeepOrderWhenMovingToSamePosition() {
+    public void shouldGenerateReceiptAfterMovingIngredients() {
+        burger.setBuns(bun);
         burger.addIngredient(hotSauce);
         burger.addIngredient(cutlet);
+        burger.addIngredient(chiliSauce);
 
-        burger.moveIngredient(0, 0);
+        burger.moveIngredient(0, 2);
 
-        Ingredient firstIngredient = burger.ingredients.get(0);
-        Ingredient secondIngredient = burger.ingredients.get(1);
+        String receipt = burger.getReceipt();
 
-        assertEquals("Первый элемент должен остаться hotSauce", hotSauce, firstIngredient);
-        assertEquals("Второй элемент должен остаться cutlet", cutlet, secondIngredient);
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void shouldThrowExceptionWhenMovingWithInvalidSourceIndex() {
-        burger.addIngredient(hotSauce);
-
-        burger.moveIngredient(5, 0);
-    }
-
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void shouldThrowExceptionWhenMovingWithInvalidTargetIndex() {
-        burger.addIngredient(hotSauce);
-
-        burger.moveIngredient(0, 5);
+        assertNotNull("Чек не должен быть null", receipt);
     }
 }
