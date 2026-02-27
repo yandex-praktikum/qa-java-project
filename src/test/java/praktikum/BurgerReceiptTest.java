@@ -3,11 +3,13 @@ package praktikum;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mockito;
 
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
 public class BurgerReceiptTest {
@@ -38,8 +40,10 @@ public class BurgerReceiptTest {
     }
 
     @Test
-    public void testGetReceipt_ReturnsCorrectReceipt() {
-        Bun bun = new Bun(bunName, bunPrice);
+    public void shouldReturnCorrectReceiptWithIngredientsProvided() {
+        Bun bun = Mockito.mock(Bun.class);
+        when(bun.getName()).thenReturn(bunName);
+        when(bun.getPrice()).thenReturn(bunPrice);
         Burger burger = new Burger();
         burger.setBuns(bun);
         for (Ingredient ingredient : ingredients) {

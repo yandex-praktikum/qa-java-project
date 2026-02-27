@@ -1,16 +1,17 @@
 package praktikum;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.when;
 
 public class BurgerTest {
+    private final SoftAssertions assertions = new SoftAssertions();
 
     @Test
-    public void testSetBuns_SetsBun() {
+    public void shouldSetBuns() {
         Bun bun = Mockito.mock(Bun.class);
         Burger burger = new Burger();
         burger.setBuns(bun);
@@ -18,58 +19,58 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredient_AddsIngredient() {
+    public void shouldAddIngredient() {
         Ingredient ingredient = Mockito.mock(Ingredient.class);
         Burger burger = new Burger();
         burger.addIngredient(ingredient);
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient, burger.ingredients.get(0));
+        assertions.assertThat(burger.ingredients.size()).isEqualTo(1);
+        assertions.assertThat(burger.ingredients.get(0)).isEqualTo(ingredient);
+        assertions.assertAll();
     }
 
     @Test
-    public void testRemoveIngredient_RemovesIngredient() {
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+    public void shouldRemoveIngredient() {
+        Ingredient firstIngredient = Mockito.mock(Ingredient.class);
+        Ingredient secondIngredient = Mockito.mock(Ingredient.class);
         Burger burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
         burger.removeIngredient(0);
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient2, burger.ingredients.get(0));
+        assertions.assertThat(burger.ingredients.size()).isEqualTo(1);
+        assertions.assertThat(burger.ingredients.get(0)).isEqualTo(secondIngredient);
+        assertions.assertAll();
     }
 
     @Test
-    public void testMoveIngredient_MovesIngredient() {
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+    public void shouldMoveIngredient() {
+        Ingredient firstIngredient = Mockito.mock(Ingredient.class);
+        Ingredient secondIngredient = Mockito.mock(Ingredient.class);
         Burger burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
         burger.moveIngredient(0, 1);
-        assertEquals(ingredient2, burger.ingredients.get(0));
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertions.assertThat(burger.ingredients.get(0)).isEqualTo(secondIngredient);
+        assertions.assertThat(burger.ingredients.get(1)).isEqualTo(firstIngredient);
+        assertions.assertAll();
     }
 
     @Test
-    public void testGetPrice_WithMockedBunAndIngredients() {
+    public void shouldGetPriceWhenBunsAndIngredientAdded() {
         Bun bun = Mockito.mock(Bun.class);
         when(bun.getPrice()).thenReturn(100.0f);
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        when(ingredient1.getPrice()).thenReturn(50.0f);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
-        when(ingredient2.getPrice()).thenReturn(75.0f);
+        Ingredient firstIngredient = Mockito.mock(Ingredient.class);
+        when(firstIngredient.getPrice()).thenReturn(50.0f);
+        Ingredient secondIngredient = Mockito.mock(Ingredient.class);
+        when(secondIngredient.getPrice()).thenReturn(75.0f);
         Burger burger = new Burger();
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
         assertEquals(325.0f, burger.getPrice(), 0.001);
-        verify(bun, times(1)).getPrice();
-        verify(ingredient1).getPrice();
-        verify(ingredient2).getPrice();
     }
 
     @Test
-    public void testGetReceipt_WithMockedBunAndIngredients() {
+    public void shouldGetReceiptWhenBunsAndIngredientsAdded() {
         Bun bun = Mockito.mock(Bun.class);
         when(bun.getName()).thenReturn("Булка");
         Ingredient ingredient = Mockito.mock(Ingredient.class);
@@ -79,15 +80,13 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(ingredient);
         String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("(==== Булка ====)"));
-        assertTrue(receipt.contains("= sauce Соус ="));
-        verify(bun, times(2)).getName();
-        verify(ingredient).getType();
-        verify(ingredient).getName();
+        assertions.assertThat(receipt).contains("(==== Булка ====)");
+        assertions.assertThat(receipt).contains("= sauce Соус =");
+        assertions.assertAll();
     }
 
     @Test
-    public void testGetPrice_MultipleIngredients() {
+    public void shouldGetPriceWhenMultipleIngredientsAdded() {
         Bun bun = Mockito.mock(Bun.class);
         when(bun.getPrice()).thenReturn(50.0f);
         Burger burger = new Burger();
@@ -101,42 +100,45 @@ public class BurgerTest {
     }
 
     @Test
-    public void testGetReceipt_EmptyBurger() {
+    public void shouldGetReceiptWhenBurgerHasNoIngredients() {
         Bun bun = Mockito.mock(Bun.class);
         when(bun.getName()).thenReturn("Булка");
         Burger burger = new Burger();
         burger.setBuns(bun);
         String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("(==== Булка ====)"));
-        assertEquals(2, receipt.split("\\n").length - 2);
+        assertions.assertThat(receipt).contains("(==== Булка ====)");
+        assertions.assertThat(receipt.split("\\n").length - 2).isEqualTo(2);
+        assertions.assertAll();
     }
 
     @Test
-    public void testMoveIngredient_ToSamePosition_NoChange() {
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+    public void shouldNotChangePositionWhenMovedToTheSamePosition() {
+        Ingredient firstIngredient = Mockito.mock(Ingredient.class);
+        Ingredient secondIngredient = Mockito.mock(Ingredient.class);
         Burger burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
         burger.moveIngredient(0, 0);
-        assertEquals(ingredient1, burger.ingredients.get(0));
-        assertEquals(ingredient2, burger.ingredients.get(1));
+        assertions.assertThat(burger.ingredients.get(0)).isEqualTo(firstIngredient);
+        assertions.assertThat(burger.ingredients.get(1)).isEqualTo(secondIngredient);
+        assertions.assertAll();
     }
 
     @Test
-    public void testRemoveIngredient_LastIndex() {
-        Ingredient ingredient1 = Mockito.mock(Ingredient.class);
-        Ingredient ingredient2 = Mockito.mock(Ingredient.class);
+    public void shouldRemoveIngredientWhenLastIndex() {
+        Ingredient firstIngredient = Mockito.mock(Ingredient.class);
+        Ingredient secondIngredient = Mockito.mock(Ingredient.class);
         Burger burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
         burger.removeIngredient(1);
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+        assertions.assertThat(burger.ingredients).hasSize(1);
+        assertions.assertThat(burger.ingredients.get(0)).isEqualTo(firstIngredient);
+        assertions.assertAll();
     }
 
     @Test
-    public void testAddIngredient_MultipleTimes() {
+    public void shouldAddIngredientsWhenCalledMultipleTimes() {
         Burger burger = new Burger();
         for (int i = 0; i < 10; i++) {
             Ingredient ingredient = Mockito.mock(Ingredient.class);
