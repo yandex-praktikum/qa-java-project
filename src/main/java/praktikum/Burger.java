@@ -11,11 +11,15 @@ import java.util.List;
  */
 public class Burger {
 
-    public Bun bun;
-    public List<Ingredient> ingredients = new ArrayList<>();
+    private Bun bun;
+    private List<Ingredient> ingredients = new ArrayList<>();
 
     public void setBuns(Bun bun) {
         this.bun = bun;
+    }
+
+    public Bun getBuns() {
+        return bun;
     }
 
     public void addIngredient(Ingredient ingredient) {
@@ -53,5 +57,4 @@ public class Burger {
 
         return receipt.toString();
     }
-
 }

@@ -1,0 +1,28 @@
+# Игнорируем временные и системные файлы IDE
+/.idea/
+/*.iml
+/workspace.xml
+/misc.xml
+/modules.xml
+/vcs.xml
+
+# Maven target (сборка) — но исключаем Jacoco
+/target/
+!target/site/jacoco/
+
+# Сборка и временные файлы
+*.class
+*.log
+*.tmp
+*.bak
+
+# HTTP-клиент IDE
+/httpRequests/
+
+# Локальные файлы источников данных
+/dataSources/
+/dataSources.local.xml
+
+# Системные файлы Windows
+Thumbs.db
+.DS_Store

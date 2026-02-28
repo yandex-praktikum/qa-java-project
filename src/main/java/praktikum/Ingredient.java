@@ -7,9 +7,9 @@ package praktikum;
  */
 public class Ingredient {
 
-    public IngredientType type;
-    public String name;
-    public float price;
+    private IngredientType type;
+    private String name;
+    private float price;
 
     public Ingredient(IngredientType type, String name, float price) {
         this.type = type;
@@ -28,5 +28,4 @@ public class Ingredient {
     public IngredientType getType() {
         return type;
     }
-
 }

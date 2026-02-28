@@ -32,5 +32,4 @@ public class Database {
     public List<Ingredient> availableIngredients() {
         return ingredients;
     }
-
 }
