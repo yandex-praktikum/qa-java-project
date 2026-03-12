@@ -71,7 +71,7 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Проверка запроса цены бургера")
+    @DisplayName("Проверка возвращения цены бургера")
     public void getPriceWithMock() {
         when(mockBun.getPrice()).thenReturn(50.0f);
         when(mockIngredient1.getPrice()).thenReturn(15.0f);
