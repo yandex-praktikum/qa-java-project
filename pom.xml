@@ -17,6 +17,8 @@
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
         <jacoco.plugin.version>0.8.14</jacoco.plugin.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
     <dependencies>
@@ -62,6 +64,7 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -69,7 +72,8 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <argLine>-javaagent:${settings.localRepository}\net\bytebuddy\byte-buddy-agent\${bytebuddy.version}\byte-buddy-agent-${bytebuddy.version}.jar -Xshare:off</argLine>
+                    <argLine>@{argLine} -javaagent:${settings.localRepository}\net\bytebuddy\byte-buddy-agent\${bytebuddy.version}\byte-buddy-agent-${bytebuddy.version}.jar -Xshare:off</argLine>
+                    <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
@@ -79,14 +83,14 @@
                 <executions>
                     <execution>
                         <id>prepare-agent</id>
-                        <phase>initialize</phase>
+                        <phase>process-test-classes</phase>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
-                        <id>report</id>
-                        <phase>verify</phase>
+                        <id>generate-report</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
