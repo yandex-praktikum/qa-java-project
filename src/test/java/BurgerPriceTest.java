@@ -30,7 +30,7 @@ public class BurgerPriceTest {
         this.expectedPrice = expectedPrice;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "Тестовые данные: bunPrice={0}, ingredientPrice={1}, expectedPrice={2}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {100f, 50f, 250f},

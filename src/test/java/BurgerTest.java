@@ -4,18 +4,17 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import praktikum.*;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
 
 public class BurgerTest {
 
     private Burger burger;
 
     @Mock
-    private Ingredient ingredient1;
+    private Ingredient firstIngredient;
 
     @Mock
-    private Ingredient ingredient2;
+    private Ingredient secondIngredient;
 
     @Before
     public void setUp() {
@@ -26,35 +25,52 @@ public class BurgerTest {
     @Test
     public void setBunsTest() {
         Bun bun = new Bun("black bun", 100);
+
         burger.setBuns(bun);
 
         assertEquals(bun, burger.bun);
     }
 
     @Test
-    public void addIngredientTest() {
-        burger.addIngredient(ingredient1);
+    public void addIngredientIncreasesIngredientsSizeTest() {
+        burger.addIngredient(firstIngredient);
 
         assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void addIngredientAddsCorrectIngredientTest() {
+        burger.addIngredient(firstIngredient);
+
+        assertEquals(firstIngredient, burger.ingredients.get(0));
     }
 
     @Test
     public void removeIngredientTest() {
-        burger.addIngredient(ingredient1);
+        burger.addIngredient(firstIngredient);
+
         burger.removeIngredient(0);
 
         assertEquals(0, burger.ingredients.size());
     }
 
     @Test
-    public void moveIngredientTest() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+    public void moveIngredientChangesFirstPositionTest() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
 
         burger.moveIngredient(0, 1);
 
-        assertEquals(ingredient2, burger.ingredients.get(0));
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertEquals(secondIngredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void moveIngredientChangesSecondPositionTest() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+
+        burger.moveIngredient(0, 1);
+
+        assertEquals(firstIngredient, burger.ingredients.get(1));
     }
 }

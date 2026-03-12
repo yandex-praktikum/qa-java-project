@@ -4,7 +4,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import praktikum.*;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
 public class BurgerReceiptTest {
@@ -30,11 +30,22 @@ public class BurgerReceiptTest {
 
     @Test
     public void getReceiptTest() {
-        String receipt = burger.getReceipt();
 
-        assertTrue(receipt.contains("white bun"));
-        assertTrue(receipt.contains("filling cutlet"));
-        assertTrue(receipt.contains("Price:"));
-        assertTrue(receipt.contains("250"));
+        String expectedReceipt = String.format(
+                "(==== %s ====)%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n" +
+                        "%n" +
+                        "Price: %f%n",
+                "white bun",
+                "filling",
+                "cutlet",
+                "white bun",
+                250f
+        );
+
+        String actualReceipt = burger.getReceipt();
+
+        assertEquals(expectedReceipt, actualReceipt);
     }
 }
