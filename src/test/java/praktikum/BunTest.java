@@ -5,7 +5,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
-    private Bun bun;
 
     public static Object[][] data() {
         return new Object[][]{
@@ -20,14 +19,14 @@ public class BunTest {
     @ParameterizedTest
     @MethodSource("data")
     public void getNameTest(String name, float price) {
-        bun = new Bun(name, price);
+        Bun bun = new Bun(name, price);
         assertEquals(name, bun.getName(), "Ожидается, что вернется название булки: " + name);
     }
 
     @ParameterizedTest
     @MethodSource("data")
     public void getPriceTest(String name, float price) {
-        bun = new Bun(name, price);
+        Bun bun = new Bun(name, price);
         assertEquals(price, bun.getPrice(), "Ожидается, что вернется цена: " + price);
     }
 }
