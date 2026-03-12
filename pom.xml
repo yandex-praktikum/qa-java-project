@@ -13,7 +13,7 @@
         <maven.compiler.target>11</maven.compiler.target>
         <junit.version>5.14.2</junit.version>
         <mockito.version>5.21.0</mockito.version>
-        <byte.buddy.version>1.18.3</byte.buddy.version>
+        <bytebuddy.version>1.17.7</bytebuddy.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
         <jacoco.plugin.version>0.8.14</jacoco.plugin.version>
@@ -65,8 +65,12 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
+                <configuration>
+                    <argLine>-javaagent:${settings.localRepository}\net\bytebuddy\byte-buddy-agent\${bytebuddy.version}\byte-buddy-agent-${bytebuddy.version}.jar</argLine>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
