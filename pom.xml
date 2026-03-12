@@ -69,7 +69,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
-                    <argLine>-javaagent:${settings.localRepository}\net\bytebuddy\byte-buddy-agent\${bytebuddy.version}\byte-buddy-agent-${bytebuddy.version}.jar</argLine>
+                    <argLine>-javaagent:${settings.localRepository}\net\bytebuddy\byte-buddy-agent\${bytebuddy.version}\byte-buddy-agent-${bytebuddy.version}.jar -Xshare:off</argLine>
                 </configuration>
             </plugin>
             <plugin>
