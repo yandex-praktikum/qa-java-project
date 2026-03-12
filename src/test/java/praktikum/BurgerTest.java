@@ -28,8 +28,6 @@ public class BurgerTest {
 
     @AfterEach
     public void tearDown() {
-        burger.bun = null;
-        burger.ingredients.clear();
         burger = null;
     }
 

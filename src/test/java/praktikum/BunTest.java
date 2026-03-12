@@ -1,6 +1,5 @@
 package praktikum;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,13 +15,6 @@ public class BunTest {
                 {"", 80},
                 {"fg&!!", 10}
         };
-    }
-
-    @AfterEach
-    public void tearDown() {
-        bun.name = null;
-        bun.price = 0;
-        bun = null;
     }
 
     @ParameterizedTest
