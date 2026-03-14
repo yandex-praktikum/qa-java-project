@@ -1,18 +1,19 @@
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import praktikum.IngredientType;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
+
 
 public class IngredientTypeTest {
 
     @Test
-    void sauceTypeTest() {
+    public void sauceTypeTest() {
 
         assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
     }
 
     @Test
-    void fillingTypeTest() {
+    public void fillingTypeTest() {
 
         assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
     }
