@@ -1,9 +1,6 @@
 package praktikum;
 
-/**
- * Модель булочки для бургера.
- * Булочке можно дать название и назначить цену.
- */
+// Модель булочки для бургера. Булочке можно дать название и назначить цену
 public class Bun {
 
     public String name;
@@ -21,5 +18,4 @@ public class Bun {
     public float getPrice() {
         return price;
     }
-
 }
