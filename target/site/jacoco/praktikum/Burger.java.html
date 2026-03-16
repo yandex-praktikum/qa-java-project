@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Burger.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">stellar-burgers-tests</a> &gt; <a href="index.source.html" class="el_package">praktikum</a> &gt; <span class="el_source">Burger.java</span></div><h1>Burger.java</h1><pre class="source lang-java linenums">package praktikum;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Основной класс Burger, описывающий структуру бургера и действия с ним.
+ * Модель бургера.
+ * Бургер состоит из булочек и ингредиентов (начинка или соус).
+ * Ингредиенты можно перемещать и удалять.
+ * Можно распечатать чек с информацией о бургере.
+ */
+<span class="fc" id="L13">public class Burger {</span>
+
+    /**
+     * Поле для хранения булочки.
+     * В этой модели предполагается, что булка сверху и снизу одинаковая.
+     */
+    public Bun bun;
+
+    /**
+     * Список ингредиентов (начинки и соусы).
+     * Используется ArrayList, так как нам важен порядок ингредиентов.
+     */
+<span class="fc" id="L25">    public List&lt;Ingredient&gt; ingredients = new ArrayList&lt;&gt;();</span>
+
+    /**
+     * Устанавливает булки для бургера.
+     * В JUnit тестах это будет один из первых шагов сборки (Arrange/Given).
+     */
+    public void setBuns(Bun bun) {
+<span class="fc" id="L32">        this.bun = bun;</span>
+<span class="fc" id="L33">    }</span>
+
+    // Добавляет ингредиент в список
+    public void addIngredient(Ingredient ingredient) {
+<span class="fc" id="L37">        ingredients.add(ingredient);</span>
+<span class="fc" id="L38">    }</span>
+
+    /**
+     * Удаляет ингредиент по его индексу в списке.
+     * При тестировании важно проверять граничные значения индексов.
+     */
+    public void removeIngredient(int index) {
+<span class="fc" id="L45">        ingredients.remove(index);</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Перемещает ингредиент в списке.
+     * Сначала метод удаляет объект по старому индексу (remove возвращает удаленный объект),
+     * а затем сразу вставляет его по новому индексу.
+     */
+    public void moveIngredient(int index, int newIndex) {
+<span class="fc" id="L54">        ingredients.add(newIndex, ingredients.remove(index));</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * Рассчитывает итоговую стоимость бургера.
+     * Логика: (Цена булки * 2) + Сумма всех ингредиентов.
+     * Это критически важный метод для Unit-тестирования.
+     */
+    public float getPrice() {
+<span class="fc" id="L63">        float price = bun.getPrice() * 2;</span>
+
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        for (Ingredient ingredient : ingredients) {</span>
+<span class="fc" id="L66">            price += ingredient.getPrice();</span>
+<span class="fc" id="L67">        }</span>
+
+<span class="fc" id="L69">        return price;</span>
+    }
+
+    /**
+     * Генерирует текстовый чек.
+     * Использует StringBuilder для эффективной работы со строками в цикле.
+     * Форматирует вывод: название булки в скобках, тип ингредиента в нижнем регистре.
+     */
+    public String getReceipt() {
+<span class="fc" id="L78">        StringBuilder receipt = new StringBuilder(String.format(&quot;(==== %s ====)%n&quot;, bun.getName()));</span>
+
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        for (Ingredient ingredient : ingredients) {</span>
+            // Приведение типа ингредиента к нижнему регистру (toLowerCase)
+<span class="fc" id="L82">            receipt.append(String.format(&quot;= %s %s =%n&quot;, ingredient.getType().toString().toLowerCase(),</span>
+<span class="fc" id="L83">                    ingredient.getName()));</span>
+<span class="fc" id="L84">        }</span>
+
+        // Закрываем чек названием нижней булки
+<span class="fc" id="L87">        receipt.append(String.format(&quot;(==== %s ====)%n&quot;, bun.getName()));</span>
+        // Выводим итоговую цену. %f — формат для float (число с плавающей точкой)
+<span class="fc" id="L89">        receipt.append(String.format(&quot;%nPrice: %f%n&quot;, getPrice()));</span>
+
+        // Превращаем накопленные данные в финальную строку
+<span class="fc" id="L92">        return receipt.toString();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
