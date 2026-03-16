@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerTest" time="0.26" tests="6" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="24"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/gensitsky/IdeaProjects/Task_1/target/test-classes:/Users/gensitsky/IdeaProjects/Task_1/target/classes:/Users/gensitsky/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/gensitsky/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/gensitsky/.m2/repository/org/mockito/mockito-core/3.12.4/mockito-core-3.12.4.jar:/Users/gensitsky/.m2/repository/net/bytebuddy/byte-buddy/1.11.13/byte-buddy-1.11.13.jar:/Users/gensitsky/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.13/byte-buddy-agent-1.11.13.jar:/Users/gensitsky/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
+    <property name="java.vm.vendor" value="Homebrew"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="java.vm.specification.version" value="24"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="IL"/>
+    <property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/gensitsky/IdeaProjects/Task_1/target/surefire/surefirebooter-20260127220413094_3.jar /Users/gensitsky/IdeaProjects/Task_1/target/surefire 2026-01-27T22-04-13_002-jvmRun1 surefire-20260127220413094_1tmp surefire_0-20260127220413094_2tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="/Users/gensitsky/IdeaProjects/Task_1/target/test-classes:/Users/gensitsky/IdeaProjects/Task_1/target/classes:/Users/gensitsky/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/Users/gensitsky/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/gensitsky/.m2/repository/org/mockito/mockito-core/3.12.4/mockito-core-3.12.4.jar:/Users/gensitsky/.m2/repository/net/bytebuddy/byte-buddy/1.11.13/byte-buddy-1.11.13.jar:/Users/gensitsky/.m2/repository/net/bytebuddy/byte-buddy-agent/1.11.13/byte-buddy-agent-1.11.13.jar:/Users/gensitsky/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/gensitsky"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="/opt/homebrew/Cellar/openjdk/24.0.1/libexec/openjdk.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/gensitsky/IdeaProjects/Task_1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="apple.awt.application.name" value="ForkedBooter"/>
+    <property name="surefire.real.class.path" value="/Users/gensitsky/IdeaProjects/Task_1/target/surefire/surefirebooter-20260127220413094_3.jar"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="24.0.1"/>
+    <property name="user.name" value="gensitsky"/>
+    <property name="stdout.encoding" value="UTF-8"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="15.5"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="Homebrew"/>
+    <property name="localRepository" value="/Users/gensitsky/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/mx/d4vsknmn3mlck96c4lkyrjzh0000gn/T/"/>
+    <property name="java.version" value="24.0.1"/>
+    <property name="user.dir" value="/Users/gensitsky/IdeaProjects/Task_1"/>
+    <property name="os.arch" value="aarch64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="native.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/Users/gensitsky/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="UTF-8"/>
+    <property name="java.vendor" value="Homebrew"/>
+    <property name="java.vm.version" value="24.0.1"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.class.version" value="68.0"/>
+  </properties>
+  <testcase name="addIngredientShouldAddIngredient" classname="praktikum.BurgerTest" time="0.257">
+    <system-err><![CDATA[java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.util.cldr.CLDRLocaleProviderAdapter.<init>(CLDRLocaleProviderAdapter.java:75)
+	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:483)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.forType(LocaleProviderAdapter.java:181)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.findAdapter(LocaleProviderAdapter.java:280)
+	at java.base/sun.util.locale.provider.LocaleProviderAdapter.getAdapter(LocaleProviderAdapter.java:251)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:181)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4468)
+	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:188)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.lambda$mockClass$0(TypeCachingBytecodeGenerator.java:47)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:153)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:366)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:175)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:377)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:40)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:77)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:43)
+	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:43)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:53)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:84)
+	at org.mockito.Mockito.mock(Mockito.java:1964)
+	at org.mockito.Mockito.mock(Mockito.java:1879)
+	at praktikum.BurgerTest.setUp(BurgerTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/cldr/provider/CLDRLocaleDataMetaInfo with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 75 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 76 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at java.base/java.util.ServiceLoader.loadProvider(ServiceLoader.java:755)
+	at java.base/java.util.ServiceLoader$ModuleServicesLookupIterator.hasNext(ServiceLoader.java:955)
+	at java.base/java.util.ServiceLoader$1.hasNext(ServiceLoader.java:1164)
+	at java.base/java.util.ServiceLoader$2.hasNext(ServiceLoader.java:1246)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:261)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:158)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4468)
+	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:188)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.lambda$mockClass$0(TypeCachingBytecodeGenerator.java:47)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:153)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:366)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:175)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:377)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:40)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:77)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:43)
+	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:43)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:53)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:84)
+	at org.mockito.Mockito.mock(Mockito.java:1964)
+	at org.mockito.Mockito.mock(Mockito.java:1879)
+	at praktikum.BurgerTest.setUp(BurgerTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+Caused by: java.io.IOException: Error while instrumenting sun/util/resources/provider/LocaleDataProvider with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 79 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 80 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_001 with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:53)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:39)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:158)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4468)
+	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:188)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.lambda$mockClass$0(TypeCachingBytecodeGenerator.java:47)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:153)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:366)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:175)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:377)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:40)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:77)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:43)
+	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:43)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:53)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:84)
+	at org.mockito.Mockito.mock(Mockito.java:1964)
+	at org.mockito.Mockito.mock(Mockito.java:1879)
+	at praktikum.BurgerTest.setUp(BurgerTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_001 with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 77 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 78 more
+java.lang.instrument.IllegalClassFormatException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_IL with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:94)
+	at java.instrument/java.lang.instrument.ClassFileTransformer.transform(ClassFileTransformer.java:257)
+	at java.instrument/sun.instrument.TransformerManager.transform(TransformerManager.java:188)
+	at java.instrument/sun.instrument.InstrumentationImpl.transform(InstrumentationImpl.java:594)
+	at java.base/java.lang.ClassLoader.defineClass2(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1052)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:164)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:735)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassInModuleOrNull(BuiltinClassLoader.java:678)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClass(BuiltinClassLoader.java:560)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:602)
+	at java.base/java.lang.Class.forName(Class.java:595)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.loadResourceBundle(LocaleDataProvider.java:53)
+	at jdk.localedata/sun.util.resources.provider.LocaleDataProvider.getBundle(LocaleDataProvider.java:39)
+	at java.base/sun.util.resources.Bundles.loadBundleFromProviders(Bundles.java:264)
+	at java.base/sun.util.resources.Bundles.findBundleOf(Bundles.java:199)
+	at java.base/sun.util.resources.Bundles.loadBundleOf(Bundles.java:143)
+	at java.base/sun.util.resources.Bundles.of(Bundles.java:104)
+	at java.base/sun.util.resources.LocaleData.getBundle(LocaleData.java:179)
+	at java.base/sun.util.resources.LocaleData.getNumberFormatData(LocaleData.java:175)
+	at java.base/sun.util.locale.provider.LocaleResources.getDecimalFormatSymbolsData(LocaleResources.java:223)
+	at java.base/java.text.DecimalFormatSymbols.initialize(DecimalFormatSymbols.java:829)
+	at java.base/java.text.DecimalFormatSymbols.<init>(DecimalFormatSymbols.java:115)
+	at java.base/sun.util.locale.provider.DecimalFormatSymbolsProviderImpl.getInstance(DecimalFormatSymbolsProviderImpl.java:85)
+	at java.base/java.text.DecimalFormatSymbols.getInstance(DecimalFormatSymbols.java:183)
+	at java.base/java.util.Formatter.getDecimalFormatSymbols(Formatter.java:2031)
+	at java.base/java.util.Formatter.getZero(Formatter.java:2039)
+	at java.base/java.util.Formatter$FormatSpecifier.localizedMagnitude(Formatter.java:4678)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3511)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3496)
+	at java.base/java.util.Formatter$FormatSpecifier.printInteger(Formatter.java:3194)
+	at java.base/java.util.Formatter$FormatSpecifier.print(Formatter.java:3155)
+	at java.base/java.util.Formatter.format(Formatter.java:2761)
+	at java.base/java.util.Formatter.format(Formatter.java:2698)
+	at java.base/java.lang.String.format(String.java:4468)
+	at org.mockito.internal.creation.bytebuddy.SubclassBytecodeGenerator.mockClass(SubclassBytecodeGenerator.java:188)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.lambda$mockClass$0(TypeCachingBytecodeGenerator.java:47)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:153)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:366)
+	at net.bytebuddy.TypeCache.findOrInsert(TypeCache.java:175)
+	at net.bytebuddy.TypeCache$WithInlineExpunction.findOrInsert(TypeCache.java:377)
+	at org.mockito.internal.creation.bytebuddy.TypeCachingBytecodeGenerator.mockClass(TypeCachingBytecodeGenerator.java:40)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMockType(SubclassByteBuddyMockMaker.java:77)
+	at org.mockito.internal.creation.bytebuddy.SubclassByteBuddyMockMaker.createMock(SubclassByteBuddyMockMaker.java:43)
+	at org.mockito.internal.creation.bytebuddy.ByteBuddyMockMaker.createMock(ByteBuddyMockMaker.java:43)
+	at org.mockito.internal.util.MockUtil.createMock(MockUtil.java:53)
+	at org.mockito.internal.MockitoCore.mock(MockitoCore.java:84)
+	at org.mockito.Mockito.mock(Mockito.java:1964)
+	at org.mockito.Mockito.mock(Mockito.java:1879)
+	at praktikum.BurgerTest.setUp(BurgerTest.java:25)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:59)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:56)
+	at org.junit.internal.runners.statements.RunBefores.invokeMethod(RunBefores.java:33)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.BlockJUnit4ClassRunner$1.evaluate(BlockJUnit4ClassRunner.java:100)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:366)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:103)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:63)
+	at org.junit.runners.ParentRunner$4.run(ParentRunner.java:331)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:79)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:329)
+	at org.junit.runners.ParentRunner.access$100(ParentRunner.java:66)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:293)
+	at org.junit.runners.ParentRunner$3.evaluate(ParentRunner.java:306)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:413)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:377)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeWithRerun(JUnit4Provider.java:284)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:248)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:167)
+	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:456)
+	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:169)
+	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:595)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:581)
+Caused by: java.io.IOException: Error while instrumenting sun/text/resources/cldr/ext/FormatData_en_IL with JaCoCo 0.8.8.202204050719/5dcf34a.
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrumentError(Instrumenter.java:161)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:111)
+	at org.jacoco.agent.rt.internal_b6258fc.CoverageTransformer.transform(CoverageTransformer.java:92)
+	... 76 more
+Caused by: java.lang.IllegalArgumentException: Unsupported class file major version 68
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:199)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:180)
+	at org.jacoco.agent.rt.internal_b6258fc.asm.ClassReader.<init>(ClassReader.java:166)
+	at org.jacoco.agent.rt.internal_b6258fc.core.internal.instr.InstrSupport.classReaderFor(InstrSupport.java:280)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:77)
+	at org.jacoco.agent.rt.internal_b6258fc.core.instr.Instrumenter.instrument(Instrumenter.java:109)
+	... 77 more
+]]></system-err>
+  </testcase>
+  <testcase name="getPriceShouldReturnCorrectPrice" classname="praktikum.BurgerTest" time="0"/>
+  <testcase name="setBunsShouldSetBun" classname="praktikum.BurgerTest" time="0"/>
+  <testcase name="getReceiptShouldContainBunIngredientAndTotalPrice" classname="praktikum.BurgerTest" time="0"/>
+  <testcase name="removeIngredientShouldRemoveIngredientByIndex" classname="praktikum.BurgerTest" time="0"/>
+  <testcase name="moveIngredientShouldChangeIngredientsOrder" classname="praktikum.BurgerTest" time="0.001"/>
+</testsuite>
