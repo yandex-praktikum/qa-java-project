@@ -1,0 +1,12 @@
+target/
+*.class
+
+.idea/
+*.iml
+out/
+gen/
+
+.DS_Store
+Thumbs.db
+
+.allure/
