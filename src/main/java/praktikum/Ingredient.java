@@ -16,7 +16,6 @@ public class Ingredient {
         this.name = name;
         this.price = price;
     }
-
     public float getPrice() {
         return price;
     }

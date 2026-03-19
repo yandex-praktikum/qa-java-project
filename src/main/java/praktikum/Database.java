@@ -24,7 +24,6 @@ public class Database {
         ingredients.add(new Ingredient(IngredientType.FILLING, "dinosaur", 200));
         ingredients.add(new Ingredient(IngredientType.FILLING, "sausage", 300));
     }
-
     public List<Bun> availableBuns() {
         return buns;
     }
