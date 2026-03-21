@@ -1,0 +1,42 @@
+# Compiled files
+*.class
+
+# Build folders
+target/*
+!target/site/
+target/site/*
+!target/site/jacoco/
+build/
+out/
+
+# IDE files
+.idea/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+.factorypath
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Test reports
+test-output/
+allure-results/
+allure-report/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Maven
+dependency-reduced-pom.xml
+
+# Backup files
+*~
+*.bak
