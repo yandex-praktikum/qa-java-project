@@ -1,0 +1,7 @@
+target/
+!target/site/jacoco/
+
+*.class
+.idea/
+*.iml
+.DS_Store
