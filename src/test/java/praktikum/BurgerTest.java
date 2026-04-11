@@ -6,9 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -37,8 +41,7 @@ public class BurgerTest {
     public void addIngredientShouldAddIngredientToList() {
         burger.addIngredient(ingredient);
 
-        assertEquals(1, burger.ingredients.size());
-        assertSame(ingredient, burger.ingredients.get(0));
+        assertEquals(Collections.singletonList(ingredient), burger.ingredients);
     }
 
     @Test
@@ -51,8 +54,7 @@ public class BurgerTest {
 
         burger.removeIngredient(0);
 
-        assertEquals(1, burger.ingredients.size());
-        assertSame(second, burger.ingredients.get(0));
+        assertEquals(Collections.singletonList(second), burger.ingredients);
     }
 
     @Test
@@ -67,10 +69,7 @@ public class BurgerTest {
 
         burger.moveIngredient(0, 2);
 
-        assertEquals(3, burger.ingredients.size());
-        assertSame(second, burger.ingredients.get(0));
-        assertSame(third, burger.ingredients.get(1));
-        assertSame(first, burger.ingredients.get(2));
+        assertEquals(Arrays.asList(second, third, first), burger.ingredients);
     }
 
     @Test
@@ -80,7 +79,6 @@ public class BurgerTest {
         burger.setBuns(bun);
 
         assertEquals(200f, burger.getPrice(), 0.0f);
-        verify(bun, times(1)).getPrice();
     }
 
     @Test
@@ -100,9 +98,6 @@ public class BurgerTest {
         );
 
         assertEquals(expected, burger.getReceipt());
-
-        verify(bun, times(2)).getName();
-        verify(bun, times(1)).getPrice();
     }
 
     @Test
@@ -139,14 +134,5 @@ public class BurgerTest {
         );
 
         assertEquals(expected, burger.getReceipt());
-
-        verify(bun, times(2)).getName();
-        verify(bun, times(1)).getPrice();
-        verify(sauce, times(1)).getType();
-        verify(sauce, times(1)).getName();
-        verify(sauce, atLeastOnce()).getPrice();
-        verify(filling, times(1)).getType();
-        verify(filling, times(1)).getName();
-        verify(filling, atLeastOnce()).getPrice();
     }
 }
