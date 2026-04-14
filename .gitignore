@@ -1,0 +1,65 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# IntelliJ
+.idea/
+*.iml
+# IntelliJ
+
+# игнорим весь target
+target/
+# Разрешаем только JaCoCo html-отчёт
+!target/site/
+!target/site/jacoco/
+!target/site/jacoco/**
+
+
+# Maven
+target/*
+
+
+# OS
+.DS_Store
+
+# =========================
+# Maven
+# =========================
+
+# Maven Wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Kotlin (если вдруг есть)
+.kotlin
+
+# =========================
+# IntelliJ IDEA
+# =========================
+*.iws
+*.ipr
+
+# =========================
+# Eclipse
+# =========================
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# =========================
+# NetBeans
+# =========================
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# =========================
+# VS Code
+# =========================
+.vscode/
+
+.allure/
