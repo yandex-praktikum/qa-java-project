@@ -19,15 +19,15 @@ import static org.mockito.Mockito.when;
 public class BurgerPriceCalculationTests {
 
     private final float expectedPrice;
-    private final float ingredient1Price;
+    private final float fillingPrice;
     private final float bunPrice;
-    private final float ingredient2Price;
+    private final float saucePrice;
 
-    public BurgerPriceCalculationTests(float expectedPrice, float ingredient1Price, float ingredient2Price, float bunPrice) {
+    public BurgerPriceCalculationTests(float expectedPrice, float fillingPrice, float saucePrice, float bunPrice) {
         this.bunPrice = bunPrice;
         this.expectedPrice = expectedPrice;
-        this.ingredient1Price = ingredient1Price;
-        this.ingredient2Price = ingredient2Price;
+        this.fillingPrice = fillingPrice;
+        this.saucePrice = saucePrice;
 
     }
 
@@ -37,18 +37,18 @@ public class BurgerPriceCalculationTests {
 
     @Mock
 
-    private Ingredient ingredientMock1;
+    private Ingredient fillingIngredientMock;
 
     @Mock
 
-    private Ingredient ingredientMock2;
+    private Ingredient sauceIngredientMock;
 
     @Before
     public void initMocks() {
         MockitoAnnotations.openMocks(this);
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters(name = "expected={0}, filling={1}, sauce={2}, bun={3}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
                 {400, 100, 100, 100},
@@ -63,12 +63,12 @@ public class BurgerPriceCalculationTests {
         Burger burger = new Burger();
 
         when(bunMock.getPrice()).thenReturn(bunPrice);
-        when(ingredientMock1.getPrice()).thenReturn(ingredient1Price);
-        when(ingredientMock2.getPrice()).thenReturn(ingredient2Price);
+        when(fillingIngredientMock.getPrice()).thenReturn(fillingPrice);
+        when(sauceIngredientMock.getPrice()).thenReturn(saucePrice);
 
         burger.setBuns(bunMock);
-        burger.addIngredient(ingredientMock1);
-        burger.addIngredient(ingredientMock2);
+        burger.addIngredient(fillingIngredientMock);
+        burger.addIngredient(sauceIngredientMock);
 
         float actualPrice = burger.getPrice();
         assertEquals(expectedPrice, actualPrice, 0.01f);
