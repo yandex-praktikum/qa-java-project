@@ -38,14 +38,14 @@ public class BurgerIngredientOperationsTests {
 
     @Test
 
-    public void shouldAddIngredient_sizeIncreases() {
+    public void shouldAddIngredientSizeIncreases() {
         burger.addIngredient(ingredientToAdd);
 
         assertEquals(1, burger.ingredients.size());
     }
 
     @Test
-    public void shouldAddIngredient_correctElementAdded() {
+    public void shouldAddIngredientCorrectElementAdded() {
         burger.addIngredient(ingredientToAdd);
         assertEquals(ingredientToAdd, burger.ingredients.get(0));
 
@@ -53,7 +53,7 @@ public class BurgerIngredientOperationsTests {
 
     @Test
 
-    public void shouldRemoveIngredient_sizeDecreases() {
+    public void shouldRemoveIngredientSizeDecreases() {
         burger.addIngredient(ingredientToRemove);
         burger.addIngredient(remainingIngredient);
 
@@ -63,7 +63,7 @@ public class BurgerIngredientOperationsTests {
     }
 
     @Test
-    public void shouldRemoveIngredient_correctElementRemains() {
+    public void shouldRemoveIngredientCorrectElementRemains() {
         burger.addIngredient(ingredientToRemove);
         burger.addIngredient(remainingIngredient);
 
@@ -74,7 +74,7 @@ public class BurgerIngredientOperationsTests {
     }
 
     @Test
-    public void shouldMoveIngredient_firstPositionChanged() {
+    public void shouldMoveIngredientFirstPositionChanged() {
         burger.addIngredient(ingredientToMove);
         burger.addIngredient(middleIngredient);
         burger.addIngredient(remainingIngredient);
@@ -85,7 +85,7 @@ public class BurgerIngredientOperationsTests {
     }
 
     @Test
-    public void shouldMoveIngredient_middlePositionChanged() {
+    public void shouldMoveIngredientMiddlePositionChanged() {
         burger.addIngredient(ingredientToMove);
         burger.addIngredient(middleIngredient);
         burger.addIngredient(remainingIngredient);
@@ -96,7 +96,7 @@ public class BurgerIngredientOperationsTests {
     }
 
     @Test
-    public void shouldMoveIngredient_lastPositionChanged() {
+    public void shouldMoveIngredientLastPositionChanged() {
         burger.addIngredient(ingredientToMove);
         burger.addIngredient(middleIngredient);
         burger.addIngredient(remainingIngredient);
