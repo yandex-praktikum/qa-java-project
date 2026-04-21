@@ -1,0 +1,8 @@
+# IDE
+.idea/
+
+# Maven
+target/
+
+# Локальные настройки
+*.iml
