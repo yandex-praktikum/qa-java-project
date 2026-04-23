@@ -1,0 +1,11 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+*.xml
+!pom.xml
+
+# Jacoco
+jacoco.exec
+target/jacoco/
+target/site/jacoco/
