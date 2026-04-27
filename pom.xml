@@ -41,6 +41,16 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.12</version>
+
+                <configuration>
+                    <includes>
+                        <include>praktikum/Bun*</include>
+                        <include>praktikum/Burger*</include>
+                        <include>praktikum/Ingredient*</include>
+                        <include>praktikum/IngredientType*</include>
+                    </includes>
+                </configuration>
+
                 <executions>
                     <execution>
                         <goals>
