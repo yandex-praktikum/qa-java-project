@@ -11,14 +11,14 @@ import java.util.List;
  */
 public class Burger {
 
-    public Bun bun;
-    public List<Ingredient> ingredients = new ArrayList<>();
+    public BunInterface bun;
+    public List<IngredientInterface> ingredients = new ArrayList<>();
 
-    public void setBuns(Bun bun) {
+    public void setBuns(BunInterface bun) {
         this.bun = bun;
     }
 
-    public void addIngredient(Ingredient ingredient) {
+    public void addIngredient(IngredientInterface ingredient) {
         ingredients.add(ingredient);
     }
 
@@ -33,7 +33,7 @@ public class Burger {
     public float getPrice() {
         float price = bun.getPrice() * 2;
 
-        for (Ingredient ingredient : ingredients) {
+        for (IngredientInterface ingredient : ingredients) {
             price += ingredient.getPrice();
         }
 
@@ -43,7 +43,7 @@ public class Burger {
     public String getReceipt() {
         StringBuilder receipt = new StringBuilder(String.format("(==== %s ====)%n", bun.getName()));
 
-        for (Ingredient ingredient : ingredients) {
+        for (IngredientInterface ingredient : ingredients) {
             receipt.append(String.format("= %s %s =%n", ingredient.getType().toString().toLowerCase(),
                     ingredient.getName()));
         }

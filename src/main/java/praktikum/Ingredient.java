@@ -5,7 +5,7 @@ package praktikum;
  * Ингредиент: начинка или соус.
  * У ингредиента есть тип (начинка или соус), название и цена.
  */
-public class Ingredient {
+public class Ingredient implements IngredientInterface {
 
     public IngredientType type;
     public String name;
@@ -16,15 +16,15 @@ public class Ingredient {
         this.name = name;
         this.price = price;
     }
-
+@Override
     public float getPrice() {
         return price;
     }
-
+@Override
     public String getName() {
         return name;
     }
-
+@Override
     public IngredientType getType() {
         return type;
     }
