@@ -26,10 +26,12 @@ public class Database {
     }
 
     public List<Bun> availableBuns() {
+
         return buns;
     }
 
     public List<Ingredient> availableIngredients() {
+
         return ingredients;
     }
 
