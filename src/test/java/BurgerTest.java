@@ -32,6 +32,11 @@ public class BurgerTest {
     public void addIngredientAddsIngredientRight() {
         burger.addIngredient(firstIngredient);
         assertTrue(burger.ingredients.contains(firstIngredient));
+    }
+
+    @Test
+    public void addIngredientIncreasesSize() {
+        burger.addIngredient(firstIngredient);
         assertEquals(1, burger.ingredients.size());
     }
 
@@ -43,11 +48,19 @@ public class BurgerTest {
     }
 
     @Test
-    public void moveIngredientMovesIngredientsRight() {
+    public void moveIngredientUpdatesFirstPosition() {
         burger.addIngredient(firstIngredient);
         burger.addIngredient(secondIngredient);
         burger.moveIngredient(0, 1);
         assertEquals(secondIngredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void moveIngredientUpdatesSecondPosition() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+        burger.moveIngredient(0, 1);
         assertEquals(firstIngredient, burger.ingredients.get(1));
     }
+
 }
