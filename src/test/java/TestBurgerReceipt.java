@@ -24,7 +24,7 @@ public class TestBurgerReceipt {
         this.expectedReceipt = expectedReceipt;
     }
 
-    @Parameterized.Parameters
+    @Parameterized.Parameters (name = "Тестовые данные: {0}, {1}, {2}")
     public static Object[][] getTestData() {
         return new Object[][]{
                 {
