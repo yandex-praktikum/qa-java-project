@@ -4,6 +4,9 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
+
+import java.util.Arrays;
+
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -15,6 +18,7 @@ public class TestBurger {
         Bun bunMock = mock(Bun.class);
         Burger burger = new Burger();
         burger.setBuns(bunMock);
+
         assertEquals(burger.bun, bunMock);
     }
 
@@ -39,17 +43,15 @@ public class TestBurger {
 
     @Test
     public void testBurgerMoveIngredients() {
-        Ingredient ingredientOne = new Ingredient(IngredientType.FILLING, "cheese", 30);
-        Ingredient ingredientTwo = new Ingredient(IngredientType.SAUCE, "ketchup", 5);
+        Ingredient ingredientMockOne = mock(Ingredient.class);
+        Ingredient ingredientMockTwo = mock(Ingredient.class);
         Burger burger = new Burger();
 
-        burger.addIngredient(ingredientOne);
-        burger.addIngredient(ingredientTwo);
+        burger.addIngredient(ingredientMockOne);
+        burger.addIngredient(ingredientMockTwo);
+        burger.moveIngredient(1, 0); // Перемещаем ingredientMockTwo на позицию ingredientMockOne
 
-        burger.moveIngredient(1, 0); // Перемещаем ingredientTwo на позицию ingredientOne
-        assertEquals(burger.ingredients.get(0), ingredientTwo);
-        assertEquals(burger.ingredients.get(1), ingredientOne);
-        assertEquals(2, burger.ingredients.size());
+        assertEquals(Arrays.asList(ingredientMockTwo, ingredientMockOne), burger.ingredients);
     }
 
     @Test
