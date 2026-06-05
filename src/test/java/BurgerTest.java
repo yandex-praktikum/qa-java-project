@@ -19,11 +19,11 @@ public class BurgerTest {
     @Mock
     private Bun mockBun;
     @Mock
-    private Ingredient mockIng1;
+    private Ingredient mockIngFirst;
     @Mock
-    private Ingredient mockIng2;
+    private Ingredient mockIngSecond;
     @Mock
-    private Ingredient mockIng3;
+    private Ingredient mockIngThird;
 
     @Before
     public void setUp() {
@@ -38,21 +38,21 @@ public class BurgerTest {
 
     @Test
     public void addIngredientTest() {
-        burger.addIngredient(mockIng1);
-        burger.addIngredient(mockIng2);
+        burger.addIngredient(mockIngFirst);
+        burger.addIngredient(mockIngSecond);
         assertThat(burger.ingredients)
                 .hasSize(2)
-                .contains(mockIng1, mockIng2);
+                .contains(mockIngFirst, mockIngSecond);
     }
 
     @Test
     public void removeIngredientTest() {
-        burger.addIngredient(mockIng1);
-        burger.addIngredient(mockIng2);
+        burger.addIngredient(mockIngFirst);
+        burger.addIngredient(mockIngSecond);
         burger.removeIngredient(0);
         assertThat(burger.ingredients)
                 .hasSize(1)
-                .containsExactly(mockIng2);
+                .containsExactly(mockIngSecond);
     }
 
     @Test
@@ -63,13 +63,13 @@ public class BurgerTest {
 
     @Test
     public void moveIngredientTest() {
-        burger.addIngredient(mockIng1); // index 0
-        burger.addIngredient(mockIng2); // index 1
-        burger.addIngredient(mockIng3); // index 2
+        burger.addIngredient(mockIngFirst); // index 0
+        burger.addIngredient(mockIngSecond); // index 1
+        burger.addIngredient(mockIngThird); // index 2
         burger.moveIngredient(2, 0);
         assertThat(burger.ingredients)
                 .hasSize(3)
-                .containsExactly(mockIng3, mockIng1, mockIng2);
+                .containsExactly(mockIngThird, mockIngFirst, mockIngSecond);
     }
 
     @Test
@@ -78,14 +78,14 @@ public class BurgerTest {
         doReturn(450.0f).when(burgerSpy).getPrice();
 
         when(mockBun.getName()).thenReturn("Black Bun");
-        when(mockIng1.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIng1.getName()).thenReturn("Hot Sauce");
-        when(mockIng2.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIng2.getName()).thenReturn("Cutlet");
+        when(mockIngFirst.getType()).thenReturn(IngredientType.SAUCE);
+        when(mockIngFirst.getName()).thenReturn("Hot Sauce");
+        when(mockIngSecond.getType()).thenReturn(IngredientType.FILLING);
+        when(mockIngSecond.getName()).thenReturn("Cutlet");
 
         burgerSpy.setBuns(mockBun);
-        burgerSpy.addIngredient(mockIng1);
-        burgerSpy.addIngredient(mockIng2);
+        burgerSpy.addIngredient(mockIngFirst);
+        burgerSpy.addIngredient(mockIngSecond);
 
         String expected = String.format(
                 "(==== Black Bun ====)%n" +
