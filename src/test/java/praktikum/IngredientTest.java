@@ -26,18 +26,26 @@ public class IngredientTest {
         return Arrays.asList(new Object[][]{
                 {IngredientType.SAUCE, "Chili Sauce", 100.50f},
                 {IngredientType.FILLING, "Beef Patty", 250.0f},
-                {IngredientType.SAUCE, "", 0.0f}, // Проверка пустой строки и нуля
+                {IngredientType.SAUCE, "", 0.0f},
                 {IngredientType.FILLING, "Cheese-X", 99.99f}
         });
     }
 
     @Test
-    public void testIngredientGettersReturnCorrectValues() {
+    public void testIngredientGetTypeReturnsCorrectValue() {
         Ingredient ingredient = new Ingredient(type, name, price);
-
         Assert.assertEquals("Тип ингредиента не совпадает с ожидаемым", type, ingredient.getType());
+    }
+
+    @Test
+    public void testIngredientGetNameReturnsCorrectValue() {
+        Ingredient ingredient = new Ingredient(type, name, price);
         Assert.assertEquals("Название ингредиента не совпадает с ожидаемым", name, ingredient.getName());
+    }
+
+    @Test
+    public void testIngredientGetPriceReturnsCorrectValue() {
+        Ingredient ingredient = new Ingredient(type, name, price);
         Assert.assertEquals("Цена ингредиента не совпадает с ожидаемой", price, ingredient.getPrice(), 0.0f);
     }
 }
-

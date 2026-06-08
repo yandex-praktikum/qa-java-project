@@ -17,10 +17,10 @@ public class BurgerTest {
     private Bun mockBun;
 
     @Mock
-    private Ingredient mockIngredient1;
+    private Ingredient mockSauce;
 
     @Mock
-    private Ingredient mockIngredient2;
+    private Ingredient mockFilling;
 
     @Before
     public void setUp() {
@@ -34,47 +34,77 @@ public class BurgerTest {
     }
 
     @Test
-    public void testAddIngredientAddsToElementsList() {
-        burger.addIngredient(mockIngredient1);
+    public void testAddIngredientIncreasesListSize() {
+        burger.addIngredient(mockSauce);
         Assert.assertEquals("Размер списка ингредиентов должен быть равен 1", 1, burger.ingredients.size());
-        Assert.assertEquals("В списке должен находиться именно добавленный ингредиент", mockIngredient1, burger.ingredients.get(0));
     }
 
     @Test
-    public void testRemoveIngredientRemovesCorrectElement() {
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
+    public void testAddIngredientAddsCorrectElementToList() {
+        burger.addIngredient(mockSauce);
+        Assert.assertEquals("В списке должен находиться именно добавленный ингредиент", mockSauce, burger.ingredients.get(0));
+    }
 
-        burger.removeIngredient(0); // Удаляем mockIngredient1
+    @Test
+    public void testRemoveIngredientDecreasesListSize() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+
+        burger.removeIngredient(0);
 
         Assert.assertEquals("После удаления одного элемента размер списка должен быть равен 1", 1, burger.ingredients.size());
-        Assert.assertEquals("Оставшимся элементом должен быть mockIngredient2", mockIngredient2, burger.ingredients.get(0));
     }
 
     @Test
-    public void testMoveIngredientChangesOrderInList() {
-        burger.addIngredient(mockIngredient1); // Индекс 0
-        burger.addIngredient(mockIngredient2); // Индекс 1
+    public void testRemoveIngredientLeavesCorrectElement() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
 
-        burger.moveIngredient(0, 1); // Перемещаем с 0 на 1
+        burger.removeIngredient(0);
+
+        Assert.assertEquals("Оставшимся элементом должен быть mockFilling", mockFilling, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void testMoveIngredientDoesNotChangeListSize() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+
+        burger.moveIngredient(0, 1);
 
         Assert.assertEquals("Размер списка не должен измениться при перемещении", 2, burger.ingredients.size());
-        Assert.assertEquals("На индексе 0 теперь должен быть mockIngredient2", mockIngredient2, burger.ingredients.get(0));
-        Assert.assertEquals("На индексе 1 теперь должен быть mockIngredient1", mockIngredient1, burger.ingredients.get(1));
+    }
+
+    @Test
+    public void testMoveIngredientPutsCorrectElementToFirstPosition() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+
+        burger.moveIngredient(0, 1);
+
+        Assert.assertEquals("На индексе 0 теперь должен быть mockFilling", mockFilling, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void testMoveIngredientPutsCorrectElementToSecondPosition() {
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
+
+        burger.moveIngredient(0, 1);
+
+        Assert.assertEquals("На индексе 1 теперь должен быть mockSauce", mockSauce, burger.ingredients.get(1));
     }
 
     @Test
     public void testGetPriceCalculatesCorrectTotalPrice() {
-        // Настраиваем стабы для возврата цен
         Mockito.when(mockBun.getPrice()).thenReturn(120.0f);
-        Mockito.when(mockIngredient1.getPrice()).thenReturn(50.0f);
-        Mockito.when(mockIngredient2.getPrice()).thenReturn(30.0f);
+        Mockito.when(mockSauce.getPrice()).thenReturn(50.0f);
+        Mockito.when(mockFilling.getPrice()).thenReturn(30.0f);
 
         burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
+        burger.addIngredient(mockSauce);
+        burger.addIngredient(mockFilling);
 
-        // Расчет: (120.0 * 2) + 50.0 + 30.0 = 320.0
         float expectedPrice = 320.0f;
         Assert.assertEquals("Итоговая цена бургера рассчитана неверно", expectedPrice, burger.getPrice(), 0.0f);
     }

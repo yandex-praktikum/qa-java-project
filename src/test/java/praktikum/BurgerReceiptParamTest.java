@@ -32,12 +32,12 @@ public class BurgerReceiptParamTest {
     public void testGetReceiptFormatsTextCorrectly() {
         Burger burger = new Burger();
 
-        // Изолируем булку через мок
+
         Bun mockBun = Mockito.mock(Bun.class);
         Mockito.when(mockBun.getName()).thenReturn("Космическая булка");
         Mockito.when(mockBun.getPrice()).thenReturn(100.0f);
 
-        // Изолируем ингредиент через мок с параметризованным типом
+
         Ingredient mockIngredient = Mockito.mock(Ingredient.class);
         Mockito.when(mockIngredient.getType()).thenReturn(ingredientType);
         Mockito.when(mockIngredient.getName()).thenReturn("Лунный сыр");
@@ -46,7 +46,7 @@ public class BurgerReceiptParamTest {
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
 
-        // Чистая сборка ожидаемой строки без использования StringBuilder (без warning-подсветок)
+
         String expectedReceipt = String.format("(==== %s ====)%n", "Космическая булка") +
                 String.format("= %s %s =%n", expectedTypeString, "Лунный сыр") +
                 String.format("(==== %s ====)%n", "Космическая булка") +
