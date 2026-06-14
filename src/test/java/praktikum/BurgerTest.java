@@ -89,10 +89,8 @@ public class BurgerTest {
         assertEquals(expectedPrice, burger.getPrice(), 0.001);
     }
 
-    // Используем реальные объекты для тестирования getReceipt
     @Test
     public void testGetReceipt() {
-        // Создаем реальные объекты
         Bun realBun = new Bun("black bun", 100.0f);
         Ingredient realIngredient1 = new Ingredient(IngredientType.SAUCE, "hot sauce", 100.0f);
         Ingredient realIngredient2 = new Ingredient(IngredientType.FILLING, "cutlet", 100.0f);
@@ -104,7 +102,6 @@ public class BurgerTest {
 
         String receipt = testBurger.getReceipt();
 
-        // Проверяем содержимое
         assertTrue(receipt.contains("(==== black bun ====)"));
         assertTrue(receipt.contains("= sauce hot sauce ="));
         assertTrue(receipt.contains("= filling cutlet ="));
@@ -112,7 +109,6 @@ public class BurgerTest {
 
     @Test
     public void testGetReceiptWithOneIngredient() {
-        // Создаем реальные объекты
         Bun realBun = new Bun("white bun", 200.0f);
         Ingredient realIngredient = new Ingredient(IngredientType.SAUCE, "chili sauce", 300.0f);
 
@@ -122,42 +118,50 @@ public class BurgerTest {
 
         String receipt = testBurger.getReceipt();
 
-        // Проверяем содержимое
         assertTrue(receipt.contains("(==== white bun ====)"));
         assertTrue(receipt.contains("= sauce chili sauce ="));
     }
-    // Параметризованный тест для проверки разных цен
+
     @Test
-    public void testGetPriceWithDifferentValues() {
-        // Тест 1
-        Bun realBun1 = new Bun("bun1", 200.0f);
+    public void testGetPriceWithTwoIngredients() {
+        Bun realBun = new Bun("bun1", 200.0f);
         Burger burger1 = new Burger();
-        burger1.setBuns(realBun1);
+        burger1.setBuns(realBun);
         burger1.addIngredient(new Ingredient(IngredientType.SAUCE, "sauce1", 50.0f));
         burger1.addIngredient(new Ingredient(IngredientType.FILLING, "filling1", 75.0f));
-        assertEquals(525.0f, burger1.getPrice(), 0.001);
 
-        // Тест 2
-        Bun realBun2 = new Bun("bun2", 150.0f);
+        assertEquals(525.0f, burger1.getPrice(), 0.001);
+    }
+
+    @Test
+    public void testGetPriceWithThreeIngredients() {
+        Bun realBun = new Bun("bun2", 150.0f);
         Burger burger2 = new Burger();
-        burger2.setBuns(realBun2);
+        burger2.setBuns(realBun);
         burger2.addIngredient(new Ingredient(IngredientType.SAUCE, "sauce2", 30.0f));
         burger2.addIngredient(new Ingredient(IngredientType.FILLING, "filling2", 40.0f));
         burger2.addIngredient(new Ingredient(IngredientType.SAUCE, "sauce3", 20.0f));
+
         assertEquals(390.0f, burger2.getPrice(), 0.001);
+    }
 
-        // Тест 3 (без ингредиентов)
-        Bun realBun3 = new Bun("bun3", 100.0f);
+    @Test
+    public void testGetPriceWithoutIngredients() {
+        Bun realBun = new Bun("bun3", 100.0f);
         Burger burger3 = new Burger();
-        burger3.setBuns(realBun3);
-        assertEquals(200.0f, burger3.getPrice(), 0.001);
+        burger3.setBuns(realBun);
 
-        // Тест 4 (нулевая цена булочки)
-        Bun realBun4 = new Bun("bun4", 0.0f);
+        assertEquals(200.0f, burger3.getPrice(), 0.001);
+    }
+
+    @Test
+    public void testGetPriceWithZeroPriceBun() {
+        Bun realBun = new Bun("bun4", 0.0f);
         Burger burger4 = new Burger();
-        burger4.setBuns(realBun4);
+        burger4.setBuns(realBun);
         burger4.addIngredient(new Ingredient(IngredientType.SAUCE, "sauce4", 10.0f));
         burger4.addIngredient(new Ingredient(IngredientType.FILLING, "filling4", 20.0f));
+
         assertEquals(30.0f, burger4.getPrice(), 0.001);
     }
 }
