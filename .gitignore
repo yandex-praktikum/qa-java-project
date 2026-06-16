@@ -1,0 +1,8 @@
+﻿../Task_1
+.idea/
+allure-results/
+target/
+*.iml
+jacoco.exec
+*.log
+.DS_Store
