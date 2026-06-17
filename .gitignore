@@ -1,2 +1,4 @@
 .idea/
 target/
+!target/site
+!target/site/jacoco
