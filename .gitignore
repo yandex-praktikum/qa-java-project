@@ -1,0 +1,34 @@
+# системные файлы IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# сборка target, кроме отчетов JaCoCo
+target/*
+!target/site/
+!target/jacoco.exec
+
+# мусор от других сред разработки (Eclipse, NetBeans, VS Code)
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+.vscode/
+
+# системные файлы операционных систем
+.DS_Store
+Thumbs.db
+
+# Логи и временные файлы
+*.log
+.kotlin
