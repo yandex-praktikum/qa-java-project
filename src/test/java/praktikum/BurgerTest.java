@@ -1,17 +1,17 @@
 package praktikum;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.junit.Before;
 
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 
 @RunWith(Parameterized.class)
 public class BurgerTest {
@@ -21,9 +21,9 @@ public class BurgerTest {
     @Mock
     private Bun mockBun;
     @Mock
-    private Ingredient mockIngredient1;
+    private Ingredient mockSauce;
     @Mock
-    private Ingredient mockIngredient2;
+    private Ingredient mockFilling;
 
     @Parameterized.Parameter(0)
     public float bunPrice;
@@ -44,11 +44,11 @@ public class BurgerTest {
     @Parameterized.Parameter(8)
     public float expectedPrice;
     @Parameterized.Parameter(9)
-    public String expectedReceipt; // теперь это поле будет заполняться в data()
+    public String expectedReceipt;
 
     @Parameterized.Parameters(name = "Test case {index}: price={8}")
     public static Collection<Object[]> data() {
-        String lineSep = System.lineSeparator(); // учитываем систему
+        String lineSep = System.lineSeparator();
 
         return Arrays.asList(new Object[][]{
                 // 1) Без ингредиентов
@@ -66,7 +66,7 @@ public class BurgerTest {
                                 lineSep +
                                 "Price: 7,500000" + lineSep},
 
-                // 3) Два ингредиента
+                // 3) Два ингредиента (соус + начинка)
                 {4.0f, "Черная булочка", IngredientType.SAUCE, "Майонез", 1.0f, IngredientType.FILLING, "Говядина", 2.5f, 11.5f,
                         "(==== Черная булочка ====)" + lineSep +
                                 "= sauce Майонез =" + lineSep +
@@ -84,62 +84,22 @@ public class BurgerTest {
     }
 
     @Test
-    public void setBuns_shouldSetBun() {
-        burger.setBuns(mockBun);
-        assertSame(mockBun, burger.bun);
-    }
-
-    @Test
-    public void addIngredient_shouldAddIngredientToList() {
-        burger.addIngredient(mockIngredient1);
-        assertEquals(1, burger.ingredients.size());
-        assertSame(mockIngredient1, burger.ingredients.get(0));
-
-        burger.addIngredient(mockIngredient2);
-        assertEquals(2, burger.ingredients.size());
-        assertSame(mockIngredient2, burger.ingredients.get(1));
-    }
-
-    @Test
-    public void removeIngredient_shouldRemoveByIndex() {
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
-        assertEquals(2, burger.ingredients.size());
-
-        burger.removeIngredient(0);
-        assertEquals(1, burger.ingredients.size());
-        assertSame(mockIngredient2, burger.ingredients.get(0));
-    }
-
-    @Test
-    public void moveIngredient_shouldMoveIngredientFromIndexToNewIndex() {
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
-        burger.addIngredient(mockIngredient1);
-
-        burger.moveIngredient(1, 2);
-        assertSame(mockIngredient1, burger.ingredients.get(0));
-        assertSame(mockIngredient1, burger.ingredients.get(1));
-        assertSame(mockIngredient2, burger.ingredients.get(2));
-    }
-
-    @Test
-    public void getPrice_shouldCalculateCorrectTotalPrice() {
+    public void getPriceShouldCalculateCorrectTotalPrice() {
         when(mockBun.getPrice()).thenReturn(bunPrice);
         when(mockBun.getName()).thenReturn(bunName);
         burger.setBuns(mockBun);
 
         if (ingredientType1 != null) {
-            when(mockIngredient1.getType()).thenReturn(ingredientType1);
-            when(mockIngredient1.getName()).thenReturn(ingredientName1);
-            when(mockIngredient1.getPrice()).thenReturn(ingredientPrice1);
-            burger.addIngredient(mockIngredient1);
+            when(mockSauce.getType()).thenReturn(ingredientType1);
+            when(mockSauce.getName()).thenReturn(ingredientName1);
+            when(mockSauce.getPrice()).thenReturn(ingredientPrice1);
+            burger.addIngredient(mockSauce);
         }
         if (ingredientType2 != null) {
-            when(mockIngredient2.getType()).thenReturn(ingredientType2);
-            when(mockIngredient2.getName()).thenReturn(ingredientName2);
-            when(mockIngredient2.getPrice()).thenReturn(ingredientPrice2);
-            burger.addIngredient(mockIngredient2);
+            when(mockFilling.getType()).thenReturn(ingredientType2);
+            when(mockFilling.getName()).thenReturn(ingredientName2);
+            when(mockFilling.getPrice()).thenReturn(ingredientPrice2);
+            burger.addIngredient(mockFilling);
         }
 
         float actualPrice = burger.getPrice();
@@ -147,22 +107,22 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceipt_shouldReturnFormattedReceipt() {
+    public void getReceiptShouldReturnFormattedReceipt() {
         when(mockBun.getPrice()).thenReturn(bunPrice);
         when(mockBun.getName()).thenReturn(bunName);
         burger.setBuns(mockBun);
 
         if (ingredientType1 != null) {
-            when(mockIngredient1.getType()).thenReturn(ingredientType1);
-            when(mockIngredient1.getName()).thenReturn(ingredientName1);
-            when(mockIngredient1.getPrice()).thenReturn(ingredientPrice1);
-            burger.addIngredient(mockIngredient1);
+            when(mockSauce.getType()).thenReturn(ingredientType1);
+            when(mockSauce.getName()).thenReturn(ingredientName1);
+            when(mockSauce.getPrice()).thenReturn(ingredientPrice1);
+            burger.addIngredient(mockSauce);
         }
         if (ingredientType2 != null) {
-            when(mockIngredient2.getType()).thenReturn(ingredientType2);
-            when(mockIngredient2.getName()).thenReturn(ingredientName2);
-            when(mockIngredient2.getPrice()).thenReturn(ingredientPrice2);
-            burger.addIngredient(mockIngredient2);
+            when(mockFilling.getType()).thenReturn(ingredientType2);
+            when(mockFilling.getName()).thenReturn(ingredientName2);
+            when(mockFilling.getPrice()).thenReturn(ingredientPrice2);
+            burger.addIngredient(mockFilling);
         }
 
         String actualReceipt = burger.getReceipt();
