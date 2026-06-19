@@ -1,11 +1,11 @@
 package praktikum;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.junit.Before;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,9 +21,9 @@ public class BurgerTest {
     @Mock
     private Bun mockBun;
     @Mock
-    private Ingredient mockSauce;
+    private Ingredient mockSauce;   // вместо mockIngredient1
     @Mock
-    private Ingredient mockFilling;
+    private Ingredient mockFilling; // вместо mockIngredient2
 
     @Parameterized.Parameter(0)
     public float bunPrice;
@@ -51,14 +51,12 @@ public class BurgerTest {
         String lineSep = System.lineSeparator();
 
         return Arrays.asList(new Object[][]{
-                // 1) Без ингредиентов
                 {2.5f, "Классическая", null, null, 0f, null, null, 0f, 5.0f,
                         "(==== Классическая ====)" + lineSep +
                                 "(==== Классическая ====)" + lineSep +
                                 lineSep +
                                 "Price: 5,000000" + lineSep},
 
-                // 2) Один соус
                 {3.0f, "Булочка для бургера", IngredientType.SAUCE, "Кетчуп", 1.5f, null, null, 0f, 7.5f,
                         "(==== Булочка для бургера ====)" + lineSep +
                                 "= sauce Кетчуп =" + lineSep +
@@ -66,7 +64,6 @@ public class BurgerTest {
                                 lineSep +
                                 "Price: 7,500000" + lineSep},
 
-                // 3) Два ингредиента (соус + начинка)
                 {4.0f, "Черная булочка", IngredientType.SAUCE, "Майонез", 1.0f, IngredientType.FILLING, "Говядина", 2.5f, 11.5f,
                         "(==== Черная булочка ====)" + lineSep +
                                 "= sauce Майонез =" + lineSep +

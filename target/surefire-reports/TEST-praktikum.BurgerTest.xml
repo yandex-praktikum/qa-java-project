@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerTest" time="1.07" tests="18" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="praktikum.BurgerTest" time="1.081" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
     <property name="java.specification.version" value="11"/>
     <property name="sun.cpu.isalist" value="amd64"/>
     <property name="sun.jnu.encoding" value="Cp1251"/>
-    <property name="java.class.path" value="C:\Users\nhanc\Diplom1\target\test-classes;C:\Users\nhanc\Diplom1\target\classes;C:\Users\nhanc\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\nhanc\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\nhanc\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="java.class.path" value="C:\Users\nhanc\Diplom1\target\test-classes;C:\Users\nhanc\Diplom1\target\classes;C:\Users\nhanc\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\nhanc\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\nhanc\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="java.vm.vendor" value="Amazon.com Inc."/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="user.variant" value=""/>
@@ -17,9 +17,9 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="RU"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Amazon\Corretto11\jdk11.0.30_7\bin"/>
-    <property name="sun.java.command" value="C:\Users\nhanc\AppData\Local\Temp\surefire13364273275581424908\surefirebooter-20260615110531529_3.jar C:\Users\nhanc\AppData\Local\Temp\surefire13364273275581424908 2026-06-15T11-05-31_309-jvmRun1 surefire-20260615110531529_1tmp surefire_0-20260615110531529_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\nhanc\AppData\Local\Temp\surefire11152986787574946816\surefirebooter-20260619181626379_3.jar C:\Users\nhanc\AppData\Local\Temp\surefire11152986787574946816 2026-06-19T18-16-26_154-jvmRun1 surefire-20260619181626379_1tmp surefire_0-20260619181626379_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="surefire.test.class.path" value="C:\Users\nhanc\Diplom1\target\test-classes;C:\Users\nhanc\Diplom1\target\classes;C:\Users\nhanc\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\nhanc\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\nhanc\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
+    <property name="surefire.test.class.path" value="C:\Users\nhanc\Diplom1\target\test-classes;C:\Users\nhanc\Diplom1\target\classes;C:\Users\nhanc\.m2\repository\junit\junit\4.13.2\junit-4.13.2.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest-core\1.3\hamcrest-core-1.3.jar;C:\Users\nhanc\.m2\repository\org\hamcrest\hamcrest\2.2\hamcrest-2.2.jar;C:\Users\nhanc\.m2\repository\org\mockito\mockito-core\4.11.0\mockito-core-4.11.0.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy\1.12.19\byte-buddy-1.12.19.jar;C:\Users\nhanc\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.19\byte-buddy-agent-1.12.19.jar;C:\Users\nhanc\.m2\repository\org\objenesis\objenesis\3.3\objenesis-3.3.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\nhanc"/>
     <property name="user.language" value="ru"/>
@@ -33,7 +33,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\nhanc\AppData\Local\Temp\surefire13364273275581424908\surefirebooter-20260615110531529_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nhanc\AppData\Local\Temp\surefire11152986787574946816\surefirebooter-20260619181626379_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.30+7-LTS"/>
@@ -61,22 +61,10 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="getPrice_shouldCalculateCorrectTotalPrice[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.834"/>
-  <testcase name="getReceipt_shouldReturnFormattedReceipt[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.003"/>
-  <testcase name="removeIngredient_shouldRemoveByIndex[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.0"/>
-  <testcase name="moveIngredient_shouldMoveIngredientFromIndexToNewIndex[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="addIngredient_shouldAddIngredientToList[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="setBuns_shouldSetBun[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="getPrice_shouldCalculateCorrectTotalPrice[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.004"/>
-  <testcase name="getReceipt_shouldReturnFormattedReceipt[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.003"/>
-  <testcase name="removeIngredient_shouldRemoveByIndex[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="moveIngredient_shouldMoveIngredientFromIndexToNewIndex[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="addIngredient_shouldAddIngredientToList[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.0"/>
-  <testcase name="setBuns_shouldSetBun[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.0"/>
-  <testcase name="getPrice_shouldCalculateCorrectTotalPrice[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.003"/>
-  <testcase name="getReceipt_shouldReturnFormattedReceipt[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.003"/>
-  <testcase name="removeIngredient_shouldRemoveByIndex[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.001"/>
-  <testcase name="moveIngredient_shouldMoveIngredientFromIndexToNewIndex[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.002"/>
-  <testcase name="addIngredient_shouldAddIngredientToList[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.0"/>
-  <testcase name="setBuns_shouldSetBun[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="getPriceShouldCalculateCorrectTotalPrice[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.841"/>
+  <testcase name="getReceiptShouldReturnFormattedReceipt[Test case 0: price=5]" classname="praktikum.BurgerTest" time="0.002"/>
+  <testcase name="getPriceShouldCalculateCorrectTotalPrice[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.005"/>
+  <testcase name="getReceiptShouldReturnFormattedReceipt[Test case 1: price=7,5]" classname="praktikum.BurgerTest" time="0.003"/>
+  <testcase name="getPriceShouldCalculateCorrectTotalPrice[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.004"/>
+  <testcase name="getReceiptShouldReturnFormattedReceipt[Test case 2: price=11,5]" classname="praktikum.BurgerTest" time="0.006"/>
 </testsuite>
