@@ -8,28 +8,37 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
 
 @RunWith(Parameterized.class)
 public class BurgerParameterizedTest {
 
+
     private final float bunPrice;
-    private final float ingredient1Price;
-    private final float ingredient2Price;
+    private final float saucePrice;
+    private final float fillingPrice;
     private final float expectedPrice;
 
+
     public BurgerParameterizedTest(float bunPrice,
-                                   float ingredient1Price,
-                                   float ingredient2Price,
+                                   float saucePrice,
+                                   float fillingPrice,
                                    float expectedPrice) {
+
         this.bunPrice = bunPrice;
-        this.ingredient1Price = ingredient1Price;
-        this.ingredient2Price = ingredient2Price;
+        this.saucePrice = saucePrice;
+        this.fillingPrice = fillingPrice;
         this.expectedPrice = expectedPrice;
     }
 
-    @Parameterized.Parameters
+
+    @Parameterized.Parameters(
+            name = "Цена булки: {0}, соус: {1}, начинка: {2}, итог: {3}"
+    )
     public static Collection<Object[]> getData() {
+
         return Arrays.asList(new Object[][]{
                 {100f, 50f, 200f, 450f},
                 {200f, 100f, 300f, 800f},
@@ -37,24 +46,34 @@ public class BurgerParameterizedTest {
         });
     }
 
+
     @Test
     public void getPriceReturnsCorrectPriceForDifferentData() {
 
         Burger burger = new Burger();
 
+
         Bun bun = mock(Bun.class);
         when(bun.getPrice()).thenReturn(bunPrice);
 
-        Ingredient ingredient1 = mock(Ingredient.class);
-        when(ingredient1.getPrice()).thenReturn(ingredient1Price);
 
-        Ingredient ingredient2 = mock(Ingredient.class);
-        when(ingredient2.getPrice()).thenReturn(ingredient2Price);
+        Ingredient sauceIngredient = mock(Ingredient.class);
+        when(sauceIngredient.getPrice()).thenReturn(saucePrice);
+
+
+        Ingredient fillingIngredient = mock(Ingredient.class);
+        when(fillingIngredient.getPrice()).thenReturn(fillingPrice);
+
 
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
-        assertEquals(expectedPrice, burger.getPrice(), 0.001f);
+
+        assertEquals(
+                expectedPrice,
+                burger.getPrice(),
+                0.001f
+        );
     }
 }

@@ -8,92 +8,123 @@ import static org.mockito.Mockito.*;
 
 public class BurgerTest {
 
+    private static final float BUN_PRICE = 100f;
+    private static final float SAUCE_PRICE = 50f;
+    private static final float FILLING_PRICE = 200f;
+    private static final float TOTAL_PRICE = 450f;
+
     private Burger burger;
     private Bun bun;
-    private Ingredient ingredient1;
-    private Ingredient ingredient2;
+    private Ingredient sauceIngredient;
+    private Ingredient fillingIngredient;
 
     @Before
     public void setUp() {
+
         burger = new Burger();
 
         bun = mock(Bun.class);
         when(bun.getName()).thenReturn("black bun");
-        when(bun.getPrice()).thenReturn(100f);
+        when(bun.getPrice()).thenReturn(BUN_PRICE);
 
-        ingredient1 = mock(Ingredient.class);
-        when(ingredient1.getPrice()).thenReturn(50f);
-        when(ingredient1.getName()).thenReturn("hot sauce");
-        when(ingredient1.getType()).thenReturn(IngredientType.SAUCE);
+        sauceIngredient = mock(Ingredient.class);
+        when(sauceIngredient.getPrice()).thenReturn(SAUCE_PRICE);
+        when(sauceIngredient.getName()).thenReturn("hot sauce");
+        when(sauceIngredient.getType()).thenReturn(IngredientType.SAUCE);
 
-        ingredient2 = mock(Ingredient.class);
-        when(ingredient2.getPrice()).thenReturn(200f);
-        when(ingredient2.getName()).thenReturn("cutlet");
-        when(ingredient2.getType()).thenReturn(IngredientType.FILLING);
+        fillingIngredient = mock(Ingredient.class);
+        when(fillingIngredient.getPrice()).thenReturn(FILLING_PRICE);
+        when(fillingIngredient.getName()).thenReturn("cutlet");
+        when(fillingIngredient.getType()).thenReturn(IngredientType.FILLING);
     }
+
 
     @Test
     public void setBunsSetsBunCorrectly() {
+
         burger.setBuns(bun);
 
         assertEquals(bun, burger.bun);
     }
 
+
     @Test
     public void addIngredientAddsIngredientToList() {
-        burger.addIngredient(ingredient1);
 
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+        burger.addIngredient(sauceIngredient);
+
+        assertEquals(sauceIngredient, burger.ingredients.get(0));
     }
+
 
     @Test
     public void removeIngredientRemovesIngredientFromList() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
         burger.removeIngredient(0);
 
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient2, burger.ingredients.get(0));
+        assertEquals(fillingIngredient, burger.ingredients.get(0));
     }
+
 
     @Test
     public void moveIngredientMovesIngredientCorrectly() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
         burger.moveIngredient(0, 1);
 
-        assertEquals(ingredient2, burger.ingredients.get(0));
-        assertEquals(ingredient1, burger.ingredients.get(1));
+        assertEquals(fillingIngredient, burger.ingredients.get(0));
     }
+
 
     @Test
     public void getPriceReturnsCorrectPrice() {
+
         burger.setBuns(bun);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-
-        float expectedPrice = 450f;
-
-        assertEquals(expectedPrice, burger.getPrice(), 0.001f);
+        assertEquals(TOTAL_PRICE, burger.getPrice(), 0.001f);
     }
 
+
     @Test
-    public void getReceiptReturnsCorrectReceipt() {
+    public void getReceiptContainsBunName() {
+
         burger.setBuns(bun);
 
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        assertTrue(
+                burger.getReceipt().contains("black bun")
+        );
+    }
+
+
+    @Test
+    public void getReceiptContainsIngredientsNames() {
+
+        burger.setBuns(bun);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
         String receipt = burger.getReceipt();
 
-        assertNotNull(receipt);
-        assertTrue(receipt.contains("black bun"));
         assertTrue(receipt.contains("hot sauce"));
-        assertTrue(receipt.contains("cutlet"));
-        assertTrue(receipt.contains("Price: 450"));
+    }
+
+
+    @Test
+    public void getReceiptContainsPrice() {
+
+        burger.setBuns(bun);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
+
+        assertTrue(
+                burger.getReceipt().contains("Price: 450")
+        );
     }
 }
