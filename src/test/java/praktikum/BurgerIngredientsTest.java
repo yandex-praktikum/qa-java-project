@@ -22,6 +22,14 @@ public class BurgerIngredientsTest {
         burger.addIngredient(ingredient);
 
         assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void shouldStoreAddedIngredient() {
+        Ingredient ingredient = mock(Ingredient.class);
+
+        burger.addIngredient(ingredient);
+
         assertEquals(ingredient, burger.ingredients.get(0));
     }
 
@@ -36,7 +44,7 @@ public class BurgerIngredientsTest {
     }
 
     @Test
-    public void shouldMoveIngredient() {
+    public void shouldMoveIngredientToFirstPosition() {
         Ingredient first = mock(Ingredient.class);
         Ingredient second = mock(Ingredient.class);
 
@@ -46,6 +54,18 @@ public class BurgerIngredientsTest {
         burger.moveIngredient(0, 1);
 
         assertEquals(second, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void shouldMoveIngredientToSecondPosition() {
+        Ingredient first = mock(Ingredient.class);
+        Ingredient second = mock(Ingredient.class);
+
+        burger.addIngredient(first);
+        burger.addIngredient(second);
+
+        burger.moveIngredient(0, 1);
+
         assertEquals(first, burger.ingredients.get(1));
     }
 }
