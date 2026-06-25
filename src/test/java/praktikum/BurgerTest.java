@@ -11,6 +11,23 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
 
+    private static final int BUNS_COUNT = 2;
+    private static final int SINGLE_INGREDIENT = 1;
+    private static final float DELTA = 0.001f;
+
+    private static final float BUN_PRICE = 100.0f;
+    private static final float BUN_PRICE_HIGH = 150.0f;
+    private static final float BUN_PRICE_WHITE = 200.0f;
+    private static final float INGREDIENT_PRICE_SAUCE = 50.0f;
+    private static final float INGREDIENT_PRICE_CUTLET = 75.0f;
+    private static final float INGREDIENT_PRICE_HOT_SAUCE = 100.0f;
+    private static final float INGREDIENT_PRICE_CHICKEN = 100.0f;
+
+    private static final String BUN_NAME_BLACK = "black bun";
+    private static final String BUN_NAME_WHITE = "white bun";
+    private static final String INGREDIENT_NAME_HOT_SAUCE = "hot sauce";
+    private static final String INGREDIENT_NAME_CUTLET = "cutlet";
+
     @Mock
     private Bun mockBun;
 
@@ -19,6 +36,82 @@ public class BurgerTest {
 
     @Mock
     private Ingredient mockIngredient2;
+
+    // ============ ВСПОМОГАТЕЛЬНЫЕ МЕТОДЫ ============
+
+    /**
+     * Создает бургер с мок-ингредиентами для тестирования
+     */
+    private Burger createBurgerWithMocks() {
+        Burger burger = new Burger();
+        burger.setBuns(mockBun);
+        burger.addIngredient(mockIngredient1);
+        burger.addIngredient(mockIngredient2);
+        return burger;
+    }
+
+    /**
+     * Создает бургер с реальными объектами для тестирования
+     */
+    private Burger createBurgerWithRealObjects() {
+        Bun realBun = new Bun(BUN_NAME_BLACK, BUN_PRICE);
+        Ingredient realIngredient1 = new Ingredient(
+                IngredientType.SAUCE,
+                INGREDIENT_NAME_HOT_SAUCE,
+                INGREDIENT_PRICE_SAUCE
+        );
+        Ingredient realIngredient2 = new Ingredient(
+                IngredientType.FILLING,
+                INGREDIENT_NAME_CUTLET,
+                INGREDIENT_PRICE_CUTLET
+        );
+
+        Burger burger = new Burger();
+        burger.setBuns(realBun);
+        burger.addIngredient(realIngredient1);
+        burger.addIngredient(realIngredient2);
+        return burger;
+    }
+
+    /**
+     * Создает бургер только с булочкой (без ингредиентов)
+     */
+    private Burger createBurgerWithBunOnly() {
+        Burger burger = new Burger();
+        burger.setBuns(mockBun);
+        return burger;
+    }
+
+    /**
+     * Настраивает моки для бургера с ингредиентами
+     */
+    private void setupMocksForBurgerWithIngredients() {
+        when(mockBun.getName()).thenReturn(BUN_NAME_BLACK);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
+        when(mockIngredient1.getName()).thenReturn(INGREDIENT_NAME_HOT_SAUCE);
+        when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
+        when(mockIngredient2.getType()).thenReturn(IngredientType.FILLING);
+        when(mockIngredient2.getName()).thenReturn(INGREDIENT_NAME_CUTLET);
+        when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CHICKEN);
+    }
+
+    /**
+     * Настраивает моки для бургера без ингредиентов
+     */
+    private void setupMocksForBurgerWithoutIngredients() {
+        when(mockBun.getName()).thenReturn(BUN_NAME_WHITE);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE_WHITE);
+    }
+
+    /**
+     * Вычисляет ожидаемую цену бургера с ингредиентами
+     */
+    private float calculateExpectedPriceWithIngredients(float ing1Price, float ing2Price) {
+        return BUN_PRICE * BUNS_COUNT + ing1Price + ing2Price;
+    }
+
+    // ============ ТЕСТЫ ============
 
     // --- Тесты для setBuns ---
     @Test
@@ -30,96 +123,158 @@ public class BurgerTest {
 
     // --- Тесты для addIngredient ---
     @Test
-    public void addIngredientShouldAddIngredient() {
+    public void addIngredientShouldIncreaseSize() {
         Burger burger = new Burger();
         burger.addIngredient(mockIngredient1);
-        assertEquals(1, burger.ingredients.size());
+        assertEquals(SINGLE_INGREDIENT, burger.ingredients.size());
+    }
+
+    @Test
+    public void addIngredientShouldAddCorrectIngredient() {
+        Burger burger = new Burger();
+        burger.addIngredient(mockIngredient1);
         assertEquals(mockIngredient1, burger.ingredients.get(0));
     }
 
     // --- Тесты для getPrice ---
     @Test
     public void getPriceShouldCalculateCorrectlyWithIngredients() {
-        when(mockBun.getPrice()).thenReturn(100.0f);
-        when(mockIngredient1.getPrice()).thenReturn(50.0f);
-        when(mockIngredient2.getPrice()).thenReturn(75.0f);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
+        when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CUTLET);
 
-        Burger burger = new Burger();
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
+        Burger burger = createBurgerWithMocks();
 
-        float actualPrice = burger.getPrice();
+        float expectedPrice = calculateExpectedPriceWithIngredients(
+                INGREDIENT_PRICE_HOT_SAUCE,
+                INGREDIENT_PRICE_CUTLET
+        );
 
-        float expectedPrice = 100.0f * 2 + 50.0f + 75.0f;
-        assertEquals(expectedPrice, actualPrice, 0.001f);
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
+    }
+
+    @Test
+    public void getPriceShouldCallBunGetPriceOnce() {
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
+        when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CUTLET);
+
+        Burger burger = createBurgerWithMocks();
+        burger.getPrice();
 
         verify(mockBun, times(1)).getPrice();
+    }
+
+    @Test
+    public void getPriceShouldCallIngredientGetPriceOnce() {
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
+        when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CUTLET);
+
+        Burger burger = createBurgerWithMocks();
+        burger.getPrice();
+
         verify(mockIngredient1, times(1)).getPrice();
         verify(mockIngredient2, times(1)).getPrice();
     }
 
     @Test
     public void getPriceShouldCalculateCorrectlyWithoutIngredients() {
-        when(mockBun.getPrice()).thenReturn(150.0f);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE_HIGH);
 
-        Burger burger = new Burger();
-        burger.setBuns(mockBun);
+        Burger burger = createBurgerWithBunOnly();
 
-        assertEquals(300.0f, burger.getPrice(), 0.001f);
-        verify(mockBun, times(1)).getPrice();
+        float expectedPrice = BUN_PRICE_HIGH * BUNS_COUNT;
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
     }
 
     @Test
     public void getPriceShouldCalculateCorrectlyWithRealObjects() {
-        // Создаем реальные объекты, а не моки
-        Bun realBun = new Bun("black bun", 100.0f);
-        Ingredient realIngredient1 = new Ingredient(IngredientType.SAUCE, "hot sauce", 50.0f);
-        Ingredient realIngredient2 = new Ingredient(IngredientType.FILLING, "cutlet", 75.0f);
+        Burger burger = createBurgerWithRealObjects();
 
-        Burger burger = new Burger();
-        burger.setBuns(realBun);
-        burger.addIngredient(realIngredient1);
-        burger.addIngredient(realIngredient2);
+        float expectedPrice = calculateExpectedPriceWithIngredients(
+                INGREDIENT_PRICE_SAUCE,
+                INGREDIENT_PRICE_CUTLET
+        );
 
-        float expectedPrice = 100.0f * 2 + 50.0f + 75.0f;
-        float actualPrice = burger.getPrice();
-
-        assertEquals("Цена должна быть 325.0", expectedPrice, actualPrice, 0.001f);
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
     }
 
     // --- Тесты для getReceipt ---
     @Test
-    public void getReceiptShouldGenerateCorrectReceiptWithIngredients() {
-        when(mockBun.getName()).thenReturn("black bun");
-        when(mockBun.getPrice()).thenReturn(100.0f);
-        when(mockIngredient1.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient1.getName()).thenReturn("hot sauce");
-        when(mockIngredient1.getPrice()).thenReturn(100.0f);
-        when(mockIngredient2.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIngredient2.getName()).thenReturn("cutlet");
-        when(mockIngredient2.getPrice()).thenReturn(100.0f);
-
-        Burger burger = new Burger();
-        burger.setBuns(mockBun);
-        burger.addIngredient(mockIngredient1);
-        burger.addIngredient(mockIngredient2);
+    public void getReceiptShouldContainBunWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
 
         String actualReceipt = burger.getReceipt();
 
-        assertTrue("Должна быть верхняя булочка",
-                actualReceipt.contains("(==== black bun ====)"));
-        assertTrue("Должен быть соус",
-                actualReceipt.contains("= sauce hot sauce ="));
-        assertTrue("Должна быть начинка",
-                actualReceipt.contains("= filling cutlet ="));
-        assertTrue("Должна быть цена",
-                actualReceipt.contains("Price:"));
-        assertTrue("Цена должна быть 400",
-                actualReceipt.contains("400"));
+        assertTrue(actualReceipt.contains("(==== " + BUN_NAME_BLACK + " ====)"));
+    }
+
+    @Test
+    public void getReceiptShouldContainSauceWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        String actualReceipt = burger.getReceipt();
+
+        assertTrue(actualReceipt.contains("= sauce " + INGREDIENT_NAME_HOT_SAUCE + " ="));
+    }
+
+    @Test
+    public void getReceiptShouldContainFillingWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        String actualReceipt = burger.getReceipt();
+
+        assertTrue(actualReceipt.contains("= filling " + INGREDIENT_NAME_CUTLET + " ="));
+    }
+
+    @Test
+    public void getReceiptShouldContainPriceWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        String actualReceipt = burger.getReceipt();
+
+        float expectedPrice = calculateExpectedPriceWithIngredients(
+                INGREDIENT_PRICE_HOT_SAUCE,
+                INGREDIENT_PRICE_CHICKEN
+        );
+        String expectedPriceString = String.valueOf((int) expectedPrice);
+
+        assertTrue(actualReceipt.contains("Price:"));
+        assertTrue(actualReceipt.contains(expectedPriceString));
+    }
+
+    @Test
+    public void getReceiptShouldCallBunGetNameTwiceWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
 
         verify(mockBun, times(2)).getName();
+    }
+
+    @Test
+    public void getReceiptShouldCallBunGetPriceOnceWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockBun, times(1)).getPrice();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredientMethodsWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient1, times(1)).getType();
         verify(mockIngredient1, times(1)).getName();
         verify(mockIngredient1, times(1)).getPrice();
@@ -129,49 +284,80 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceiptShouldGenerateCorrectReceiptWithoutIngredients() {
-        when(mockBun.getName()).thenReturn("white bun");
-        when(mockBun.getPrice()).thenReturn(200.0f);
-
-        Burger burger = new Burger();
-        burger.setBuns(mockBun);
+    public void getReceiptShouldContainBunWithoutIngredients() {
+        setupMocksForBurgerWithoutIngredients();
+        Burger burger = createBurgerWithBunOnly();
 
         String actualReceipt = burger.getReceipt();
 
-        assertTrue("Должна быть верхняя булочка",
-                actualReceipt.contains("(==== white bun ====)"));
-        assertTrue("Должна быть нижняя булочка",
-                actualReceipt.contains("(==== white bun ====)"));
-        assertTrue("Должна быть цена",
-                actualReceipt.contains("Price:"));
-        assertTrue("Цена должна быть 400",
-                actualReceipt.contains("400"));
+        assertTrue(actualReceipt.contains("(==== " + BUN_NAME_WHITE + " ====)"));
+    }
+
+    @Test
+    public void getReceiptShouldContainPriceWithoutIngredients() {
+        setupMocksForBurgerWithoutIngredients();
+        Burger burger = createBurgerWithBunOnly();
+
+        String actualReceipt = burger.getReceipt();
+
+        float expectedPrice = BUN_PRICE_WHITE * BUNS_COUNT;
+        String expectedPriceString = String.valueOf((int) expectedPrice);
+
+        assertTrue(actualReceipt.contains("Price:"));
+        assertTrue(actualReceipt.contains(expectedPriceString));
+    }
+
+    @Test
+    public void getReceiptShouldCallBunMethodsWithoutIngredients() {
+        setupMocksForBurgerWithoutIngredients();
+        Burger burger = createBurgerWithBunOnly();
+
+        burger.getReceipt();
 
         verify(mockBun, times(2)).getName();
         verify(mockBun, times(1)).getPrice();
     }
 
     @Test
-    public void getReceiptShouldGenerateCorrectReceiptWithRealObjects() {
-        // Создаем реальные объекты
-        Bun realBun = new Bun("black bun", 100.0f);
-        Ingredient realIngredient1 = new Ingredient(IngredientType.SAUCE, "hot sauce", 50.0f);
-        Ingredient realIngredient2 = new Ingredient(IngredientType.FILLING, "cutlet", 75.0f);
-
-        Burger burger = new Burger();
-        burger.setBuns(realBun);
-        burger.addIngredient(realIngredient1);
-        burger.addIngredient(realIngredient2);
+    public void getReceiptShouldContainBunWithRealObjects() {
+        Burger burger = createBurgerWithRealObjects();
 
         String receipt = burger.getReceipt();
 
-        // Проверяем содержимое чека
-        assertTrue("Должна быть верхняя булочка", receipt.contains("(==== black bun ====)"));
-        assertTrue("Должен быть соус", receipt.contains("= sauce hot sauce ="));
-        assertTrue("Должна быть начинка", receipt.contains("= filling cutlet ="));
-        assertTrue("Должна быть нижняя булочка", receipt.contains("(==== black bun ====)"));
-        assertTrue("Должна быть цена", receipt.contains("Price:"));
-        assertTrue("Цена должна быть 325", receipt.contains("325"));
+        assertTrue(receipt.contains("(==== " + BUN_NAME_BLACK + " ====)"));
     }
 
+    @Test
+    public void getReceiptShouldContainSauceWithRealObjects() {
+        Burger burger = createBurgerWithRealObjects();
+
+        String receipt = burger.getReceipt();
+
+        assertTrue(receipt.contains("= sauce " + INGREDIENT_NAME_HOT_SAUCE + " ="));
+    }
+
+    @Test
+    public void getReceiptShouldContainFillingWithRealObjects() {
+        Burger burger = createBurgerWithRealObjects();
+
+        String receipt = burger.getReceipt();
+
+        assertTrue(receipt.contains("= filling " + INGREDIENT_NAME_CUTLET + " ="));
+    }
+
+    @Test
+    public void getReceiptShouldContainCorrectPriceWithRealObjects() {
+        Burger burger = createBurgerWithRealObjects();
+
+        String receipt = burger.getReceipt();
+
+        float expectedPrice = calculateExpectedPriceWithIngredients(
+                INGREDIENT_PRICE_SAUCE,
+                INGREDIENT_PRICE_CUTLET
+        );
+        String expectedPriceString = String.valueOf((int) expectedPrice);
+
+        assertTrue(receipt.contains("Price:"));
+        assertTrue(receipt.contains(expectedPriceString));
+    }
 }

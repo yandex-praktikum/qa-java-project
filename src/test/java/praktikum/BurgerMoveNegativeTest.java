@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.mockito.Mockito.*;
+import static praktikum.TestConstants.*;
 
 @RunWith(Parameterized.class)
 public class BurgerMoveNegativeTest {
@@ -24,15 +25,15 @@ public class BurgerMoveNegativeTest {
     @Parameters(name = "from={0}, to={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {-1, 1},   // fromIndex отрицательный
-                {3, 1},    // fromIndex равен размеру
-                {5, 1},    // fromIndex больше размера
-                {1, -1},   // toIndex отрицательный
-                {1, 3},    // toIndex больше размера (после удаления размер станет 2, поэтому toIndex=3 вызовет исключение)
-                {1, 10},    // toIndex слишком большой
-                {-1, -1},   // оба индекса отрицательные
-                {10, 10},   // оба индекса слишком большие
-                {3, 3}      // оба индекса равны размеру
+                {INVALID_INDEX, SECOND},      // fromIndex отрицательный
+                {SIZE, SECOND},               // fromIndex равен размеру
+                {LARGE_INDEX, SECOND},        // fromIndex больше размера
+                {SECOND, INVALID_INDEX},      // toIndex отрицательный
+                {SECOND, SIZE},               // toIndex больше размера
+                {SECOND, LARGE_INDEX},        // toIndex слишком большой
+                {INVALID_INDEX, INVALID_INDEX}, // оба отрицательные
+                {LARGE_INDEX, LARGE_INDEX},   // оба слишком большие
+                {SIZE, SIZE}                  // оба равны размеру
         });
     }
 

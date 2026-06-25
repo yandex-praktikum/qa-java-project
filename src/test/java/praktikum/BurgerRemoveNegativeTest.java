@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 
 import static org.mockito.Mockito.*;
+import static praktikum.TestConstants.*;
 
 @RunWith(Parameterized.class)
 public class BurgerRemoveNegativeTest {
@@ -22,9 +23,9 @@ public class BurgerRemoveNegativeTest {
     @Parameters(name = "removeIndex={0}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {-1},
-                {3},
-                {5}
+                {INVALID_INDEX},
+                {SIZE},
+                {LARGE_INDEX}
         });
     }
 
