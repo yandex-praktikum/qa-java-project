@@ -10,7 +10,6 @@ import java.util.Collection;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
-import static praktikum.TestConstants.*;
 
 @RunWith(Parameterized.class)
 public class BurgerMovePositiveTest {
@@ -28,13 +27,13 @@ public class BurgerMovePositiveTest {
     @Parameters(name = "from={0}, to={1}")
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {FIRST, THIRD, new Object[]{SECOND, THIRD, FIRST}},
-                {THIRD, FIRST, new Object[]{THIRD, FIRST, SECOND}},
-                {SECOND, FIRST, new Object[]{SECOND, FIRST, THIRD}},
-                {FIRST, SECOND, new Object[]{SECOND, FIRST, THIRD}},
-                {FIRST, FIRST, new Object[]{FIRST, SECOND, THIRD}},
-                {THIRD, THIRD, new Object[]{FIRST, SECOND, THIRD}},
-                {THIRD, SECOND, new Object[]{FIRST, THIRD, SECOND}}
+                {0, 2, new Object[]{1, 2, 0}},
+                {2, 0, new Object[]{2, 0, 1}},
+                {1, 0, new Object[]{1, 0, 2}},
+                {0, 1, new Object[]{1, 0, 2}},
+                {0, 0, new Object[]{0, 1, 2}},
+                {2, 2, new Object[]{0, 1, 2}},
+                {2, 1, new Object[]{0, 2, 1}}
         });
     }
 
@@ -47,32 +46,32 @@ public class BurgerMovePositiveTest {
 
         burger.moveIngredient(fromIndex, toIndex);
 
-        assertEquals(SIZE, burger.ingredients.size());
+        assertEquals(3, burger.ingredients.size());
     }
 
     @Test
     public void moveIngredientShouldPlaceCorrectIngredientAtFirstPosition() {
         Burger burger = new Burger();
-        Ingredient ing0 = mock(Ingredient.class);
-        Ingredient ing1 = mock(Ingredient.class);
-        Ingredient ing2 = mock(Ingredient.class);
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
+        Ingredient thirdIngredient = mock(Ingredient.class);
 
-        burger.addIngredient(ing0);
-        burger.addIngredient(ing1);
-        burger.addIngredient(ing2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+        burger.addIngredient(thirdIngredient);
 
         burger.moveIngredient(fromIndex, toIndex);
 
         int expectedIndex = (int) expectedOrder[0];
         switch (expectedIndex) {
-            case FIRST:
-                assertSame(ing0, burger.ingredients.get(0));
+            case 0:
+                assertSame(firstIngredient, burger.ingredients.get(0));
                 break;
-            case SECOND:
-                assertSame(ing1, burger.ingredients.get(0));
+            case 1:
+                assertSame(secondIngredient, burger.ingredients.get(0));
                 break;
-            case THIRD:
-                assertSame(ing2, burger.ingredients.get(0));
+            case 2:
+                assertSame(thirdIngredient, burger.ingredients.get(0));
                 break;
             default:
                 fail("Неожиданный индекс: " + expectedIndex);
@@ -82,26 +81,26 @@ public class BurgerMovePositiveTest {
     @Test
     public void moveIngredientShouldPlaceCorrectIngredientAtSecondPosition() {
         Burger burger = new Burger();
-        Ingredient ing0 = mock(Ingredient.class);
-        Ingredient ing1 = mock(Ingredient.class);
-        Ingredient ing2 = mock(Ingredient.class);
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
+        Ingredient thirdIngredient = mock(Ingredient.class);
 
-        burger.addIngredient(ing0);
-        burger.addIngredient(ing1);
-        burger.addIngredient(ing2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+        burger.addIngredient(thirdIngredient);
 
         burger.moveIngredient(fromIndex, toIndex);
 
         int expectedIndex = (int) expectedOrder[1];
         switch (expectedIndex) {
-            case FIRST:
-                assertSame(ing0, burger.ingredients.get(1));
+            case 0:
+                assertSame(firstIngredient, burger.ingredients.get(1));
                 break;
-            case SECOND:
-                assertSame(ing1, burger.ingredients.get(1));
+            case 1:
+                assertSame(secondIngredient, burger.ingredients.get(1));
                 break;
-            case THIRD:
-                assertSame(ing2, burger.ingredients.get(1));
+            case 2:
+                assertSame(thirdIngredient, burger.ingredients.get(1));
                 break;
             default:
                 fail("Неожиданный индекс: " + expectedIndex);
@@ -111,26 +110,26 @@ public class BurgerMovePositiveTest {
     @Test
     public void moveIngredientShouldPlaceCorrectIngredientAtThirdPosition() {
         Burger burger = new Burger();
-        Ingredient ing0 = mock(Ingredient.class);
-        Ingredient ing1 = mock(Ingredient.class);
-        Ingredient ing2 = mock(Ingredient.class);
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
+        Ingredient thirdIngredient = mock(Ingredient.class);
 
-        burger.addIngredient(ing0);
-        burger.addIngredient(ing1);
-        burger.addIngredient(ing2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+        burger.addIngredient(thirdIngredient);
 
         burger.moveIngredient(fromIndex, toIndex);
 
         int expectedIndex = (int) expectedOrder[2];
         switch (expectedIndex) {
-            case FIRST:
-                assertSame(ing0, burger.ingredients.get(2));
+            case 0:
+                assertSame(firstIngredient, burger.ingredients.get(2));
                 break;
-            case SECOND:
-                assertSame(ing1, burger.ingredients.get(2));
+            case 1:
+                assertSame(secondIngredient, burger.ingredients.get(2));
                 break;
-            case THIRD:
-                assertSame(ing2, burger.ingredients.get(2));
+            case 2:
+                assertSame(thirdIngredient, burger.ingredients.get(2));
                 break;
             default:
                 fail("Неожиданный индекс: " + expectedIndex);

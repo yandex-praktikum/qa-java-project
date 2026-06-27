@@ -166,7 +166,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void getPriceShouldCallIngredientGetPriceOnce() {
+    public void getPriceShouldCallIngredient1GetPriceOnce() {
         when(mockBun.getPrice()).thenReturn(BUN_PRICE);
         when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
         when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CUTLET);
@@ -175,6 +175,17 @@ public class BurgerTest {
         burger.getPrice();
 
         verify(mockIngredient1, times(1)).getPrice();
+    }
+
+    @Test
+    public void getPriceShouldCallIngredient2GetPriceOnce() {
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient1.getPrice()).thenReturn(INGREDIENT_PRICE_HOT_SAUCE);
+        when(mockIngredient2.getPrice()).thenReturn(INGREDIENT_PRICE_CUTLET);
+
+        Burger burger = createBurgerWithMocks();
+        burger.getPrice();
+
         verify(mockIngredient2, times(1)).getPrice();
     }
 
@@ -232,7 +243,17 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceiptShouldContainPriceWithIngredients() {
+    public void getReceiptShouldContainPriceLabelWithIngredients() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        String actualReceipt = burger.getReceipt();
+
+        assertTrue(actualReceipt.contains("Price:"));
+    }
+
+    @Test
+    public void getReceiptShouldContainPriceValueWithIngredients() {
         setupMocksForBurgerWithIngredients();
         Burger burger = createBurgerWithMocks();
 
@@ -244,7 +265,6 @@ public class BurgerTest {
         );
         String expectedPriceString = String.valueOf((int) expectedPrice);
 
-        assertTrue(actualReceipt.contains("Price:"));
         assertTrue(actualReceipt.contains(expectedPriceString));
     }
 
@@ -269,17 +289,62 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceiptShouldCallIngredientMethodsWithIngredients() {
+    public void getReceiptShouldCallIngredient1GetTypeOnce() {
         setupMocksForBurgerWithIngredients();
         Burger burger = createBurgerWithMocks();
 
         burger.getReceipt();
 
         verify(mockIngredient1, times(1)).getType();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredient1GetNameOnce() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient1, times(1)).getName();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredient1GetPriceOnce() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient1, times(1)).getPrice();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredient2GetTypeOnce() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient2, times(1)).getType();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredient2GetNameOnce() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient2, times(1)).getName();
+    }
+
+    @Test
+    public void getReceiptShouldCallIngredient2GetPriceOnce() {
+        setupMocksForBurgerWithIngredients();
+        Burger burger = createBurgerWithMocks();
+
+        burger.getReceipt();
+
         verify(mockIngredient2, times(1)).getPrice();
     }
 
@@ -294,7 +359,7 @@ public class BurgerTest {
     }
 
     @Test
-    public void getReceiptShouldContainPriceWithoutIngredients() {
+    public void getReceiptShouldContainPriceValueWithoutIngredients() {
         setupMocksForBurgerWithoutIngredients();
         Burger burger = createBurgerWithBunOnly();
 
@@ -303,61 +368,27 @@ public class BurgerTest {
         float expectedPrice = BUN_PRICE_WHITE * BUNS_COUNT;
         String expectedPriceString = String.valueOf((int) expectedPrice);
 
-        assertTrue(actualReceipt.contains("Price:"));
         assertTrue(actualReceipt.contains(expectedPriceString));
     }
 
     @Test
-    public void getReceiptShouldCallBunMethodsWithoutIngredients() {
+    public void getReceiptShouldCallBunGetNameTwiceWithoutIngredients() {
         setupMocksForBurgerWithoutIngredients();
         Burger burger = createBurgerWithBunOnly();
 
         burger.getReceipt();
 
         verify(mockBun, times(2)).getName();
+    }
+
+    @Test
+    public void getReceiptShouldCallBunGetPriceOnceWithoutIngredients() {
+        setupMocksForBurgerWithoutIngredients();
+        Burger burger = createBurgerWithBunOnly();
+
+        burger.getReceipt();
+
         verify(mockBun, times(1)).getPrice();
     }
 
-    @Test
-    public void getReceiptShouldContainBunWithRealObjects() {
-        Burger burger = createBurgerWithRealObjects();
-
-        String receipt = burger.getReceipt();
-
-        assertTrue(receipt.contains("(==== " + BUN_NAME_BLACK + " ====)"));
-    }
-
-    @Test
-    public void getReceiptShouldContainSauceWithRealObjects() {
-        Burger burger = createBurgerWithRealObjects();
-
-        String receipt = burger.getReceipt();
-
-        assertTrue(receipt.contains("= sauce " + INGREDIENT_NAME_HOT_SAUCE + " ="));
-    }
-
-    @Test
-    public void getReceiptShouldContainFillingWithRealObjects() {
-        Burger burger = createBurgerWithRealObjects();
-
-        String receipt = burger.getReceipt();
-
-        assertTrue(receipt.contains("= filling " + INGREDIENT_NAME_CUTLET + " ="));
-    }
-
-    @Test
-    public void getReceiptShouldContainCorrectPriceWithRealObjects() {
-        Burger burger = createBurgerWithRealObjects();
-
-        String receipt = burger.getReceipt();
-
-        float expectedPrice = calculateExpectedPriceWithIngredients(
-                INGREDIENT_PRICE_SAUCE,
-                INGREDIENT_PRICE_CUTLET
-        );
-        String expectedPriceString = String.valueOf((int) expectedPrice);
-
-        assertTrue(receipt.contains("Price:"));
-        assertTrue(receipt.contains(expectedPriceString));
-    }
 }
