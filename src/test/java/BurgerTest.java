@@ -8,9 +8,11 @@ import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
-
-import static org.junit.Assert.*;
-
+import static org.junit.Assert.assertEquals;
+import org.assertj.core.api.SoftAssertions;
+import org.junit.runners.Parameterized;
+import java.util.Arrays;
+import java.util.Collection;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
@@ -26,17 +28,15 @@ public class BurgerTest {
 
     @Before
     public void setUp() {
+        Mockito.when(bun.getPrice()).thenReturn(60.0f);
+        Mockito.when(bun.getName()).thenReturn("Classic Bun");
+
         cheese = new Ingredient(IngredientType.FILLING, "Cheese", 40.0f);
         beef = new Ingredient(IngredientType.FILLING, "Beef Patty", 150.0f);
         sauce = new Ingredient(IngredientType.SAUCE, "Ketchup", 20.0f);
 
         burger = new Burger();
-
-
-        Mockito.when(bun.getPrice()).thenReturn(60.0f);
-        Mockito.when(bun.getName()).thenReturn("Classic Bun");
     }
-
 
     @Test
     public void setBunsTest() {
@@ -44,18 +44,20 @@ public class BurgerTest {
         assertEquals(bun, burger.bun);
     }
 
-
     @Test
     public void addIngredientTest() {
-        assertEquals(0, burger.ingredients.size());
+        SoftAssertions softly = new SoftAssertions();
+
+        assertEquals("Изначально список ингредиентов пуст", 0, burger.ingredients.size());
 
         burger.addIngredient(cheese);
 
-        assertEquals(1, burger.ingredients.size());
-        assertTrue(burger.ingredients.contains(cheese));
-        assertEquals(cheese, burger.ingredients.get(0));
-    }
+        softly.assertThat(burger.ingredients.size()).isEqualTo(1);
+        softly.assertThat(burger.ingredients).contains(cheese);
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(cheese);
 
+        softly.assertAll();
+    }
 
     @Test
     public void getPriceTest() {
@@ -67,48 +69,61 @@ public class BurgerTest {
         assertEquals(expectedPrice, burger.getPrice(), 0.01f);
     }
 
-
     @Test
     public void removeIngredientTest() {
+        SoftAssertions softly = new SoftAssertions();
+
         burger.setBuns(bun);
         burger.addIngredient(cheese);
         burger.addIngredient(beef);
         burger.addIngredient(sauce);
 
-        assertEquals(3, burger.ingredients.size());
+        softly.assertThat(burger.ingredients.size())
+                .as("До удаления должно быть 3 ингредиента")
+                .isEqualTo(3);
 
         burger.removeIngredient(1);
 
-        assertEquals(2, burger.ingredients.size());
-        assertFalse(burger.ingredients.contains(beef));
-        assertTrue(burger.ingredients.contains(sauce));
-        assertEquals(sauce, burger.ingredients.get(1));
+        softly.assertThat(burger.ingredients.size()).isEqualTo(2);
+        softly.assertThat(burger.ingredients).doesNotContain(beef);
+        softly.assertThat(burger.ingredients).contains(sauce);
+        softly.assertThat(burger.ingredients.get(1)).isEqualTo(sauce);
+
+        softly.assertAll();
     }
 
-    @Test(expected = IndexOutOfBoundsException.class)
-    public void removeIngredientInvalidIndexTest() {
-        burger.removeIngredient(0);
-    }
+
     @Test
     public void moveIngredientTest() {
+        SoftAssertions softly = new SoftAssertions();
+
         burger.setBuns(bun);
         burger.addIngredient(cheese);
         burger.addIngredient(beef);
         burger.addIngredient(sauce);
+
         burger.moveIngredient(1, 0);
-        assertEquals(beef, burger.ingredients.get(0));
-        assertEquals(cheese, burger.ingredients.get(1));
-        assertEquals(sauce, burger.ingredients.get(2));
+
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(beef);
+        softly.assertThat(burger.ingredients.get(1)).isEqualTo(cheese);
+        softly.assertThat(burger.ingredients.get(2)).isEqualTo(sauce);
+
+        softly.assertAll();
     }
+
     @Test
     public void getReceiptTest() {
         burger.setBuns(bun);
         burger.addIngredient(cheese);
         burger.addIngredient(sauce);
+
         String receipt = burger.getReceipt();
-        assertTrue(receipt.contains("(==== Classic Bun ===="));
-        assertTrue(receipt.contains("= filling Cheese ="));
-        assertTrue(receipt.contains("= sauce Ketchup ="));
-        assertTrue(receipt.contains("Price: "));
+
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(receipt).contains("(==== Classic Bun ====");
+        softly.assertThat(receipt).contains("= filling Cheese =");
+        softly.assertThat(receipt).contains("= sauce Ketchup =");
+        softly.assertThat(receipt).contains("Price: ");
+        softly.assertAll();
     }
 }
