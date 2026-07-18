@@ -1,6 +1,8 @@
 package praktikum;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.EnumSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -26,14 +28,16 @@ public class IngredientTest {
                 "Имя ингредиента не соответствует ожидаемому");
     }
 
-    @Test
-    public void getTypeShouldReturnIngredientType() {
-        Ingredient ingredient = new Ingredient(IngredientType.FILLING, "meat", 35f);
+    @ParameterizedTest
+    @EnumSource(IngredientType.class)
+    public void getTypeShouldReturnIngredientType(IngredientType type) {
+        Ingredient ingredient = new Ingredient(type, "ingredient", 35f);
         IngredientType actual = ingredient.getType();
         assertEquals(
-                IngredientType.FILLING,
+                type,
                 actual,
                 "Тип ингредиента не соответствует ожидаемому");
+
     }
 
 }
