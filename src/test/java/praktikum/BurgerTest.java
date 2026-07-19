@@ -31,8 +31,8 @@ public class BurgerTest {
 
     @Test
     public void getPriceShouldReturnDoubleBunPrice() {
-        Mockito.when(bun.getPrice()).thenReturn(10f);
         burger.setBuns(bun);
+        Mockito.when(bun.getPrice()).thenReturn(10f);
         float actual = burger.getPrice();
         assertEquals(20f, actual, "Цена бургера должна включать стоимость двух булочек");
         Mockito.verify(bun, Mockito.times(1)).getPrice();
@@ -67,5 +67,29 @@ public class BurgerTest {
                 "Второй ингредиент должен находиться на позиции с индексом 0");
         assertEquals(2, burger.ingredients.size(),
                 "Количество ингредиентов изменилось после перемещения");
+    }
+
+    @Test
+    public void getReceiptShouldReturnReceipt() {
+        burger.setBuns(bun);
+        burger.addIngredient(ingredient);
+        Mockito.when(bun.getName()).thenReturn("Mac");
+        Mockito.when(ingredient.getPrice()).thenReturn(10f);
+        Mockito.when(bun.getPrice()).thenReturn(10f);
+        Mockito.when(ingredient.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(ingredient.getName()).thenReturn("meat");
+        String actual = burger.getReceipt();
+        String expected = String.format(
+                "(==== %s ====)%n" +
+                        "= %s %s =%n" +
+                        "(==== %s ====)%n" +
+                        "%nPrice: %f%n",
+                "Mac",
+                "sauce",
+                "meat",
+                "Mac",
+                30f
+        );
+        assertEquals(expected, actual, "Чек бургера не соответствует ожидаемому");
     }
 }
