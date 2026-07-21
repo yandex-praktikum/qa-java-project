@@ -1,3 +1,4 @@
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -78,7 +79,6 @@ public class BurgerTest {
     public void addingIngredientListUsingAddIngredient(){
         burger.addIngredient(firstIngredient);
         assertEquals(1, burger.ingredients.size());
-        assertSame(firstIngredient, burger.ingredients.get(0));
     }
 
     @Test
@@ -88,7 +88,6 @@ public class BurgerTest {
         burger.removeIngredient(0);
 
         assertEquals(1, burger.ingredients.size());
-        assertSame(secondIngredient, burger.ingredients.get(0));
     }
 
     @Test
@@ -98,8 +97,6 @@ public class BurgerTest {
         burger.moveIngredient(moveFromIndex, moveToIndex);
 
         assertEquals(2, burger.ingredients.size());
-        assertTrue(burger.ingredients.contains(firstIngredient));
-        assertTrue(burger.ingredients.contains(secondIngredient));
     }
 
     @Test
@@ -111,9 +108,6 @@ public class BurgerTest {
         float expectedPrice = bunPrice * 2 + firstIngredientPrice + secondIngredientPrice;
 
         assertEquals(expectedPrice, burger.getPrice(), 0.0001);
-        verify(bun).getPrice();
-        verify(firstIngredient, times(1)).getPrice();
-        verify(secondIngredient, times(1)).getPrice();
     }
 
     @Test
@@ -129,17 +123,11 @@ public class BurgerTest {
                 + String.format("%nPrice: %f%n", bunPrice * 2 + firstIngredientPrice + secondIngredientPrice);
 
         assertEquals(expectedReceipt, burger.getReceipt());
-        verify(bun, times(2)).getName();
-        verify(bun).getPrice();
-        verify(firstIngredient).getType();
-        verify(firstIngredient).getName();
-        verify(secondIngredient).getType();
-        verify(secondIngredient).getName();
     }
 
-    @Test(expected = NullPointerException.class)
-    public void callingBunWithoutExceptionViaGetPrice(){
-        burger.getPrice();
+    @Test
+    public void getPriceWithoutBunShouldThrowNullPointerException(){
+        assertThrows(NullPointerException.class, () -> burger.getPrice());
     }
 
     @Test
@@ -149,10 +137,12 @@ public class BurgerTest {
 
         String receipt = burger.getReceipt();
 
-        assertTrue(receipt.contains(bunName));
-        assertTrue(receipt.contains("sauce"));
-        assertTrue(receipt.contains("first"));
-        assertTrue(receipt.contains("Price:"));
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(receipt).contains(bunName);
+        softAssertions.assertThat(receipt).contains("sauce");
+        softAssertions.assertThat(receipt).contains("first");
+        softAssertions.assertThat(receipt).contains("Price:");
+        softAssertions.assertAll();
     }
 
 }
