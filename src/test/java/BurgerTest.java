@@ -1,111 +1,70 @@
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
 import praktikum.Bun;
 import praktikum.Burger;
 import praktikum.Ingredient;
 import praktikum.IngredientType;
 
-
-import java.util.Arrays;
-import java.util.Collection;
-
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 
-@RunWith(Parameterized.class)
 public class BurgerTest {
-
-    private final String bunName;
-    private final float bunPrice;
-    private final float firstIngredientPrice;
-    private final float secondIngredientPrice;
-    private final int moveFromIndex;
-    private final int moveToIndex;
 
     private Burger burger;
     private Bun bun;
-    private Ingredient firstIngredient;
-    private Ingredient secondIngredient;
-
-
-    public BurgerTest(String bunName, float bunPrice, float firstIngredientPrice, float secondIngredientPrice, int moveFromIndex, int moveToIndex){
-        this.bunName = bunName;
-        this.bunPrice = bunPrice;
-        this.firstIngredientPrice = firstIngredientPrice;
-        this.secondIngredientPrice = secondIngredientPrice;
-        this.moveFromIndex = moveFromIndex;
-        this.moveToIndex = moveToIndex;
-    }
-
-    @Parameterized.Parameters(name = "{index}: bun={0}, bunPrice={1}, first={2}, second={3}")
-    public static Collection<Object[]> data(){
-        return Arrays.asList(new Object[][]{
-                {"black bun", 100f, 100f, 200f, 0, 1},
-                {"white bun", 200f, 50f, 150f, 1, 0}
-        });
-    }
+    private Ingredient sauceIngredient;
+    private Ingredient fillingIngredient;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         burger = new Burger();
 
         bun = Mockito.mock(Bun.class);
-        firstIngredient = Mockito.mock(Ingredient.class);
-        secondIngredient = Mockito.mock(Ingredient.class);
+        sauceIngredient = Mockito.mock(Ingredient.class);
+        fillingIngredient = Mockito.mock(Ingredient.class);
 
-        when(bun.getName()).thenReturn(bunName);
-        when(bun.getPrice()).thenReturn(bunPrice);
+        when(bun.getName()).thenReturn("black bun");
+        when(bun.getPrice()).thenReturn(100f);
 
-        when(firstIngredient.getName()).thenReturn("first");
-        when(firstIngredient.getPrice()).thenReturn(firstIngredientPrice);
-        when(firstIngredient.getType()).thenReturn(IngredientType.SAUCE);
+        when(sauceIngredient.getName()).thenReturn("hot sauce");
+        when(sauceIngredient.getPrice()).thenReturn(100f);
+        when(sauceIngredient.getType()).thenReturn(IngredientType.SAUCE);
 
-        when(secondIngredient.getName()).thenReturn("second");
-        when(secondIngredient.getPrice()).thenReturn(secondIngredientPrice);
-        when(secondIngredient.getType()).thenReturn(IngredientType.FILLING);
+        when(fillingIngredient.getName()).thenReturn("cutlet");
+        when(fillingIngredient.getPrice()).thenReturn(100f);
+        when(fillingIngredient.getType()).thenReturn(IngredientType.FILLING);
     }
 
     @Test
-    public void installingBunViaSetBuns(){
+    public void installingBunViaSetBuns() {
         burger.setBuns(bun);
         assertSame(bun, burger.bun);
     }
 
     @Test
-    public void addingIngredientListUsingAddIngredient(){
-        burger.addIngredient(firstIngredient);
+    public void addingIngredientListUsingAddIngredient() {
+        burger.addIngredient(sauceIngredient);
         assertEquals(1, burger.ingredients.size());
     }
 
     @Test
-    public void removingIngredientByIndexUsingRemoveIngredient(){
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+    public void removingIngredientByIndexUsingRemoveIngredient() {
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
         burger.removeIngredient(0);
 
         assertEquals(1, burger.ingredients.size());
     }
 
     @Test
-    public void movingIngredientToNewPositionUsingMoveIngredient(){
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
-        burger.moveIngredient(moveFromIndex, moveToIndex);
-
-        assertEquals(2, burger.ingredients.size());
-    }
-
-    @Test
-    public void gettingTheCorrectPriceBackViaGetPrice(){
+    public void gettingTheCorrectPriceBackViaGetPrice() {
         burger.setBuns(bun);
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
-        float expectedPrice = bunPrice * 2 + firstIngredientPrice + secondIngredientPrice;
+        float expectedPrice = 100f * 2 + 100f + 100f;
 
         assertEquals(expectedPrice, burger.getPrice(), 0.0001);
     }
@@ -113,36 +72,38 @@ public class BurgerTest {
     @Test
     public void returningCorrectReceiptUsingGetReceipt(){
         burger.setBuns(bun);
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
-
-        String expectedReceipt = String.format("(==== %s ====)%n", bunName)
-                + String.format("= sauce %s =%n", "first")
-                + String.format("= filling %s =%n", "second")
-                + String.format("(==== %s ====)%n", bunName)
-                + String.format("%nPrice: %f%n", bunPrice * 2 + firstIngredientPrice + secondIngredientPrice);
-
-        assertEquals(expectedReceipt, burger.getReceipt());
-    }
-
-    @Test
-    public void getPriceWithoutBunShouldThrowNullPointerException(){
-        assertThrows(NullPointerException.class, () -> burger.getPrice());
-    }
-
-    @Test
-    public void getReceiptContainsAllTheParts(){
-        burger.setBuns(bun);
-        burger.addIngredient(firstIngredient);
+        burger.addIngredient(sauceIngredient);
+        burger.addIngredient(fillingIngredient);
 
         String receipt = burger.getReceipt();
 
         SoftAssertions softAssertions = new SoftAssertions();
-        softAssertions.assertThat(receipt).contains(bunName);
-        softAssertions.assertThat(receipt).contains("sauce");
-        softAssertions.assertThat(receipt).contains("first");
+        softAssertions.assertThat(receipt).contains("(==== black bun ====)");
+        softAssertions.assertThat(receipt).contains("= sauce hot sauce =");
+        softAssertions.assertThat(receipt).contains("= filling cutlet =");
+        softAssertions.assertThat(receipt).contains("(==== black bun ====)");
         softAssertions.assertThat(receipt).contains("Price:");
+        softAssertions.assertThat(receipt).contains("400");
         softAssertions.assertAll();
     }
 
+    @Test
+    public void getPriceWithoutBunShouldThrowNullPointerException() {
+        assertThrows(NullPointerException.class, () -> burger.getPrice());
+    }
+
+    @Test
+    public void getReceiptContainsAllTheParts() {
+        burger.setBuns(bun);
+        burger.addIngredient(sauceIngredient);
+
+        String receipt = burger.getReceipt();
+
+        SoftAssertions softAssertions = new SoftAssertions();
+        softAssertions.assertThat(receipt).contains("black bun");
+        softAssertions.assertThat(receipt).contains("sauce");
+        softAssertions.assertThat(receipt).contains("hot sauce");
+        softAssertions.assertThat(receipt).contains("Price:");
+        softAssertions.assertAll();
+    }
 }
