@@ -1,0 +1,142 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Praktikum</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">praktikum</a>
+</div>
+
+<h1>Coverage Summary for Class: Praktikum (praktikum)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Praktikum</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/13)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package praktikum;
+&nbsp;
+&nbsp;import java.util.List;
+&nbsp;
+<b class="nc">&nbsp;public class Praktikum {</b>
+&nbsp;
+&nbsp;    public static void main(String[] args) {
+&nbsp;        // Инициализируем базу данных
+<b class="nc">&nbsp;        Database database = new Database();</b>
+&nbsp;
+&nbsp;        // Создадим новый бургер
+<b class="nc">&nbsp;        Burger burger = new Burger();</b>
+&nbsp;
+&nbsp;        // Считаем список доступных булок из базы данных
+<b class="nc">&nbsp;        List&lt;Bun&gt; buns = database.availableBuns();</b>
+&nbsp;
+&nbsp;        // Считаем список доступных ингредиентов из базы данных
+<b class="nc">&nbsp;        List&lt;Ingredient&gt; ingredients = database.availableIngredients();</b>
+&nbsp;
+&nbsp;        // Соберём бургер
+<b class="nc">&nbsp;        burger.setBuns(buns.get(0));</b>
+&nbsp;
+<b class="nc">&nbsp;        burger.addIngredient(ingredients.get(1));</b>
+<b class="nc">&nbsp;        burger.addIngredient(ingredients.get(4));</b>
+<b class="nc">&nbsp;        burger.addIngredient(ingredients.get(3));</b>
+<b class="nc">&nbsp;        burger.addIngredient(ingredients.get(5));</b>
+&nbsp;
+&nbsp;        // Переместим слой с ингредиентом
+<b class="nc">&nbsp;        burger.moveIngredient(2, 1);</b>
+&nbsp;
+&nbsp;        // Удалим ингредиент
+<b class="nc">&nbsp;        burger.removeIngredient(3);</b>
+&nbsp;
+&nbsp;        // Распечатаем рецепт бургера
+<b class="nc">&nbsp;        System.out.println(burger.getReceipt());</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-07-24 19:35</div>
+</div>
+</body>
+</html>

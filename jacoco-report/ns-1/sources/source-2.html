@@ -1,0 +1,173 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
+  <title>Coverage Report > Burger</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">praktikum</a>
+</div>
+
+<h1>Coverage Summary for Class: Burger (praktikum)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Branch, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Burger</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (7/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (17/17)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package praktikum;
+&nbsp;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.List;
+&nbsp;
+&nbsp;/**
+&nbsp; * Модель бургера.
+&nbsp; * Бургер состоит из булочек и ингредиентов (начинка или соус).
+&nbsp; * Ингредиенты можно перемещать и удалять.
+&nbsp; * Можно распечать чек с информацией о бургере.
+&nbsp; */
+<b class="fc">&nbsp;public class Burger {</b>
+&nbsp;
+&nbsp;    public Bun bun;
+<b class="fc">&nbsp;    public List&lt;Ingredient&gt; ingredients = new ArrayList&lt;&gt;();</b>
+&nbsp;
+&nbsp;    public void setBuns(Bun bun) {
+<b class="fc">&nbsp;        this.bun = bun;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void addIngredient(Ingredient ingredient) {
+<b class="fc">&nbsp;        ingredients.add(ingredient);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void removeIngredient(int index) {
+<b class="fc">&nbsp;        ingredients.remove(index);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void moveIngredient(int index, int newIndex) {
+<b class="fc">&nbsp;        ingredients.add(newIndex, ingredients.remove(index));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public float getPrice() {
+<b class="fc">&nbsp;        float price = bun.getPrice() * 2;</b>
+&nbsp;
+<b class="fc">&nbsp;        for (Ingredient ingredient : ingredients) {</b>
+<b class="fc">&nbsp;            price += ingredient.getPrice();</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        return price;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getReceipt() {
+<b class="fc">&nbsp;        StringBuilder receipt = new StringBuilder(String.format(&quot;(==== %s ====)%n&quot;, bun.getName()));</b>
+&nbsp;
+<b class="fc">&nbsp;        for (Ingredient ingredient : ingredients) {</b>
+<b class="fc">&nbsp;            receipt.append(String.format(&quot;= %s %s =%n&quot;, ingredient.getType().toString().toLowerCase(),</b>
+<b class="fc">&nbsp;                    ingredient.getName()));</b>
+&nbsp;        }
+&nbsp;
+<b class="fc">&nbsp;        receipt.append(String.format(&quot;(==== %s ====)%n&quot;, bun.getName()));</b>
+<b class="fc">&nbsp;        receipt.append(String.format(&quot;%nPrice: %f%n&quot;, getPrice()));</b>
+&nbsp;
+<b class="fc">&nbsp;        return receipt.toString();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2026-07-24 19:35</div>
+</div>
+</body>
+</html>
