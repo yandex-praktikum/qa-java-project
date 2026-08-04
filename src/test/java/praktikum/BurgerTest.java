@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,19 +19,19 @@ public class BurgerTest {
     private Bun bun;
 
     @Mock
-    private Ingredient ingredient1;
+    private Ingredient first_ingredient;
 
     @Mock
-    private Ingredient ingredient2;
+    private Ingredient second_ingredient;
 
     @Mock
-    private Ingredient ingredient3;
+    private Ingredient third_ingredient;
 
     //метод-хэлпер
     public void addMiltipleIngredients() {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+        burger.addIngredient(first_ingredient);
+        burger.addIngredient(second_ingredient);
+        burger.addIngredient(third_ingredient);
     }
 
 
@@ -48,19 +49,23 @@ public class BurgerTest {
 
     @Test
     public void shouldAddIngredient() {
-        burger.addIngredient(ingredient1);
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
+        burger.addIngredient(first_ingredient);
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(1);
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(first_ingredient);
+        softly.assertAll();
     }
 
     @Test
     public void shouldAddMultipleIngredients() {
         addMiltipleIngredients();
 
-        assertEquals(3, burger.ingredients.size());
-        assertEquals(ingredient1, burger.ingredients.get(0));
-        assertEquals(ingredient2, burger.ingredients.get(1));
-        assertEquals(ingredient3, burger.ingredients.get(2));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(3);
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(first_ingredient);
+        softly.assertThat(burger.ingredients.get(1)).isEqualTo(second_ingredient);
+        softly.assertThat(burger.ingredients.get(2)).isEqualTo(third_ingredient);
+        softly.assertAll();
     }
 
     @Test

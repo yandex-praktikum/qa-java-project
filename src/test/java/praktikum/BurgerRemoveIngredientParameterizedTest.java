@@ -1,18 +1,15 @@
 package praktikum;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 
 @RunWith(Parameterized.class)
 public class BurgerRemoveIngredientParameterizedTest {
 
-    private Ingredient ingredient1;
-    private Ingredient ingredient2;
-    private Ingredient ingredient3;
+    private Ingredient[] ingredients;
     private Burger burger;
 
     private final int index;
@@ -34,20 +31,24 @@ public class BurgerRemoveIngredientParameterizedTest {
 
     @Test
     public void burgerRemoveIngredientsPositiveTest() {
-        ingredient1 = Mockito.mock(Ingredient.class);
-        ingredient2 = Mockito.mock(Ingredient.class);
-        ingredient3 = Mockito.mock(Ingredient.class);
+        ingredients = new Ingredient[] {
+                Mockito.mock(Ingredient.class),
+                Mockito.mock(Ingredient.class),
+                Mockito.mock(Ingredient.class)
+        };
 
         burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+        for (Ingredient ingredient : ingredients) {
+            burger.addIngredient(ingredient);
+        }
 
         Ingredient removedIngredient = burger.ingredients.get(index);
         burger.removeIngredient(index);
 
-        assertEquals(expectedRemainingSize, burger.ingredients.size());
-        assertFalse(burger.ingredients.contains(removedIngredient));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(expectedRemainingSize);
+        softly.assertThat(burger.ingredients.contains(removedIngredient)).isFalse();
+        softly.assertAll();
     }
 
 }

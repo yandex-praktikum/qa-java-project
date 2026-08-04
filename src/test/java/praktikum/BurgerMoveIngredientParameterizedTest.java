@@ -1,17 +1,15 @@
 package praktikum;
 
+import org.assertj.core.api.SoftAssertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.mockito.Mockito;
-import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
 public class BurgerMoveIngredientParameterizedTest {
 
-    private Ingredient ingredient1;
-    private Ingredient ingredient2;
-    private Ingredient ingredient3;
+    private Ingredient[] ingredients;
     private Burger burger;
 
     private final int index;
@@ -36,22 +34,24 @@ public class BurgerMoveIngredientParameterizedTest {
 
     @Test
     public void burgerMoveIngredientsPositiveTest() {
-        ingredient1 = Mockito.mock(Ingredient.class);
-        ingredient2 = Mockito.mock(Ingredient.class);
-        ingredient3 = Mockito.mock(Ingredient.class);
+        ingredients = new Ingredient[] {
+                Mockito.mock(Ingredient.class),
+                Mockito.mock(Ingredient.class),
+                Mockito.mock(Ingredient.class)
+        };
 
         burger = new Burger();
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-        burger.addIngredient(ingredient3);
+        for (Ingredient ingredient : ingredients) {
+            burger.addIngredient(ingredient);
+        }
 
-        Ingredient[] original = {ingredient1, ingredient2, ingredient3};
         burger.moveIngredient(index, newIndex);
 
-        assertEquals(3, burger.ingredients.size());
-
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(3);
         for (int i = 0; i < expectedOrder.length; i++) {
-            assertEquals(original[expectedOrder[i]], burger.ingredients.get(i));
+            softly.assertThat(burger.ingredients.get(i)).isEqualTo(ingredients[expectedOrder[i]]);
         }
+        softly.assertAll();
     }
 }
