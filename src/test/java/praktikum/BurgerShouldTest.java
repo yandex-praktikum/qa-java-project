@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.assertj.core.api.SoftAssertions;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
@@ -40,8 +41,10 @@ public class BurgerShouldTest {
     public void addIngredientShouldAddIngredientToList() {
         burger.addIngredient(sauce);
 
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(sauce, burger.ingredients.get(0));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(1);
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(sauce);
+        softly.assertAll();
     }
 
     @Test
@@ -51,8 +54,10 @@ public class BurgerShouldTest {
 
         burger.removeIngredient(0);
 
-        assertEquals(1, burger.ingredients.size());
-        assertEquals(filling, burger.ingredients.get(0));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.size()).isEqualTo(1);
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(filling);
+        softly.assertAll();
     }
 
     @Test
@@ -62,8 +67,10 @@ public class BurgerShouldTest {
 
         burger.moveIngredient(0, 1);
 
-        assertEquals(filling, burger.ingredients.get(0));
-        assertEquals(sauce, burger.ingredients.get(1));
+        SoftAssertions softly = new SoftAssertions();
+        softly.assertThat(burger.ingredients.get(0)).isEqualTo(filling);
+        softly.assertThat(burger.ingredients.get(1)).isEqualTo(sauce);
+        softly.assertAll();
     }
 
     @Test
