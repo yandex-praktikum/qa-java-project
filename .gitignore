@@ -1,0 +1,29 @@
+# Java
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Maven
+target/
+!target/site/
+!target/site/jacoco/
+!target/site/jacoco/**/*
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+.classpath
+.project
+.settings/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+#попытка спасти пул-реквест
+# Local
+*.local
