@@ -1,24 +1,42 @@
-package praktikum;
-
-import org.junit.Before;
-import org.junit.Test;
+import praktikum.Bun;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.Before;
+import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+
 @RunWith(Parameterized.class)
-public class BunParamTest {
-    private final String name;
-    private final String price;
-    public BunParamTest(String name, String price) {
-        this.name = name;
-        this.price = price;
+public class BunTest {
+    private String bunName;
+    private float bunPrice;
+    private Bun bun;
+
+    public BunTest(String bunName, float bunPrice) {
+        this.bunName = bunName;
+        this.bunPrice = bunPrice;
     }
+
+    @Before
+    public void setUp() {
+        bun = new Bun(bunName, bunPrice);
+    }
+
     @Parameterized.Parameters
-    public static Collection<Object[]> dataForTest() {
-        return Arrays.asList(new Object[][]{
-                {"чиз", "15"},
-                {"гамб", "12"}
-        });
+    public static Object[][] getBunData() {
+        return new Object[][]{
+                {"black bun", 100f},
+                {"white bun", 200f},
+                {"red bun", 300f}
+        };
     }
-}
+    @Test
+    public void testGetName() {
+        assertEquals(bunName, bun.getName());
+    }
+
+    @Test
+    public void testGetPrice() {
+        assertEquals(bunPrice, bun.getPrice(), 0.001f);
+    }
+    }
