@@ -22,7 +22,7 @@ public class BunTests {
                 Arguments.of("Лучшая булочка", 99.9f),
                 Arguments.of("", 99.9f),
                 Arguments.of("Почти пустая булочка!", 99.9f),
-                Arguments.of("Целая булочка", 99.9f),
+                Arguments.of("Целая булочка.", 99.9f),
                 Arguments.of("negative булочка 123", 99.9f)
         );
     }
@@ -36,11 +36,11 @@ public class BunTests {
 
     private static Stream<Arguments> getPriceReturnValid(){
         return Stream.of(
-                Arguments.of("Лучшая булочка", 99.9f),
-                Arguments.of("Лучшая булочка", 0),
-                Arguments.of("Лучшая булочка", 0.001f),
-                Arguments.of("Лучшая булочка", 2),
-                Arguments.of("Лучшая булочка", -11)
+                Arguments.of("Лучшая булочка!", 99.9f),
+                Arguments.of("Лучшая булочка!", 0),
+                Arguments.of("Лучшая булочка!", 0.001f),
+                Arguments.of("Лучшая булочка!", 2),
+                Arguments.of("Лучшая булочка!", -11)
         );
     }
 }
