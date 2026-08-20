@@ -1,0 +1,28 @@
+package praktikum;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+
+public class IngredientTypeTest {
+
+    @Test
+    public void testEnumValues() {
+        IngredientType[] types = IngredientType.values();
+        assertEquals(2, types.length);
+        assertEquals(IngredientType.SAUCE, types[0]);
+        assertEquals(IngredientType.FILLING, types[1]);
+    }
+
+    @Test
+    public void testEnumToString() {
+        assertEquals("SAUCE", IngredientType.SAUCE.toString());
+        assertEquals("FILLING", IngredientType.FILLING.toString());
+    }
+
+    @Test
+    public void testEnumValueOf() {
+        assertEquals(IngredientType.SAUCE, IngredientType.valueOf("SAUCE"));
+        assertEquals(IngredientType.FILLING, IngredientType.valueOf("FILLING"));
+    }
+}
