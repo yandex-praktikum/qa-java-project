@@ -56,7 +56,6 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.11</version>
                 <executions>
-                    git
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
