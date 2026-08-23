@@ -1,0 +1,12 @@
+/.idea/
+# Maven target
+/target/*
+
+# Разрешаем JaCoCo report
+!/target/site/
+!/target/site/jacoco/
+!/target/site/jacoco/**
+
+# macOS
+.DS_Store
+**/.DS_Store
