@@ -15,20 +15,26 @@ import static org.mockito.Mockito.when;
 @RunWith(Parameterized.class)
 public class BurgerGetPriceTest {
 
-    // Булочка, которая используется в текущем тестовом наборе
-    private final Bun bun;
+    // Цена булочки
+    private static final float BUN_PRICE = 1.0f;// Цена булочки
+    private static final float SAUCE_PRICE = 0.5f;  // Цена соуса
+    private static final float FILLING_PRICE = 0.8f;  // Цена начинки
+    private static final float BURGER_WITHOUT_INGREDIENTS_PRICE = 2.0f;    // Ожидаемая цена бургера без ингредиентов
+    private static final float BURGER_WITH_ONE_INGREDIENT_PRICE = 2.5f;// Ожидаемая цена бургера с одним ингредиентом
+    private static final float BURGER_WITH_TWO_INGREDIENTS_PRICE = 3.3f;
+    // Ожидаемая цена бургера с двумя ингредиентами
+    private static final float DELTA = 0.01f;// Допустимая погрешность при сравнении значений типа float
 
-    // Массив ингредиентов, которые добавляются в бургер
-    private final Ingredient[] ingredients;
+    private final Bun bun; // Булочка, которая используется в текущем тестовом наборе
+    private final Ingredient[] ingredients; // Массив ингредиентов, которые добавляются в бургер
+    private final float expectedPrice; // Ожидаемая итоговая цена бургера
 
-    // Ожидаемая итоговая цена бургера
-    private final float expectedPrice;
+    // Конструктор 
+    public BurgerGetPriceTest(
+            Bun bun,
+            Ingredient[] ingredients,
+            float expectedPrice) {
 
-    // Допустимая погрешность при сравнении значений типа float
-    private static final float DELTA = 0.01f;
-
-    // Конструктор получает параметры для каждого запуска параметризованного теста
-    public BurgerGetPriceTest(Bun bun, Ingredient[] ingredients, float expectedPrice) {
         this.bun = bun;
         this.ingredients = ingredients;
         this.expectedPrice = expectedPrice;
@@ -38,26 +44,38 @@ public class BurgerGetPriceTest {
     @Parameterized.Parameters
     public static Collection<Object[]> data() {
 
-        // Создаём мок булочки и задаём цену 1.0
+        // Создаём мок булочки
         Bun bun = mock(Bun.class);
-        when(bun.getPrice()).thenReturn(1.0f);
+        when(bun.getPrice()).thenReturn(BUN_PRICE);
 
-        // Создаём первый мок ингредиента и задаём ему цену 0.5
-        Ingredient ingredient1 = mock(Ingredient.class);
-        when(ingredient1.getPrice()).thenReturn(0.5f);
+        // Создаём мок соуса
+        Ingredient sauce = mock(Ingredient.class);
+        when(sauce.getPrice()).thenReturn(SAUCE_PRICE);
 
-        // Создаём второй мок ингредиента и задаём ему цену 0.8
-        Ingredient ingredient2 = mock(Ingredient.class);
-        when(ingredient2.getPrice()).thenReturn(0.8f);
+        // Создаём мок начинки
+        Ingredient filling = mock(Ingredient.class);
+        when(filling.getPrice()).thenReturn(FILLING_PRICE);
 
         // Возвращаем три набора данных:
         // 1. Бургер без ингредиентов
         // 2. Бургер с одним ингредиентом
         // 3. Бургер с двумя ингредиентами
         return Arrays.asList(new Object[][]{
-                {bun, new Ingredient[]{}, 2.0f},
-                {bun, new Ingredient[]{ingredient1}, 2.5f},
-                {bun, new Ingredient[]{ingredient1, ingredient2}, 3.3f}
+                {
+                        bun,
+                        new Ingredient[]{},
+                        BURGER_WITHOUT_INGREDIENTS_PRICE
+                },
+                {
+                        bun,
+                        new Ingredient[]{sauce},
+                        BURGER_WITH_ONE_INGREDIENT_PRICE
+                },
+                {
+                        bun,
+                        new Ingredient[]{sauce, filling},
+                        BURGER_WITH_TWO_INGREDIENTS_PRICE
+                }
         });
     }
 
@@ -75,7 +93,11 @@ public class BurgerGetPriceTest {
             burger.addIngredient(ingredient);
         }
 
-        // Проверяем, что итоговая цена бургера соответствует ожидаемой
-        Assert.assertEquals(expectedPrice, burger.getPrice(), DELTA);
+        // Проверяем итоговую цену бургера
+        Assert.assertEquals(
+                expectedPrice,
+                burger.getPrice(),
+                DELTA
+        );
     }
 }

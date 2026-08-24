@@ -12,17 +12,10 @@ import java.util.Collection;
 @RunWith(Parameterized.class)
 public class IngredientTest {
 
-    // Тип ингредиента для текущего набора тестовых данных
-    private final IngredientType type;
-
-    // Название ингредиента для текущего набора тестовых данных
-    private final String name;
-
-    // Цена ингредиента для текущего набора тестовых данных
-    private final float price;
-
-    // Допустимая погрешность
-    private static final float DELTA = 0f;
+    private final IngredientType type; // Тип ингредиента для текущего набора тестовых данных
+    private final String name; // Название ингредиента для текущего набора тестовых данных
+    private final float price;    // Цена ингредиента для текущего набора тестовых данных
+    private static final float DELTA = 0f; // Допустимая погрешность
 
     // Конструктор
     public IngredientTest(IngredientType type, String name, float price) {

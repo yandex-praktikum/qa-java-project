@@ -28,17 +28,34 @@ public class BurgerGetReceiptTest {
         this.expectedReceipt = expectedReceipt;
     }
 
+    private static final float BUN_PRICE = 100f;
+    private static final float SAUCE_PRICE = 50f;
+    private static final float CUTLET_PRICE = 100f;
+    private static final float EXPENSIVE_CUTLET_PRICE = 150f;
+    private static final float SAUSAGE_PRICE = 50f;
+    private static final float DINOSAUR_PRICE = 200f;
+    private static final String FIRST_BURGER_PRICE = "350,000000";
+    private static final String SECOND_BURGER_PRICE = "450,000000";
+    private static final String THIRD_BURGER_PRICE = "500,000000";
+
     // Набор параметров для параметризованных тестов
     @Parameterized.Parameters
     public static Object[][] testData() {
         return new Object[][]{
                 {
                         // Первый набор данных: булочка и два ингредиента
-                        new Bun("black bun", 100f),
+                        new Bun("black bun", BUN_PRICE),
                         List.of(
-                                new Ingredient(IngredientType.SAUCE, "sour cream", 50f),
-                                new Ingredient(IngredientType.FILLING, "cutlet", 100f)
-
+                                new Ingredient(
+                                        IngredientType.SAUCE,
+                                        "sour cream",
+                                        SAUCE_PRICE
+                                ),
+                                new Ingredient(
+                                        IngredientType.FILLING,
+                                        "cutlet",
+                                        CUTLET_PRICE
+                                )
                         ),
 
                         // Ожидаемый чек для первого набора данных
@@ -47,15 +64,27 @@ public class BurgerGetReceiptTest {
                                 "= filling cutlet =" + System.lineSeparator() +
                                 "(==== black bun ====)" + System.lineSeparator() +
                                 System.lineSeparator() +
-                                "Price: 350,000000" + System.lineSeparator()
+                                "Price: " + FIRST_BURGER_PRICE + System.lineSeparator()
                 },
                 {
                         // Второй набор данных: булочка и три ингредиента
-                        new Bun("white bun", 100f),
+                        new Bun("white bun", BUN_PRICE),
                         List.of(
-                                new Ingredient(IngredientType.FILLING, "cutlet", 150f),
-                                new Ingredient(IngredientType.SAUCE, "chili sauce", 50f),
-                                new Ingredient(IngredientType.FILLING, "sausage", 50f)
+                                new Ingredient(
+                                        IngredientType.FILLING,
+                                        "cutlet",
+                                        EXPENSIVE_CUTLET_PRICE
+                                ),
+                                new Ingredient(
+                                        IngredientType.SAUCE,
+                                        "chili sauce",
+                                        SAUCE_PRICE
+                                ),
+                                new Ingredient(
+                                        IngredientType.FILLING,
+                                        "sausage",
+                                        SAUSAGE_PRICE
+                                )
                         ),
 
                         // Ожидаемый чек для второго набора данных
@@ -65,15 +94,27 @@ public class BurgerGetReceiptTest {
                                 "= filling sausage =" + System.lineSeparator() +
                                 "(==== white bun ====)" + System.lineSeparator() +
                                 System.lineSeparator() +
-                                "Price: 450,000000" + System.lineSeparator()
+                                "Price: " + SECOND_BURGER_PRICE + System.lineSeparator()
                 },
                 {
                         // Третий набор данных: булочка и три ингредиента
-                        new Bun("red bun", 100f),
+                        new Bun("red bun", BUN_PRICE),
                         List.of(
-                                new Ingredient(IngredientType.SAUCE, "hot sauce", 50f),
-                                new Ingredient(IngredientType.FILLING, "sausage", 50f),
-                                new Ingredient(IngredientType.FILLING, "dinosaur", 200f)
+                                new Ingredient(
+                                        IngredientType.SAUCE,
+                                        "hot sauce",
+                                        SAUCE_PRICE
+                                ),
+                                new Ingredient(
+                                        IngredientType.FILLING,
+                                        "sausage",
+                                        SAUSAGE_PRICE
+                                ),
+                                new Ingredient(
+                                        IngredientType.FILLING,
+                                        "dinosaur",
+                                        DINOSAUR_PRICE
+                                )
                         ),
 
                         // Ожидаемый чек для третьего набора данных
@@ -83,8 +124,8 @@ public class BurgerGetReceiptTest {
                                 "= filling dinosaur =" + System.lineSeparator() +
                                 "(==== red bun ====)" + System.lineSeparator() +
                                 System.lineSeparator() +
-                                "Price: 500,000000"  + System.lineSeparator()
-                },
+                                "Price: " + THIRD_BURGER_PRICE + System.lineSeparator()
+                }
         };
     }
 

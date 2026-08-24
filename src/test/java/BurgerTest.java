@@ -49,26 +49,54 @@ public class BurgerTest {
     }
 
     @Test
-    public void testRemoveIngredient() {
+    public void testRemoveIngredientDecreasesIngredientsCount() {
         // Создаём два мока ингредиентов
-        Ingredient ingredient1 = mock(Ingredient.class);
-        Ingredient ingredient2 = mock(Ingredient.class);
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
 
         // Добавляем два ингредиента в бургер
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
 
-        // Удаляем первый ингредиент по индексу
+        // Удаляем первый ингредиент
         burger.removeIngredient(0);
 
-        // Проверяем, что в списке остался один ингредиент
+        // Проверяем, что количество ингредиентов уменьшилось на один
         Assert.assertEquals(1, burger.ingredients.size());
+    }
 
-        // Проверяем, что первый ингредиент был удалён
-        Assert.assertFalse(burger.ingredients.contains(ingredient1));
+    @Test
+    public void testRemoveIngredientRemovesCorrectIngredient() {
+        // Создаём два мока ингредиентов
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
 
-        // Проверяем, что второй ингредиент остался в списке
-        Assert.assertTrue(burger.ingredients.contains(ingredient2));
+        // Добавляем два ингредиента в бургер
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+
+        // Удаляем первый ингредиент
+        burger.removeIngredient(0);
+
+        // Проверяем, что удалён именно первый ингредиент
+        Assert.assertFalse(burger.ingredients.contains(firstIngredient));
+    }
+
+    @Test
+    public void testRemoveIngredientKeepsOtherIngredient() {
+        // Создаём два мока ингредиентов
+        Ingredient firstIngredient = mock(Ingredient.class);
+        Ingredient secondIngredient = mock(Ingredient.class);
+
+        // Добавляем два ингредиента в бургер
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
+
+        // Удаляем первый ингредиент
+        burger.removeIngredient(0);
+
+        // Проверяем, что второй ингредиент остался
+        Assert.assertTrue(burger.ingredients.contains(secondIngredient));
     }
 
     @Test

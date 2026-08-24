@@ -11,23 +11,18 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!-- Java -->
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
+        <!-- Versions -->
         <aspectj.version>1.9.7</aspectj.version>
         <allure.version>2.20.1</allure.version>
+        <jacoco.version>0.8.8</jacoco.version>
     </properties>
 
     <dependencies>
-
-        <!-- JaCoCo -->
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>org.jacoco.agent</artifactId>
-            <version>0.8.8</version>
-            <scope>test</scope>
-        </dependency>
 
         <!-- JUnit 4 -->
         <dependency>
@@ -58,6 +53,47 @@
     <build>
         <plugins>
 
+            <!-- Maven Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- JaCoCo -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+
+                <executions>
+
+                    <!-- Запускает JaCoCo перед тестами -->
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+
+                    <!-- Создаёт HTML-отчёт после тестов -->
+                    <execution>
+                        <id>report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+
+                </executions>
+            </plugin>
+
             <!-- Maven Surefire -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,12 +101,10 @@
                 <version>2.22.2</version>
 
                 <configuration>
+
                     <testFailureIgnore>false</testFailureIgnore>
 
-                    <argLine>
-                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
-                    </argLine>
-
+                    <!-- Allure -->
                     <properties>
                         <property>
                             <name>listener</name>
@@ -87,11 +121,14 @@
                 </configuration>
 
                 <dependencies>
+
+                    <!-- AspectJ для Allure -->
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
                         <version>${aspectj.version}</version>
                     </dependency>
+
                 </dependencies>
 
             </plugin>
@@ -105,6 +142,7 @@
                 <configuration>
                     <reportVersion>${allure.version}</reportVersion>
                 </configuration>
+
             </plugin>
 
         </plugins>
