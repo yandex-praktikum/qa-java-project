@@ -128,7 +128,4 @@ public class BurgerTest {
         burger.addIngredient(ingredient2);
         assertEquals("Цена бургера рассчитана неверно",expectedPrice,burger.getPrice(),0.001f);
     }
-
-
-
 }
