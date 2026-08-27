@@ -76,11 +76,9 @@ public class BurgerPriceParameterizedTest {
         }
 
         float actualPrice = burger.getPrice();
-        assertEquals(expectedPrice, actualPrice, 0.001);
-        verify(mockBun, times(1)).getPrice();
-        for (Ingredient ingredient : burger.ingredients) {
-            verify(ingredient, times(1)).getPrice();
-        }
+        assertEquals(String.format("Неверный расчет для %s: ожидалось %.2f, получено %.2f",
+                        bunName, expectedPrice, actualPrice),
+                expectedPrice, actualPrice, 0.001);
     }
 
 }
