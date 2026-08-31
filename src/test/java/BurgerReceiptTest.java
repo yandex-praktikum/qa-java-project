@@ -67,5 +67,4 @@ public class BurgerReceiptTest {
                 expectedTypeName);
         assertEquals(""+ ingredientType,expected,receipt);
     }
-
 }

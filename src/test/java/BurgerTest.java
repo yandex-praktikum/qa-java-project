@@ -21,22 +21,22 @@ import static org.mockito.Mockito.when;
 @RunWith(Parameterized.class)
 public class BurgerTest {
     private final float bunPrice;
-    private final float ingredient1Price;
-    private final float ingredient2Price;
+    private final float ingredientOnePrice;
+    private final float ingredientTwoPrice;
     private final float expectedPrice;
     @Mock
     private Bun bun;
     @Mock
-    private Ingredient ingredient1;
+    private Ingredient ingredientOne;
     @Mock
-    private Ingredient ingredient2;
+    private Ingredient ingredientTwo;
 
     private Burger burger;
 
-    public BurgerTest (float bunPrice, float ingredient1Price, float ingredient2Price, float expectedPrice) {
+    public BurgerTest (float bunPrice, float ingredientOnePrice, float ingredientTwoPrice, float expectedPrice) {
         this.bunPrice = bunPrice;
-        this.ingredient1Price = ingredient1Price;
-        this.ingredient2Price = ingredient2Price;
+        this.ingredientOnePrice = ingredientOnePrice;
+        this.ingredientTwoPrice = ingredientTwoPrice;
         this.expectedPrice = expectedPrice;
     }
 
@@ -57,8 +57,8 @@ public class BurgerTest {
         burger = new Burger();
 
         when(bun.getPrice()).thenReturn(bunPrice);
-        when(ingredient1.getPrice()).thenReturn(ingredient1Price);
-        when(ingredient2.getPrice()).thenReturn(ingredient2Price);
+        when(ingredientOne.getPrice()).thenReturn(ingredientOnePrice);
+        when(ingredientTwo.getPrice()).thenReturn(ingredientTwoPrice);
 
     }
 
@@ -73,7 +73,7 @@ public class BurgerTest {
     @Test
     public void addIngredientListSizeTest () {
         int expectedSize = burger.ingredients.size();
-        burger.addIngredient(ingredient1);
+        burger.addIngredient(ingredientOne);
         assertEquals("Размер списка должен увеличиться на 1",expectedSize + 1,burger.ingredients.size());
 
     }
@@ -81,14 +81,14 @@ public class BurgerTest {
     //Проверяем, что добавился именно нужный ингридиент
     @Test
     public void addIngredientCorrectTest () {
-        burger.addIngredient(ingredient1);
-        assertTrue("Список должен содержать добавленный ингридиент",burger.ingredients.contains(ingredient1));
+        burger.addIngredient(ingredientOne);
+        assertTrue("Список должен содержать добавленный ингридиент",burger.ingredients.contains(ingredientOne));
     }
     //Проверяем что список ингридиентов уменьшился на 1
     @Test
     public void removeIngredientSizeTest () {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
         int expectedSize = burger.ingredients.size();
         burger.removeIngredient(0);
         assertEquals("Размер списка должен уменьшиться на 1",expectedSize-1,burger.ingredients.size());
@@ -96,36 +96,49 @@ public class BurgerTest {
     // Проверяем, что удалился нужный ингридиент
     @Test
     public void removeIngredientCorrectTest () {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
         burger.removeIngredient(0);
-        assertFalse("Первый ингридиент с индексом 0 должен быть удален",burger.ingredients.contains(ingredient1));
-        assertTrue("Второй ингридиент с индексом 1 должен остаться в списке",burger.ingredients.contains(ingredient2));
+        assertFalse("Первый ингридиент с индексом 0 должен быть удален",burger.ingredients.contains(ingredientOne));
+    }
+    // Проверяем что нужный ингридиент не удаляется
+    @Test
+    public void remainsIngredientCorrectTest () {
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
+        burger.removeIngredient(0);
+        assertTrue("Второй ингридиент с индексом 1 должен остаться в списке",burger.ingredients.contains(ingredientTwo));
     }
     // Проверяем, что размер списка ингридиентов не меняется при смене индексов ингридиентов
     @Test
     public void moveIngredientNotChangeSiseTest () {
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
         int expectedSize = burger.ingredients.size();
         burger.moveIngredient(0,1);
         assertEquals("Размер списка не должен измениться",expectedSize,burger.ingredients.size());
     }
     //  Проверяем, что ингредиент перемещается на правильную позицию
     @Test
-    public void moveIngredientCorrectTest () {
-        burger.addIngredient(ingredient1); //[0]
-        burger.addIngredient(ingredient2); //[1]
+    public void moveIngredientOneCorrectTest () {
+        burger.addIngredient(ingredientOne); //[0]
+        burger.addIngredient(ingredientTwo); //[1]
         burger.moveIngredient(0,1);
-        assertEquals("Ингридиент 2 должен быть с индексом 0",ingredient2,burger.ingredients.get(0));
-        assertEquals("Ингридиент 1 должен быть с индексом 1",ingredient1,burger.ingredients.get(1));
+        assertEquals("Ингридиент 1 должен быть с индексом 1",ingredientOne,burger.ingredients.get(1));
+    }
+    @Test
+    public void moveIngredientTwoCorrectTest () {
+        burger.addIngredient(ingredientOne); //[0]
+        burger.addIngredient(ingredientTwo); //[1]
+        burger.moveIngredient(0, 1);
+        assertEquals("Ингридиент 2 должен быть с индексом 0", ingredientTwo, burger.ingredients.get(0));
     }
 // Проверяем, ято цена бургера рассчитывается правильно
     @Test
     public void getPriceTest () {
         burger.setBuns(bun);
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
+        burger.addIngredient(ingredientOne);
+        burger.addIngredient(ingredientTwo);
         assertEquals("Цена бургера рассчитана неверно",expectedPrice,burger.getPrice(),0.001f);
     }
 }
