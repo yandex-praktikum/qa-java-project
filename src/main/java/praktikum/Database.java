@@ -5,6 +5,7 @@ import java.util.List;
 
 /**
  * Класс с методами по работе с базой данных.
+ *
  */
 public class Database {
 
