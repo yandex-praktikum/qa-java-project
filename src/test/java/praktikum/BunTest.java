@@ -5,8 +5,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import io.qameta.allure.Description;
 
-import javax.management.ConstructorParameters;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
