@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IngredientTypeTest {
     @DisplayName("Получение всех типов ингредиентов")
-    @Description("Проверяет, что метод values() возвращает все значения.")
+    @Description("Проверяем, что метод values() возвращает все значения.")
     @Test
     void valuesReturnsAllIngredientTypes(){
         assertArrayEquals(
@@ -19,7 +19,7 @@ public class IngredientTypeTest {
     }
 
     @DisplayName("Получение типа ингредиентов по имени")
-    @Description("Проверяет, что метод valueOf() возвращает соответствующий элемент для переданного имени.")
+    @Description("Проверяем, что метод valueOf() возвращает соответствующий элемент для переданного имени.")
     @Test
     void valuesOfReturnsCorrectIngredientType(){
         assertEquals(

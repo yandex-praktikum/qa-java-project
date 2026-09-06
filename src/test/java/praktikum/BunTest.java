@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BunTest {
 
     @DisplayName("Получение названия и цены булочки")
-    @Description("Проверяет, что методы getName() и getPrice() возвращают верные значения")
+    @Description("Проверяем, что методы getName() и getPrice() возвращают верные значения")
     @ParameterizedTest
     @CsvSource({
             "black bun 100.0",
