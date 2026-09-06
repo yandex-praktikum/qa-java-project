@@ -13,7 +13,7 @@ public class BunTest {
     @Description("Проверяем, что методы getName() и getPrice() возвращают верные значения")
     @ParameterizedTest
     @CsvSource({
-            "black bun 100.0",
+            "black bun, 100.0",
             "white bun, 200.0",
             "red bun, 300.0"
     })

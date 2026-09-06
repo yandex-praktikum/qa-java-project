@@ -85,26 +85,33 @@ public class BurgerTest {
     @Test
     void getReceiptReturnsCorrectReceipt() {
         Burger burger = new Burger();
+
         Bun bun = mock(Bun.class);
         Ingredient sauce = mock(Ingredient.class);
         Ingredient filling = mock(Ingredient.class);
+
         burger.setBuns(bun);
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
+
         when(bun.getName()).thenReturn("sesame bun");
         when(bun.getPrice()).thenReturn(100.0f);
+
         when(sauce.getType()).thenReturn(IngredientType.SAUCE);
         when(sauce.getName()).thenReturn("hot sauce");
         when(sauce.getPrice()).thenReturn(50.0f);
+
         when(filling.getType()).thenReturn(IngredientType.FILLING);
         when(filling.getName()).thenReturn("cutlet");
         when(filling.getPrice()).thenReturn(200.0f);
+
         String expected = String.format(
                 "(==== sesame bun ====)%n" +
                         "= sauce hot sauce =%n" +
                         "= filling cutlet =%n" +
                         "(==== sesame bun ====)%n" +
-                        "%nPrice: 450.000000%n"
+                        "%nPrice: %f%n",
+                450.0f
         );
         assertEquals(expected, burger.getReceipt());
     }
