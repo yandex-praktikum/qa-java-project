@@ -37,34 +37,59 @@ public class BurgerTest {
     }
 
     @Test
-    public void addIngredientAddsIngredientToEnd() {
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+    public void addIngredientIncreasesIngredientsCount() {
+        addTwoIngredients();
 
         assertEquals(2, burger.ingredients.size());
+    }
+
+    @Test
+    public void addIngredientKeepsFirstIngredientAtFirstPosition() {
+        addTwoIngredients();
+
         assertSame(firstIngredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void addIngredientAddsSecondIngredientToEnd() {
+        addTwoIngredients();
+
         assertSame(secondIngredient, burger.ingredients.get(1));
     }
 
     @Test
-    public void removeIngredientRemovesIngredientByIndex() {
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+    public void removeIngredientDecreasesIngredientsCount() {
+        addTwoIngredients();
 
         burger.removeIngredient(0);
 
         assertEquals(1, burger.ingredients.size());
+    }
+
+    @Test
+    public void removeIngredientRemovesIngredientByIndex() {
+        addTwoIngredients();
+
+        burger.removeIngredient(0);
+
         assertSame(secondIngredient, burger.ingredients.get(0));
     }
 
     @Test
-    public void moveIngredientMovesIngredientToNewIndex() {
-        burger.addIngredient(firstIngredient);
-        burger.addIngredient(secondIngredient);
+    public void moveIngredientMovesSecondIngredientToFirstPosition() {
+        addTwoIngredients();
 
         burger.moveIngredient(0, 1);
 
         assertSame(secondIngredient, burger.ingredients.get(0));
+    }
+
+    @Test
+    public void moveIngredientMovesFirstIngredientToSecondPosition() {
+        addTwoIngredients();
+
+        burger.moveIngredient(0, 1);
+
         assertSame(firstIngredient, burger.ingredients.get(1));
     }
 
@@ -86,5 +111,10 @@ public class BurgerTest {
         burger.addIngredient(secondIngredient);
 
         assertEquals(300.0f, burger.getPrice(), 0.001f);
+    }
+
+    private void addTwoIngredients() {
+        burger.addIngredient(firstIngredient);
+        burger.addIngredient(secondIngredient);
     }
 }
