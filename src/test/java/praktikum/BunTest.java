@@ -9,17 +9,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
 
-    @DisplayName("Получение названия и цены булочки")
-    @Description("Проверяем, что методы getName() и getPrice() возвращают верные значения")
+    @DisplayName("Получение названия булочки")
+    @Description("Проверяем, что метод getName() возвращает верное значение")
     @ParameterizedTest
     @CsvSource({
-            "black bun, 100.0",
-            "white bun, 200.0",
-            "red bun, 300.0"
+            "black bun",
+            "white bun",
+            "red bun"
     })
-    void getNameAndPriceReturnsConstructorValues(String name, float price){
-        Bun bun = new Bun(name, price);
+    void getNameReturnsConstructorValue(String name) {
+        Bun bun = new Bun(name, 100.0f);
         assertEquals(name, bun.getName());
+    }
+
+    @DisplayName("Получение цены булочки")
+    @Description("Проверяем, что метод getPrice() возвращает верное значение")
+    @ParameterizedTest
+    @CsvSource({
+            "100.0",
+            "200.0",
+            "300.0"
+    })
+    void getPriceReturnsConstructorValue(float price) {
+        Bun bun = new Bun("bun", price);
         assertEquals(price, bun.getPrice());
     }
 }
