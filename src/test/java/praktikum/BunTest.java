@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
     private Bun bun;
-
     @BeforeEach
     public void setUp(){
         bun = new Bun("cheese bun",85.0f);

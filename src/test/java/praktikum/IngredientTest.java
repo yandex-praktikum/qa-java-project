@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class IngredientTest {
-
     public static Object[][] getData() {
         return new Object[][]{
                 {IngredientType.FILLING, "cheese", 50f},
