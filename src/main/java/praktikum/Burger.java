@@ -10,7 +10,6 @@ import java.util.List;
  * Можно распечать чек с информацией о бургере.
  */
 public class Burger {
-
     public Bun bun;
     public List<Ingredient> ingredients = new ArrayList<>();
 
@@ -53,5 +52,4 @@ public class Burger {
 
         return receipt.toString();
     }
-
 }
