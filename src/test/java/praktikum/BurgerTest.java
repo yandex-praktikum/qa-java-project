@@ -6,7 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
@@ -27,20 +27,20 @@ public class BurgerTest {
     @Test
     public void checkSetBuns() {
         burger.setBuns(bun);
-        assertEquals("Установлено не верное название и цена булочки", bun, burger.bun);
+        assertEquals(bun, burger.bun,"Установлено не верное название и цена булочки");
     }
 
     @Test
     public void checkAddIngredientTest() {
         burger.addIngredient(ingredientFiling);
-        assertEquals("Ингридиент не добавлен", 1, burger.ingredients.size());
+        assertEquals( 1, burger.ingredients.size(), "Ингридиент не добавлен");
     }
 
     @Test
     public void checkRemoveIngredientTest() {
         burger.addIngredient(ingredientSauce);
         burger.removeIngredient(0);
-        assertEquals("Ингридиент не удалён", 0, burger.ingredients.size());
+        assertEquals(0, burger.ingredients.size(),"Ингридиент не удалён");
     }
 
     @Test
@@ -48,18 +48,23 @@ public class BurgerTest {
         burger.addIngredient(ingredientFiling);
         burger.addIngredient(ingredientSauce);
         burger.moveIngredient(0, 1);
-        assertEquals("Ингредиент не был перемещен на новое место", burger.ingredients.get(0), ingredientSauce);
+        assertEquals(burger.ingredients.get(0), ingredientSauce,"Ингредиент не был перемещен на новое место");
     }
 
     @Test
     public void checkGetPrice() {
-        when(bun.getPrice()).thenReturn(300f);
+        burger.setBuns(bun);
+        burger.addIngredient(ingredientFiling);
+        burger.addIngredient(ingredientSauce);
+
         when(ingredientFiling.getPrice()).thenReturn(100f);
         when(ingredientSauce.getPrice()).thenReturn(200f);
-        float price = bun.getPrice() * 2;
-        float actualResult = price + ingredientFiling.getPrice() + ingredientSauce.getPrice();
+        when(bun.getPrice()).thenReturn(300f);
+
+        float actualResult = burger.getPrice();
         float expectedResult = 900f;
-        assertEquals("Неверно указана цена",expectedResult, actualResult, 0.01f);
+        assertEquals(expectedResult, actualResult, 0.01f,"Неверно указана цена");
+
     }
 
     @Test
@@ -84,6 +89,6 @@ public class BurgerTest {
                 "= sauce sour cream =\r\n" +
                 "(==== white bun ====)\r\n") +
                 "\r\n" + "Price: 420,000000\r\n";
-        assertEquals("Неверно указан рецепт", expectedResult, actualResult);
+        assertEquals(expectedResult, actualResult,"Неверно указан рецепт");
     }
 }

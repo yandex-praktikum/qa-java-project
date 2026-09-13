@@ -1,24 +1,32 @@
 package praktikum;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BunTest {
-    private Bun bun;
-    @BeforeEach
-    public void setUp(){
-        bun = new Bun("cheese bun",85.0f);
+
+    public static Object[][] getData() {
+        return new Object[][]{
+                {"black bun", 100},
+                {"white bun", 200},
+                {"red bun", 300}
+        };
     }
 
-    @Test
-    void testGetNamePositiveResult() {
-        assertEquals("cheese bun", bun.getName());
+    @ParameterizedTest
+    @MethodSource("getData")
+    public void testCheckBunName(String name, float price){
+        Bun bun = new Bun(name, price);
+        assertEquals(name, bun.getName(),"Неверное название");
     }
 
-    @Test
-    void testGetPricePositiveResult() {
-        assertEquals(85.0f, bun.getPrice(), 0.01f);
+    @ParameterizedTest
+    @MethodSource("getData")
+    public void testCheckBunPrice(String name, float price){
+        Bun bun = new Bun(name, price);
+        assertEquals(price, bun.getPrice(),"Неверное название");
     }
 }
 
