@@ -1,25 +1,35 @@
 package praktikum;
 
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.assertEquals;
 
 public class IngredientTest {
 
+    private static final String INGREDIENT_NAME = "hot sauce";
+    private static final float INGREDIENT_PRICE = 100f;
+    private static final float DELTA = 0.001f;
+
+    private Ingredient ingredient;
+
+    @Before
+    public void setUp() {
+        ingredient = new Ingredient(IngredientType.SAUCE, INGREDIENT_NAME, INGREDIENT_PRICE);
+    }
+
     @Test
     public void getTypeShouldReturnCorrectType() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "hot sauce", 100f);
-        assertEquals(IngredientType.SAUCE, ingredient.getType());   // ← getType()!
+        assertEquals(IngredientType.SAUCE, ingredient.getType());
     }
 
     @Test
     public void getNameShouldReturnCorrectName() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "hot sauce", 100f);
-        assertEquals("hot sauce", ingredient.getName());   // ← без "expected: "
+        assertEquals(INGREDIENT_NAME, ingredient.getName());
     }
 
     @Test
     public void getPriceShouldReturnCorrectPrice() {
-        Ingredient ingredient = new Ingredient(IngredientType.SAUCE, "hot sauce", 100f);
-        assertEquals(100f, ingredient.getPrice(), 0.001);
+        assertEquals(INGREDIENT_PRICE, ingredient.getPrice(), DELTA);
     }
 }

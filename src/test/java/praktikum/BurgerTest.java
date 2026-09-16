@@ -7,10 +7,25 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class BurgerTest {
+
+    private static final float BUN_PRICE = 100f;
+    private static final float INGREDIENT_PRICE = 50f;
+    private static final float DELTA = 0.001f;
+    private static final int FIRST_INDEX = 0;
+    private static final int SECOND_INDEX = 1;
+    private static final int SIZE_AFTER_ONE_ADD = 1;
+    private static final int SIZE_AFTER_REMOVE = 0;
+
+    private static final String BUN_NAME = "black bun";
+    private static final String CUTLET_NAME = "cutlet";
+    private static final String SAUCE_NAME = "hot sauce";
+    private static final String PRICE_LABEL = "Price:";
+    private static final String SAUCE_TYPE_LOWER = "sauce";
 
     private Burger burger;
 
@@ -25,133 +40,117 @@ public class BurgerTest {
         burger = new Burger();
     }
 
-    // === Тесты для setBuns ===
-
     @Test
     public void setBunsShouldSetBunCorrectly() {
-        when(mockBun.getName()).thenReturn("black bun");
+        when(mockBun.getName()).thenReturn(BUN_NAME);
         burger.setBuns(mockBun);
-        assertEquals("black bun", burger.bun.getName());
+        assertEquals(BUN_NAME, burger.bun.getName());
     }
-
-    // === Тесты для addIngredient ===
 
     @Test
     public void addIngredientShouldIncreaseListSize() {
         burger.addIngredient(mockIngredient);
-        assertEquals(1, burger.ingredients.size());
+        assertEquals(SIZE_AFTER_ONE_ADD, burger.ingredients.size());
     }
 
     @Test
     public void addIngredientShouldAddCorrectIngredient() {
-        when(mockIngredient.getName()).thenReturn("cutlet");
+        when(mockIngredient.getName()).thenReturn(CUTLET_NAME);
         burger.addIngredient(mockIngredient);
-        assertEquals("cutlet", burger.ingredients.get(0).getName());
+        assertEquals(CUTLET_NAME, burger.ingredients.get(FIRST_INDEX).getName());
     }
-
-    // === Тесты для removeIngredient ===
 
     @Test
     public void removeIngredientShouldDecreaseListSize() {
         burger.addIngredient(mockIngredient);
-        burger.removeIngredient(0);
-        assertEquals(0, burger.ingredients.size());
+        burger.removeIngredient(FIRST_INDEX);
+        assertEquals(SIZE_AFTER_REMOVE, burger.ingredients.size());
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void removeIngredientWithInvalidIndexShouldThrowException() {
-        burger.removeIngredient(0);
+        burger.removeIngredient(FIRST_INDEX);
     }
 
-    // === Тесты для moveIngredient ===
+    @Test
+    public void moveIngredientShouldMoveFirstToSecondPosition() {
+        Ingredient cutlet = new Ingredient(IngredientType.FILLING, CUTLET_NAME, INGREDIENT_PRICE);
+        Ingredient sauce = new Ingredient(IngredientType.SAUCE, SAUCE_NAME, INGREDIENT_PRICE);
+        burger.addIngredient(cutlet);
+        burger.addIngredient(sauce);
+        burger.moveIngredient(FIRST_INDEX, SECOND_INDEX);
+        assertEquals(sauce, burger.ingredients.get(FIRST_INDEX));
+    }
 
     @Test
-    public void moveIngredientShouldChangePosition() {
-        Ingredient ingredient1 = new Ingredient(IngredientType.FILLING, "cutlet", 100f);
-        Ingredient ingredient2 = new Ingredient(IngredientType.SAUCE, "hot sauce", 50f);
-
-        burger.addIngredient(ingredient1);
-        burger.addIngredient(ingredient2);
-
-        burger.moveIngredient(0, 1);
-
-        assertEquals("hot sauce", burger.ingredients.get(0).getName());
-        assertEquals("cutlet", burger.ingredients.get(1).getName());
+    public void moveIngredientShouldMoveIngredientFromSecondToFirstPosition() {
+        Ingredient cutlet = new Ingredient(IngredientType.FILLING, CUTLET_NAME, INGREDIENT_PRICE);
+        Ingredient sauce = new Ingredient(IngredientType.SAUCE, SAUCE_NAME, INGREDIENT_PRICE);
+        burger.addIngredient(cutlet);
+        burger.addIngredient(sauce);
+        burger.moveIngredient(SECOND_INDEX, FIRST_INDEX);
+        assertEquals(sauce, burger.ingredients.get(FIRST_INDEX));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void moveIngredientWithInvalidIndexShouldThrowException() {
-        burger.moveIngredient(0, 1);
+        burger.moveIngredient(FIRST_INDEX, SECOND_INDEX);
     }
-
-    // === Тесты для getPrice ===
 
     @Test
     public void getPriceShouldReturnCorrectPriceWithBunAndIngredients() {
-        when(mockBun.getPrice()).thenReturn(100f);
-        when(mockIngredient.getPrice()).thenReturn(50f);
-
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
+        when(mockIngredient.getPrice()).thenReturn(INGREDIENT_PRICE);
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
-
-        float expectedPrice = 100f * 2 + 50f;
-        assertEquals(expectedPrice, burger.getPrice(), 0.001);
+        float expectedPrice = BUN_PRICE * 2 + INGREDIENT_PRICE;
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
     }
 
     @Test
     public void getPriceShouldReturnOnlyBunPriceWhenNoIngredients() {
-        when(mockBun.getPrice()).thenReturn(100f);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
         burger.setBuns(mockBun);
-
-        float expectedPrice = 100f * 2;
-        assertEquals(expectedPrice, burger.getPrice(), 0.001);
+        float expectedPrice = BUN_PRICE * 2;
+        assertEquals(expectedPrice, burger.getPrice(), DELTA);
     }
-
-    // === Тесты для getReceipt ===
 
     @Test
     public void getReceiptShouldContainBunName() {
-        when(mockBun.getName()).thenReturn("black bun");
+        when(mockBun.getName()).thenReturn(BUN_NAME);
         burger.setBuns(mockBun);
-
         String receipt = burger.getReceipt();
-        assertEquals(true, receipt.contains("black bun"));
+        assertTrue(receipt.contains(BUN_NAME));
     }
 
     @Test
     public void getReceiptShouldContainIngredientName() {
-        when(mockBun.getName()).thenReturn("black bun");
+        when(mockBun.getName()).thenReturn(BUN_NAME);
         when(mockIngredient.getType()).thenReturn(IngredientType.FILLING);
-        when(mockIngredient.getName()).thenReturn("cutlet");
-
+        when(mockIngredient.getName()).thenReturn(CUTLET_NAME);
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
-
         String receipt = burger.getReceipt();
-        assertEquals(true, receipt.contains("cutlet"));
+        assertTrue(receipt.contains(CUTLET_NAME));
     }
 
     @Test
     public void getReceiptShouldContainIngredientTypeLowerCase() {
-        when(mockBun.getName()).thenReturn("black bun");
+        when(mockBun.getName()).thenReturn(BUN_NAME);
         when(mockIngredient.getType()).thenReturn(IngredientType.SAUCE);
-        when(mockIngredient.getName()).thenReturn("hot sauce");
-
+        when(mockIngredient.getName()).thenReturn(SAUCE_NAME);
         burger.setBuns(mockBun);
         burger.addIngredient(mockIngredient);
-
         String receipt = burger.getReceipt();
-        assertEquals(true, receipt.contains("sauce"));
+        assertTrue(receipt.contains(SAUCE_TYPE_LOWER));
     }
 
     @Test
     public void getReceiptShouldContainPrice() {
-        when(mockBun.getName()).thenReturn("black bun");
-        when(mockBun.getPrice()).thenReturn(100f);
-
+        when(mockBun.getName()).thenReturn(BUN_NAME);
+        when(mockBun.getPrice()).thenReturn(BUN_PRICE);
         burger.setBuns(mockBun);
-
         String receipt = burger.getReceipt();
-        assertEquals(true, receipt.contains("Price:"));
+        assertTrue(receipt.contains(PRICE_LABEL));
     }
 }
