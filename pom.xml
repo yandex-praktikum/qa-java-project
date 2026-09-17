@@ -12,9 +12,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <aspectj.version>1.9.7</aspectj.version>
-        <allure.version>2.24.0</allure.version>
-        <argLine></argLine>
     </properties>
 
     <dependencies>
@@ -26,67 +23,25 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito (только core, без junit-jupiter) -->
+        <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>4.11.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Allure для JUnit 4 -->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit4</artifactId>
-            <version>${allure.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- AspectJ для @Step -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${aspectj.version}</version>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <testFailureIgnore>false</testFailureIgnore>
-                    <argLine>
-                        ${argLine}
-                        -javaagent:${user.home}/.m2/repository/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                    </argLine>
-                    <systemPropertyVariables>
-                        <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
-                    </systemPropertyVariables>
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.junit4.AllureJunit4</value>
-                        </property>
-                    </properties>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.apache.maven.surefire</groupId>
-                        <artifactId>surefire-junit4</artifactId>
-                        <version>3.0.0</version>
-                    </dependency>
-                </dependencies>
-            </plugin>
-
+            <!-- JaCoCo -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.11</version>
                 <executions>
                     <execution>
+                        <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
@@ -119,16 +74,6 @@
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
-                <configuration>
-                    <reportVersion>${allure.version}</reportVersion>
-                    <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
-                </configuration>
             </plugin>
         </plugins>
     </build>
