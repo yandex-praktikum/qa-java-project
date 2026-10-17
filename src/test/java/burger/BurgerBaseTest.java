@@ -1,4 +1,4 @@
-package praktikum.burgerTests;
+package burger;
 
 import org.junit.Before;
 import org.mockito.Mock;
@@ -11,17 +11,15 @@ public abstract class BurgerBaseTest {
     protected Burger burger;
 
     @Mock
-    protected Bun bun;
+    protected Bun mockBun;
     @Mock
-    protected Ingredient sauce;
+    protected Ingredient mockSauce;
     @Mock
-    protected Ingredient filling;
+    protected Ingredient mockFilling;
 
     @Before
     public void setUp() {
-
         burger = new Burger();
-        burger.setBuns(bun);
-
+        burger.setBuns(mockBun);
     }
 }

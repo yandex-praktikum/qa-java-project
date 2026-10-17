@@ -1,4 +1,4 @@
-package praktikum.burgerTests;
+package praktikum.tests.burger;
 
 import praktikum.IngredientType;
 
@@ -17,12 +17,12 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Before
     public void stubForReceipt() {
         //Стабим то, что нужно для тестов
-        when(bun.getPrice()).thenReturn(100.0f);
-        when(bun.getName()).thenReturn("Mock Bun");
+        when(mockBun.getPrice()).thenReturn(100.0f);
+        when(mockBun.getName()).thenReturn("Mock Bun");
 
-        when(filling.getName()).thenReturn("Default Filling");
-        when(filling.getType()).thenReturn(IngredientType.FILLING);
-        when(filling.getPrice()).thenReturn(30f);
+        when(mockFilling.getName()).thenReturn("Default Filling");
+        when(mockFilling.getType()).thenReturn(IngredientType.FILLING);
+        when(mockFilling.getPrice()).thenReturn(30f);
     }
 
 //__Метод getReceipt____________________________________________________________________________________________________
@@ -34,7 +34,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
         String receipt = burger.getReceipt();
 
         //Строим строку в том же формате, что в getReceipt
-        String expectedHeader = String.format("(==== %s ====)%n", bun.getName());
+        String expectedHeader = String.format("(==== %s ====)%n", mockBun.getName());
         assertTrue("Чек должен строго начинаться с шапки",
                 receipt.startsWith(expectedHeader));
     }
@@ -43,12 +43,12 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Test
     public void getReceiptShouldHaveCorrectIngredientFormatTest() {
 
-        burger.addIngredient(filling);
+        burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
 
         String expectedLine = String.format("= %s %s =%n",
-                filling.getType().toString().toLowerCase(),
-                filling.getName());
+                mockFilling.getType().toString().toLowerCase(),
+                mockFilling.getName());
 
         assertTrue("Строка ингредиента должна точно соответствовать формату",
                 receipt.contains(expectedLine));
@@ -59,7 +59,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     public void getReceiptShouldHaveCorrectFooterTest() {
 
         String receipt = burger.getReceipt();
-        String bunLine = String.format("(==== %s ====)%n", bun.getName());
+        String bunLine = String.format("(==== %s ====)%n", mockBun.getName());
 
         //Счетчик, сколько раз появилось bunLine в receipt
         long bunLineCount = Pattern.compile(Pattern.quote(bunLine))
@@ -75,13 +75,13 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Test
     public void getReceiptShouldPlaceFooterBetweenIngredientsAndPriceTest() {
 
-        burger.addIngredient(filling);
+        burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
 
-        String bunLine = String.format("(==== %s ====)%n", bun.getName());
+        String bunLine = String.format("(==== %s ====)%n", mockBun.getName());
         String ingredientLine = String.format("= %s %s =%n",
-                filling.getType().toString().toLowerCase(),
-                filling.getName());
+                mockFilling.getType().toString().toLowerCase(),
+                mockFilling.getName());
         String priceLine = String.format("Price: %f", burger.getPrice());
 
         assertTrue("Подвал (вторая строка булки) должен идти после строки ингредиента",
@@ -94,7 +94,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Test
     public void getReceiptShouldContainPriceLineTest() {
 
-        burger.addIngredient(filling);
+        burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
 
         String expectedPriceLine = String.format("Price: %f", burger.getPrice());
@@ -107,7 +107,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Test
     public void getReceiptShouldHaveExactlyOnePriceLineTest() {
 
-        burger.addIngredient(filling);
+        burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
 
         String expectedPriceLine = String.format("Price: %f", burger.getPrice());
@@ -124,7 +124,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
     @Test
     public void getReceiptShouldEndWithPriceLineTest() {
 
-        burger.addIngredient(filling);
+        burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
 
         String expectedEnding = String.format("%nPrice: %f%n", burger.getPrice());

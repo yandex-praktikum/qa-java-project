@@ -1,4 +1,4 @@
-package praktikum.burgerTests;
+package praktikum.tests.burger;
 
 import org.junit.Assert;
 import org.junit.Test;
