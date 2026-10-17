@@ -1,4 +1,4 @@
-package praktikum.tests.burger;
+package burger;
 
 import praktikum.IngredientType;
 
@@ -10,9 +10,8 @@ import java.util.regex.Pattern;
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.when;
 
-
 @RunWith(MockitoJUnitRunner.class)
-public class BurgerReceiptTest extends BurgerBaseTest {
+public class BurgerGetReceiptTest extends BurgerBaseTest {
 
     @Before
     public void stubForReceipt() {
@@ -56,7 +55,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
 
     //Футер - наличие
     @Test
-    public void getReceiptShouldHaveCorrectFooterTest() {
+    public void getReceiptShouldContainBunLineTwiceTest() {
 
         String receipt = burger.getReceipt();
         String bunLine = String.format("(==== %s ====)%n", mockBun.getName());
@@ -73,7 +72,7 @@ public class BurgerReceiptTest extends BurgerBaseTest {
 
     //Футер - позиция: подвал идёт после ингредиентов и перед ценой
     @Test
-    public void getReceiptShouldPlaceFooterBetweenIngredientsAndPriceTest() {
+    public void getReceiptShouldPlaceFooterAfterIngredientsTest() {
 
         burger.addIngredient(mockFilling);
         String receipt = burger.getReceipt();
@@ -82,10 +81,20 @@ public class BurgerReceiptTest extends BurgerBaseTest {
         String ingredientLine = String.format("= %s %s =%n",
                 mockFilling.getType().toString().toLowerCase(),
                 mockFilling.getName());
-        String priceLine = String.format("Price: %f", burger.getPrice());
 
         assertTrue("Подвал (вторая строка булки) должен идти после строки ингредиента",
                 receipt.lastIndexOf(bunLine) > receipt.indexOf(ingredientLine));
+    }
+
+    @Test
+    public void getReceiptShouldPlaceFooterBeforePriceTest() {
+
+        burger.addIngredient(mockFilling);
+        String receipt = burger.getReceipt();
+
+        String bunLine = String.format("(==== %s ====)%n", mockBun.getName());
+        String priceLine = String.format("Price: %f", burger.getPrice());
+
         assertTrue("Подвал (вторая строка булки) должен идти до строки цены",
                 receipt.lastIndexOf(bunLine) < receipt.indexOf(priceLine));
     }
