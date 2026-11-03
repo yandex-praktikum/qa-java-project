@@ -1,0 +1,11 @@
+# IntelliJ IDEA
+.idea/
+
+# Working directory
+.workbench/
+
+# Maven — артефакты сборки не трекаем, кроме отчёта JaCoCo
+target/*
+!target/site/
+!target/site/jacoco/
+*.class
