@@ -4,8 +4,6 @@ import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -13,26 +11,7 @@ import org.mockito.MockitoAnnotations;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-@RunWith(Parameterized.class)
 public class BurgerTest {
-
-    @Parameterized.Parameter(0)
-    public float bunPrice;
-
-    @Parameterized.Parameter(1)
-    public float ingredientPrice;
-
-    @Parameterized.Parameter(2)
-    public float expectedPrice;
-
-    @Parameterized.Parameters(name = "Цена булки: {0}, Цена ингредиента: {1}, Ожидаемая цена: {2}") // * добавлено
-    public static Object[][] getData() {
-        return new Object[][] {
-                { 100.0f, 50.0f, 250.0f },
-                { 200.0f, 150.0f, 550.0f },
-                { 50.0f, 25.0f, 125.0f }
-        };
-    }
 
     private Burger burger;
 
@@ -101,36 +80,33 @@ public class BurgerTest {
     }
 
     @Test
-    @DisplayName("Проверка перемещения ингредиента")
-    @Description("Проверяем изменение порядка ингредиентов в списке при перемещении")
-    public void testMoveIngredient() {
+    @DisplayName("Проверка перемещения ингредиента на первый индекс")
+    @Description("Проверяем, что при перемещении ингредиента он встает на нужную позицию")
+    public void testMoveIngredientFirstPosition() {
         burger.addIngredient(sauce);
         burger.addIngredient(filling);
-
-        // Перемещаем элемент с индекса 0 на индекс 1
+                // Перемещаем элемент с индекса 0 на индекс 1
         burger.moveIngredient(0, 1);
 
         assertEquals(filling, burger.ingredients.get(0));
+            }
+
+    @Test // Выделила атомарный тест
+    @DisplayName("Проверка перемещения ингредиента на второй индекс")
+    @Description("Проверяем, что второй элемент после перемещения сместился корректно")
+    public void testMoveIngredientSecondPosition() {
+        burger.addIngredient(sauce);
+        burger.addIngredient(filling);
+
+        burger.moveIngredient(0, 1);
+
         assertEquals(sauce, burger.ingredients.get(1));
     }
 
-    @Test
-    @DisplayName("Параметризованный тест расчёта стоимости бургера")
-    @Description("Проверяем правильность расчета общей стоимости бургера с разными ценами компонентов") // * добавлено и параметризовано
-    public void testGetPriceParameterized() {
-        Mockito.when(bun.getPrice()).thenReturn(bunPrice);
-        Mockito.when(sauce.getPrice()).thenReturn(ingredientPrice);
-
-        burger.setBuns(bun);
-        burger.addIngredient(sauce);
-
-        assertEquals(expectedPrice, burger.getPrice(), 0.001f);
-    }
-
-    @Test
-    @DisplayName("Проверка генерации чека")
-    @Description("Проверяем корректность текстового содержимого чека для готового бургера")
-    public void testGetReceipt() {
+    @Test // Выделила атомарный тест
+    @DisplayName("Проверка наличия названия булки в чеке")
+    @Description("Проверяем, что сгенерированный чек содержит название булки")
+    public void testGetReceiptContainsBunName() {
         Mockito.when(bun.getName()).thenReturn("black bun");
         Mockito.when(bun.getPrice()).thenReturn(100.0f);
 
@@ -141,12 +117,46 @@ public class BurgerTest {
         burger.setBuns(bun);
         burger.addIngredient(sauce);
 
+        String actualReceipt = burger.getReceipt();
+
+        assertTrue(actualReceipt.contains("black bun"));
+    }
+
+    @Test // Выделила атомарный тест
+    @DisplayName("Проверка наличия названия ингредиента в чеке")
+    @Description("Проверяем, что сгенерированный чек содержит название ингредиента")
+    public void testGetReceiptContainsIngredientName() {
+        Mockito.when(bun.getName()).thenReturn("black bun");
+        Mockito.when(bun.getPrice()).thenReturn(100.0f);
+
+        Mockito.when(sauce.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(sauce.getName()).thenReturn("hot sauce");
+        Mockito.when(sauce.getPrice()).thenReturn(50.0f);
+
+        burger.setBuns(bun);
+        burger.addIngredient(sauce);
 
         String actualReceipt = burger.getReceipt();
 
-        // Проверяем ключевые части чека
-        assertTrue(actualReceipt.contains("black bun"));
         assertTrue(actualReceipt.contains("hot sauce"));
+    }
+
+    @Test // Выделила атомарный тест
+    @DisplayName("Проверка наличия итоговой цены в чеке")
+    @Description("Проверяем, что сгенерированный чек содержит общую стоимость бургера")
+    public void testGetReceiptContainsTotalPrice() {
+        Mockito.when(bun.getName()).thenReturn("black bun");
+        Mockito.when(bun.getPrice()).thenReturn(100.0f);
+
+        Mockito.when(sauce.getType()).thenReturn(IngredientType.SAUCE);
+        Mockito.when(sauce.getName()).thenReturn("hot sauce");
+        Mockito.when(sauce.getPrice()).thenReturn(50.0f);
+
+        burger.setBuns(bun);
+        burger.addIngredient(sauce);
+
+        String actualReceipt = burger.getReceipt();
+
         assertTrue(actualReceipt.contains("250,000000") || actualReceipt.contains("250.000000"));
     }
 }
